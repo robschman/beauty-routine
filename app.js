@@ -1597,9 +1597,9 @@ document.addEventListener('DOMContentLoaded', init);
     indicator = document.createElement('div');
     indicator.id = 'ptr-indicator';
     indicator.style.cssText = `
-      position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+      position: fixed; top: calc(env(safe-area-inset-top) + 50px); left: 50%; transform: translateX(-50%);
       background: rgba(255,255,255,0.9); backdrop-filter: blur(8px);
-      border-radius: 0 0 20px 20px; padding: 8px 20px;
+      border-radius: 20px; padding: 8px 20px;
       font-size: 0.8rem; color: #c2185b; font-weight: 600;
       box-shadow: 0 2px 12px rgba(194,24,91,0.2);
       transition: opacity 0.3s; opacity: 0; z-index: 9999;
