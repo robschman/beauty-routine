@@ -1000,9 +1000,33 @@ function getGreeting() {
   return                         { text: t('greetingNight'),   emoji: '⭐' };
 }
 
+function fitLogoText() {
+  const logoTop = document.querySelector('.logo-top');
+  const beauty  = document.querySelector('.logo-beauty');
+  const name    = document.querySelector('.logo-name');
+  if (!logoTop || !beauty || !name) return;
+
+  // Reset to max sizes first
+  beauty.style.fontSize = '2.6rem';
+  name.style.fontSize   = '1.75rem';
+
+  // Scale down until it fits within the header-row
+  const headerRow = document.querySelector('.header-row');
+  if (!headerRow) return;
+  const maxWidth = headerRow.offsetWidth * 0.58; // logo gets ~58% of header width
+
+  let scale = 1;
+  while (logoTop.scrollWidth > maxWidth && scale > 0.55) {
+    scale -= 0.02;
+    beauty.style.fontSize = (2.6 * scale) + 'rem';
+    name.style.fontSize   = (1.75 * scale) + 'rem';
+  }
+}
+
 function showGreeting(name) {
   const logoName = document.getElementById('logoName');
   if (logoName) logoName.textContent = `${t('logoNamePrefix')} ${name} 🌸✨`;
+  setTimeout(fitLogoText, 0);
 
   const { text, emoji } = getGreeting();
   const motivations = t('motivations');
@@ -1250,6 +1274,7 @@ function init() {
   // Termine
   loadTermine();
   updateTodayBadge();
+  setTimeout(fitLogoText, 50);
   document.getElementById('termineOpenBtn').addEventListener('click', openTermineOverlay);
   document.getElementById('termineCloseBtn').addEventListener('click', closeTermineOverlay);
   document.getElementById('addTerminBtn').addEventListener('click', () => openTerminEdit(null));
