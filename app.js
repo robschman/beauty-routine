@@ -280,86 +280,87 @@ const AGB_TEXT = {
 };
 
 // ===== Routine Data =====
+// Each item has de/en name+hint. buildList picks based on currentLang.
 const ROUTINES = {
   morning_skincare: [
-    { id: 'ms1', emoji: '💧', name: 'Gesicht reinigen',       hint: 'Sanfter Cleanser für einen frischen Start' },
-    { id: 'ms2', emoji: '🌸', name: 'Toner auftragen',        hint: 'pH-Balance & Vorbereitung für die Pflege' },
-    { id: 'ms3', emoji: '💎', name: 'Serum auftragen',        hint: 'Konzentrierte Wirkstoffe für deine Haut' },
-    { id: 'ms4', emoji: '👁️', name: 'Augencreme',             hint: 'Sanft unter den Augen eintupfen' },
-    { id: 'ms5', emoji: '🧴', name: 'Feuchtigkeitscreme',     hint: 'Hautbarriere schützen & hydratisieren' },
-    { id: 'ms6', emoji: '☀️', name: 'Sonnencreme SPF 30+',   hint: 'Täglich – der wichtigste Anti-Aging-Schritt!' },
+    { id: 'ms1', emoji: '💧', name: 'Gesicht reinigen',            hint: 'Sanfter Cleanser für einen frischen Start',         en: 'Cleanse face',              enHint: 'Gentle cleanser for a fresh start' },
+    { id: 'ms2', emoji: '🌸', name: 'Toner auftragen',             hint: 'pH-Balance & Vorbereitung für die Pflege',          en: 'Apply toner',               enHint: 'pH balance & prep for skincare' },
+    { id: 'ms3', emoji: '💎', name: 'Serum auftragen',             hint: 'Konzentrierte Wirkstoffe für deine Haut',           en: 'Apply serum',               enHint: 'Concentrated actives for your skin' },
+    { id: 'ms4', emoji: '👁️', name: 'Augencreme',                  hint: 'Sanft unter den Augen eintupfen',                   en: 'Eye cream',                 enHint: 'Gently pat under the eyes' },
+    { id: 'ms5', emoji: '🧴', name: 'Feuchtigkeitscreme',          hint: 'Hautbarriere schützen & hydratisieren',             en: 'Moisturizer',               enHint: 'Protect skin barrier & hydrate' },
+    { id: 'ms6', emoji: '☀️', name: 'Sonnencreme SPF 30+',        hint: 'Täglich – der wichtigste Anti-Aging-Schritt!',      en: 'Sunscreen SPF 30+',         enHint: 'Daily – the most important anti-aging step!' },
   ],
   morning_makeup: [
-    { id: 'mm1', emoji: '🌟', name: 'Primer auftragen',       hint: 'Make-up hält länger & Poren kaschieren' },
-    { id: 'mm2', emoji: '🪞', name: 'Foundation / BB Cream',  hint: 'Gleichmäßiges Hautbild' },
-    { id: 'mm3', emoji: '✨', name: 'Concealer',              hint: 'Augenringe & Unreinheiten abdecken' },
-    { id: 'mm4', emoji: '🎨', name: 'Rouge / Bronzer',        hint: 'Farbe ins Gesicht bringen' },
-    { id: 'mm5', emoji: '👀', name: 'Augen schminken',        hint: 'Lidschatten, Eyeliner & Mascara' },
-    { id: 'mm6', emoji: '💋', name: 'Lippen pflegen / Lippenstift', hint: 'Lippenpflege oder Lippenstift' },
-    { id: 'mm7', emoji: '🔒', name: 'Setting Spray',          hint: 'Make-up fixieren den ganzen Tag' },
+    { id: 'mm1', emoji: '🌟', name: 'Primer auftragen',            hint: 'Make-up hält länger & Poren kaschieren',           en: 'Apply primer',              enHint: 'Longer-lasting makeup & minimize pores' },
+    { id: 'mm2', emoji: '🪞', name: 'Foundation / BB Cream',       hint: 'Gleichmäßiges Hautbild',                           en: 'Foundation / BB Cream',     enHint: 'Even skin tone' },
+    { id: 'mm3', emoji: '✨', name: 'Concealer',                   hint: 'Augenringe & Unreinheiten abdecken',               en: 'Concealer',                 enHint: 'Cover dark circles & blemishes' },
+    { id: 'mm4', emoji: '🎨', name: 'Rouge / Bronzer',             hint: 'Farbe ins Gesicht bringen',                        en: 'Blush / Bronzer',           enHint: 'Add color and warmth to the face' },
+    { id: 'mm5', emoji: '👀', name: 'Augen schminken',             hint: 'Lidschatten, Eyeliner & Mascara',                  en: 'Eye makeup',                enHint: 'Eyeshadow, eyeliner & mascara' },
+    { id: 'mm6', emoji: '💋', name: 'Lippen pflegen / Lippenstift', hint: 'Lippenpflege oder Lippenstift',                   en: 'Lip care / Lipstick',       enHint: 'Lip balm or lipstick' },
+    { id: 'mm7', emoji: '🔒', name: 'Setting Spray',               hint: 'Make-up fixieren den ganzen Tag',                  en: 'Setting Spray',             enHint: 'Lock in your makeup all day' },
   ],
   morning_body: [
-    { id: 'mb1', emoji: '🚿', name: 'Duschen',                hint: 'Frisch und sauber in den Tag starten' },
-    { id: 'mb2', emoji: '🦷', name: 'Zähneputzen',            hint: '2 Minuten – morgens nicht vergessen!' },
-    { id: 'mb3', emoji: '🧴', name: 'Körperlotion',           hint: 'Am besten nach dem Duschen eincremen' },
-    { id: 'mb4', emoji: '🌸', name: 'Deodorant',              hint: 'Frisch bleiben den ganzen Tag' },
-    { id: 'mb5', emoji: '💇‍♀️', name: 'Haare stylen',         hint: 'Kämmen, föhnen oder stylen' },
-    { id: 'mb6', emoji: '💅', name: 'Parfüm',                 hint: 'Dein Signature-Duft' },
+    { id: 'mb1', emoji: '🚿', name: 'Duschen',                     hint: 'Frisch und sauber in den Tag starten',             en: 'Shower',                    enHint: 'Start the day fresh and clean' },
+    { id: 'mb2', emoji: '🦷', name: 'Zähneputzen',                 hint: '2 Minuten – morgens nicht vergessen!',             en: 'Brush teeth',               enHint: '2 minutes – don\'t skip in the morning!' },
+    { id: 'mb3', emoji: '🧴', name: 'Körperlotion',                hint: 'Am besten nach dem Duschen eincremen',             en: 'Body lotion',               enHint: 'Best applied right after showering' },
+    { id: 'mb4', emoji: '🌸', name: 'Deodorant',                   hint: 'Frisch bleiben den ganzen Tag',                    en: 'Deodorant',                 enHint: 'Stay fresh all day long' },
+    { id: 'mb5', emoji: '💇‍♀️', name: 'Haare stylen',              hint: 'Kämmen, föhnen oder stylen',                      en: 'Style hair',                enHint: 'Brush, blow dry or style' },
+    { id: 'mb6', emoji: '💅', name: 'Parfüm',                      hint: 'Dein Signature-Duft',                              en: 'Perfume',                   enHint: 'Your signature scent' },
   ],
   morning_wellness: [
-    { id: 'mw1', emoji: '💧', name: 'Glas Wasser trinken',    hint: 'Hydration von innen – direkt nach dem Aufwachen' },
-    { id: 'mw2', emoji: '🧘‍♀️', name: 'Stretching / Yoga',  hint: 'Den Körper aufwachen lassen' },
-    { id: 'mw3', emoji: '📓', name: 'Journaling',             hint: '5 Minuten Gedanken aufschreiben' },
-    { id: 'mw4', emoji: '🌟', name: 'Affirmation',            hint: 'Den Tag positiv beginnen' },
+    { id: 'mw1', emoji: '💧', name: 'Glas Wasser trinken',         hint: 'Hydration von innen – direkt nach dem Aufwachen',  en: 'Drink a glass of water',    enHint: 'Hydrate from within – right after waking up' },
+    { id: 'mw2', emoji: '🧘‍♀️', name: 'Stretching / Yoga',       hint: 'Den Körper aufwachen lassen',                      en: 'Stretching / Yoga',         enHint: 'Let your body wake up gently' },
+    { id: 'mw3', emoji: '📓', name: 'Journaling',                  hint: '5 Minuten Gedanken aufschreiben',                  en: 'Journaling',                enHint: '5 minutes to write down your thoughts' },
+    { id: 'mw4', emoji: '🌟', name: 'Affirmation',                 hint: 'Den Tag positiv beginnen',                         en: 'Affirmation',               enHint: 'Start the day on a positive note' },
   ],
   evening_skincare: [
-    { id: 'es1', emoji: '🧹', name: 'Make-up entfernen',      hint: 'Mizellenwater, Reinigungsöl oder Balm' },
-    { id: 'es2', emoji: '💧', name: 'Doppelte Reinigung',     hint: 'Schaum-Cleanser für die tiefe Reinigung' },
-    { id: 'es3', emoji: '🌸', name: 'Toner auftragen',        hint: 'Haut auf die Nachtpflege vorbereiten' },
-    { id: 'es4', emoji: '🔬', name: 'Serum / Wirkstoffe',     hint: 'Retinol, Hyaluronsäure oder Niacinamid' },
-    { id: 'es5', emoji: '👁️', name: 'Augencreme',             hint: 'Sanft eintupfen – nicht einreiben' },
-    { id: 'es6', emoji: '🌙', name: 'Nachtcreme',             hint: 'Reichhaltige Feuchtigkeitspflege' },
-    { id: 'es7', emoji: '💋', name: 'Lippenpflege',           hint: 'Lippenbalsam über Nacht einwirken lassen' },
+    { id: 'es1', emoji: '🧹', name: 'Make-up entfernen',           hint: 'Mizellenwater, Reinigungsöl oder Balm',            en: 'Remove makeup',             enHint: 'Micellar water, cleansing oil or balm' },
+    { id: 'es2', emoji: '💧', name: 'Doppelte Reinigung',          hint: 'Schaum-Cleanser für die tiefe Reinigung',          en: 'Double cleanse',            enHint: 'Foam cleanser for a deep clean' },
+    { id: 'es3', emoji: '🌸', name: 'Toner auftragen',             hint: 'Haut auf die Nachtpflege vorbereiten',             en: 'Apply toner',               enHint: 'Prep skin for night care' },
+    { id: 'es4', emoji: '🔬', name: 'Serum / Wirkstoffe',          hint: 'Retinol, Hyaluronsäure oder Niacinamid',           en: 'Serum / Actives',           enHint: 'Retinol, hyaluronic acid or niacinamide' },
+    { id: 'es5', emoji: '👁️', name: 'Augencreme',                  hint: 'Sanft eintupfen – nicht einreiben',                en: 'Eye cream',                 enHint: 'Pat gently – do not rub' },
+    { id: 'es6', emoji: '🌙', name: 'Nachtcreme',                  hint: 'Reichhaltige Feuchtigkeitspflege',                 en: 'Night cream',               enHint: 'Rich moisturizing night care' },
+    { id: 'es7', emoji: '💋', name: 'Lippenpflege',                hint: 'Lippenbalsam über Nacht einwirken lassen',         en: 'Lip care',                  enHint: 'Let lip balm work overnight' },
   ],
   evening_body: [
-    { id: 'eb1', emoji: '🦷', name: 'Zähneputzen',            hint: '2 Minuten – Abends besonders wichtig' },
-    { id: 'eb2', emoji: '🧵', name: 'Zahnseide',              hint: 'Einmal täglich – am besten abends' },
-    { id: 'eb3', emoji: '🧴', name: 'Körperlotion / Öl',      hint: 'Hände, Ellenbogen & Füße nicht vergessen' },
-    { id: 'eb4', emoji: '💇‍♀️', name: 'Haare bürsten',        hint: '100 Züge oder einfach entwirren' },
-    { id: 'eb5', emoji: '🎀', name: 'Haare flechten / schützen', hint: 'Geflochtener Zopf verhindert Bruch' },
+    { id: 'eb1', emoji: '🦷', name: 'Zähneputzen',                 hint: '2 Minuten – Abends besonders wichtig',             en: 'Brush teeth',               enHint: '2 minutes – especially important at night' },
+    { id: 'eb2', emoji: '🧵', name: 'Zahnseide',                   hint: 'Einmal täglich – am besten abends',                en: 'Floss',                     enHint: 'Once daily – best done in the evening' },
+    { id: 'eb3', emoji: '🧴', name: 'Körperlotion / Öl',           hint: 'Hände, Ellenbogen & Füße nicht vergessen',         en: 'Body lotion / Oil',         enHint: 'Don\'t forget hands, elbows & feet' },
+    { id: 'eb4', emoji: '💇‍♀️', name: 'Haare bürsten',             hint: '100 Züge oder einfach entwirren',                  en: 'Brush hair',                enHint: '100 strokes or just detangle' },
+    { id: 'eb5', emoji: '🎀', name: 'Haare flechten / schützen',   hint: 'Geflochtener Zopf verhindert Bruch',               en: 'Braid / protect hair',      enHint: 'A loose braid prevents breakage' },
   ],
   evening_wellness: [
-    { id: 'ew1', emoji: '📵', name: 'Handy weglegen',         hint: 'Mindestens 30 Min vor dem Schlafen' },
-    { id: 'ew2', emoji: '📖', name: 'Lesen',                  hint: 'Entspannen mit einem guten Buch' },
-    { id: 'ew3', emoji: '📓', name: 'Tagebuch schreiben',     hint: 'Den Tag reflektieren & Dankbarkeit notieren' },
-    { id: 'ew4', emoji: '🫖', name: 'Beruhigenden Tee trinken', hint: 'Kamille oder Lavendel zum Einschlafen' },
-    { id: 'ew5', emoji: '🌬️', name: 'Atemübung',             hint: '4-7-8 Technik zum Einschlafen' },
+    { id: 'ew1', emoji: '📵', name: 'Handy weglegen',              hint: 'Mindestens 30 Min vor dem Schlafen',               en: 'Put phone away',            enHint: 'At least 30 min before sleep' },
+    { id: 'ew2', emoji: '📖', name: 'Lesen',                       hint: 'Entspannen mit einem guten Buch',                  en: 'Read',                      enHint: 'Relax with a good book' },
+    { id: 'ew3', emoji: '📓', name: 'Tagebuch schreiben',          hint: 'Den Tag reflektieren & Dankbarkeit notieren',      en: 'Write in diary',            enHint: 'Reflect on the day & note gratitude' },
+    { id: 'ew4', emoji: '🫖', name: 'Beruhigenden Tee trinken',    hint: 'Kamille oder Lavendel zum Einschlafen',            en: 'Drink calming tea',         enHint: 'Chamomile or lavender to wind down' },
+    { id: 'ew5', emoji: '🌬️', name: 'Atemübung',                  hint: '4-7-8 Technik zum Einschlafen',                    en: 'Breathing exercise',        enHint: '4-7-8 technique to fall asleep' },
   ],
   weekly_skincare: [
-    { id: 'ws1', emoji: '🫧', name: 'Gesichtspeeling',        hint: '1-2x pro Woche – abgestorbene Hautzellen entfernen' },
-    { id: 'ws2', emoji: '🎭', name: 'Gesichtsmaske',          hint: 'Tonerde-, Hydro- oder Sheet-Mask (10–20 Min)' },
-    { id: 'ws3', emoji: '💎', name: 'Peel-off Maske',         hint: 'Poren reinigen & Mitesser entfernen' },
-    { id: 'ws4', emoji: '🌿', name: 'Gesichtsmassage',        hint: 'Gua-Sha oder Jade Roller für Lymphdrainage' },
-    { id: 'ws5', emoji: '👄', name: 'Lippenpeeling',          hint: 'Sanft peelen für weiche Lippen' },
+    { id: 'ws1', emoji: '🫧', name: 'Gesichtspeeling',             hint: '1-2x pro Woche – abgestorbene Hautzellen entfernen', en: 'Face scrub',              enHint: '1-2x per week – remove dead skin cells' },
+    { id: 'ws2', emoji: '🎭', name: 'Gesichtsmaske',               hint: 'Tonerde-, Hydro- oder Sheet-Mask (10–20 Min)',      en: 'Face mask',                 enHint: 'Clay, hydro or sheet mask (10–20 min)' },
+    { id: 'ws3', emoji: '💎', name: 'Peel-off Maske',              hint: 'Poren reinigen & Mitesser entfernen',              en: 'Peel-off mask',             enHint: 'Cleanse pores & remove blackheads' },
+    { id: 'ws4', emoji: '🌿', name: 'Gesichtsmassage',             hint: 'Gua-Sha oder Jade Roller für Lymphdrainage',       en: 'Face massage',              enHint: 'Gua-Sha or jade roller for lymph drainage' },
+    { id: 'ws5', emoji: '👄', name: 'Lippenpeeling',               hint: 'Sanft peelen für weiche Lippen',                   en: 'Lip scrub',                 enHint: 'Gently exfoliate for soft lips' },
   ],
   weekly_hair: [
-    { id: 'wh1', emoji: '🧴', name: 'Haarkur / Deep Conditioning', hint: 'Mindestens 20 Min einwirken lassen' },
-    { id: 'wh2', emoji: '🥥', name: 'Haaröl-Behandlung',     hint: 'Kokos-, Argan- oder Jojobaöl vor dem Waschen' },
-    { id: 'wh3', emoji: '💆‍♀️', name: 'Kopfhautmassage',     hint: 'Durchblutung fördern & Haarwachstum anregen' },
-    { id: 'wh4', emoji: '✂️', name: 'Haare trimmen',          hint: 'Alle 8–12 Wochen für gesunde Spitzen' },
+    { id: 'wh1', emoji: '🧴', name: 'Haarkur / Deep Conditioning', hint: 'Mindestens 20 Min einwirken lassen',               en: 'Hair mask / Deep conditioning', enHint: 'Leave on for at least 20 minutes' },
+    { id: 'wh2', emoji: '🥥', name: 'Haaröl-Behandlung',          hint: 'Kokos-, Argan- oder Jojobaöl vor dem Waschen',     en: 'Hair oil treatment',        enHint: 'Coconut, argan or jojoba oil before washing' },
+    { id: 'wh3', emoji: '💆‍♀️', name: 'Kopfhautmassage',          hint: 'Durchblutung fördern & Haarwachstum anregen',      en: 'Scalp massage',             enHint: 'Boost circulation & stimulate hair growth' },
+    { id: 'wh4', emoji: '✂️', name: 'Haare trimmen',               hint: 'Alle 8–12 Wochen für gesunde Spitzen',             en: 'Trim hair',                 enHint: 'Every 8–12 weeks for healthy ends' },
   ],
   weekly_nails: [
-    { id: 'wn1', emoji: '💅', name: 'Maniküre',              hint: 'Nägel feilen, formen & lackieren' },
-    { id: 'wn2', emoji: '🦶', name: 'Pediküre',              hint: 'Fußnägel pflegen & lackieren' },
-    { id: 'wn3', emoji: '✨', name: 'Nagelhautpflege',        hint: 'Nagelhautöl auftragen & sanft zurückschieben' },
-    { id: 'wn4', emoji: '🫧', name: 'Nagelbad',              hint: 'Warmes Öl-Bad für 10–15 Minuten' },
+    { id: 'wn1', emoji: '💅', name: 'Maniküre',                   hint: 'Nägel feilen, formen & lackieren',                 en: 'Manicure',                  enHint: 'File, shape & paint nails' },
+    { id: 'wn2', emoji: '🦶', name: 'Pediküre',                   hint: 'Fußnägel pflegen & lackieren',                    en: 'Pedicure',                  enHint: 'Care for & paint toenails' },
+    { id: 'wn3', emoji: '✨', name: 'Nagelhautpflege',             hint: 'Nagelhautöl auftragen & sanft zurückschieben',     en: 'Cuticle care',              enHint: 'Apply cuticle oil & gently push back' },
+    { id: 'wn4', emoji: '🫧', name: 'Nagelbad',                   hint: 'Warmes Öl-Bad für 10–15 Minuten',                 en: 'Nail soak',                 enHint: 'Warm oil bath for 10–15 minutes' },
   ],
   weekly_body: [
-    { id: 'wbo1', emoji: '🧂', name: 'Körperpeeling',         hint: 'Salzpeeling für seidige Haut' },
-    { id: 'wbo2', emoji: '🛁', name: 'Entspannungsbad',       hint: 'Mit Badesalz, Ölen oder Badebomben' },
-    { id: 'wbo3', emoji: '🦵', name: 'Rasieren / Epilieren',  hint: 'Beine, Achseln & Co. pflegen' },
-    { id: 'wbo4', emoji: '🧴', name: 'Körpermaske',           hint: 'Intensive Feuchtigkeit für trockene Haut' },
-    { id: 'wbo5', emoji: '🦶', name: 'Fußpflege',             hint: 'Hornhaut entfernen & gut eincremen' },
+    { id: 'wbo1', emoji: '🧂', name: 'Körperpeeling',              hint: 'Salzpeeling für seidige Haut',                    en: 'Body scrub',                enHint: 'Salt scrub for silky smooth skin' },
+    { id: 'wbo2', emoji: '🛁', name: 'Entspannungsbad',            hint: 'Mit Badesalz, Ölen oder Badebomben',              en: 'Relaxing bath',             enHint: 'With bath salts, oils or bath bombs' },
+    { id: 'wbo3', emoji: '🦵', name: 'Rasieren / Epilieren',       hint: 'Beine, Achseln & Co. pflegen',                   en: 'Shave / Epilate',           enHint: 'Legs, underarms & more' },
+    { id: 'wbo4', emoji: '🧴', name: 'Körpermaske',                hint: 'Intensive Feuchtigkeit für trockene Haut',        en: 'Body mask',                 enHint: 'Intensive moisture for dry skin' },
+    { id: 'wbo5', emoji: '🦶', name: 'Fußpflege',                  hint: 'Hornhaut entfernen & gut eincremen',              en: 'Foot care',                 enHint: 'Remove calluses & moisturize well' },
   ],
 };
 
@@ -533,6 +534,9 @@ function buildList(catKey) {
          <button class="action-btn delete-btn" data-id="${item.id}" data-cat="${catKey}">🗑️</button>`
       : '';
 
+    const displayName = (currentLang === 'en' && item.en)   ? item.en     : item.name;
+    const displayHint = (currentLang === 'en' && item.enHint) ? item.enHint : item.hint;
+
     li.innerHTML = `
       <span class="checkbox">
         <svg class="checkbox-check" viewBox="0 0 12 10">
@@ -541,8 +545,8 @@ function buildList(catKey) {
       </span>
       <span class="item-emoji">${item.emoji || '📌'}</span>
       <span class="item-label">
-        <span class="item-name">${escHtml(item.name)}</span>
-        ${item.hint ? `<span class="item-hint">${escHtml(item.hint)}</span>` : ''}
+        <span class="item-name">${escHtml(displayName)}</span>
+        ${displayHint ? `<span class="item-hint">${escHtml(displayHint)}</span>` : ''}
       </span>
       <span class="item-actions">
         ${customBtns}
@@ -921,32 +925,32 @@ function resetAll() {
 // ===== Hair Profile =====
 function getHairItems(color, length) {
   const base = [
-    { id: 'wh1', emoji: '🧴', name: 'Haarkur / Deep Conditioning', hint: 'Mindestens 20 Min einwirken lassen' },
-    { id: 'wh2', emoji: '🥥', name: 'Haaröl-Behandlung',           hint: 'Kokos-, Argan- oder Jojobaöl vor dem Waschen' },
-    { id: 'wh3', emoji: '💆‍♀️', name: 'Kopfhautmassage',           hint: 'Durchblutung fördern & Haarwachstum anregen' },
+    { id: 'wh1', emoji: '🧴', name: 'Haarkur / Deep Conditioning', hint: 'Mindestens 20 Min einwirken lassen',          en: 'Hair mask / Deep Conditioning', enHint: 'Leave on for at least 20 minutes' },
+    { id: 'wh2', emoji: '🥥', name: 'Haaröl-Behandlung',           hint: 'Kokos-, Argan- oder Jojobaöl vor dem Waschen', en: 'Hair oil treatment',           enHint: 'Coconut, argan or jojoba oil before washing' },
+    { id: 'wh3', emoji: '💆‍♀️', name: 'Kopfhautmassage',           hint: 'Durchblutung fördern & Haarwachstum anregen', en: 'Scalp massage',                enHint: 'Boost circulation & stimulate hair growth' },
   ];
   if (length === 'kurz') {
-    base.push({ id: 'wh4', emoji: '✂️', name: 'Haare nachschneiden lassen', hint: 'Alle 4–6 Wochen für gepflegte Kurzhaarfrisur' });
-    base.push({ id: 'wh5', emoji: '🪮', name: 'Stylingprodukt auftragen',   hint: 'Pomade oder Wax für Definition & Halt' });
+    base.push({ id: 'wh4', emoji: '✂️', name: 'Haare nachschneiden lassen', hint: 'Alle 4–6 Wochen für gepflegte Kurzhaarfrisur', en: 'Get a trim',           enHint: 'Every 4–6 weeks for a neat short style' });
+    base.push({ id: 'wh5', emoji: '🪮', name: 'Stylingprodukt auftragen',   hint: 'Pomade oder Wax für Definition & Halt',       en: 'Apply styling product', enHint: 'Pomade or wax for definition & hold' });
   } else if (length === 'mittel') {
-    base.push({ id: 'wh4', emoji: '✂️', name: 'Spitzen trimmen',            hint: 'Alle 6–8 Wochen für gesunde Spitzen' });
-    base.push({ id: 'wh5', emoji: '🌊', name: 'Hitzeschutz auftragen',      hint: 'Vor dem Föhnen oder Glätten – immer!' });
-    base.push({ id: 'wh6', emoji: '🎀', name: 'Haare flechten/aufbinden',   hint: 'Nachts schützen um Bruch zu vermeiden' });
+    base.push({ id: 'wh4', emoji: '✂️', name: 'Spitzen trimmen',            hint: 'Alle 6–8 Wochen für gesunde Spitzen',          en: 'Trim ends',            enHint: 'Every 6–8 weeks for healthy ends' });
+    base.push({ id: 'wh5', emoji: '🌊', name: 'Hitzeschutz auftragen',      hint: 'Vor dem Föhnen oder Glätten – immer!',         en: 'Apply heat protectant', enHint: 'Before blow drying or straightening – always!' });
+    base.push({ id: 'wh6', emoji: '🎀', name: 'Haare flechten/aufbinden',   hint: 'Nachts schützen um Bruch zu vermeiden',        en: 'Braid or tie hair',    enHint: 'Protect at night to avoid breakage' });
   } else if (length === 'lang') {
-    base.push({ id: 'wh4', emoji: '✂️', name: 'Spitzen trimmen',            hint: 'Alle 8–12 Wochen gegen Spliss' });
-    base.push({ id: 'wh5', emoji: '🌊', name: 'Hitzeschutz auftragen',      hint: 'Vor dem Föhnen oder Glätten – ein Muss!' });
-    base.push({ id: 'wh6', emoji: '🎀', name: 'Haare flechten zum Schlafen', hint: 'Losen Zopf oder French Braid – schützt vor Bruch' });
-    base.push({ id: 'wh7', emoji: '🧣', name: 'Satin-Kissenbezug nutzen',   hint: 'Reduziert Reibung & hält Feuchtigkeit' });
+    base.push({ id: 'wh4', emoji: '✂️', name: 'Spitzen trimmen',            hint: 'Alle 8–12 Wochen gegen Spliss',                en: 'Trim ends',            enHint: 'Every 8–12 weeks to prevent split ends' });
+    base.push({ id: 'wh5', emoji: '🌊', name: 'Hitzeschutz auftragen',      hint: 'Vor dem Föhnen oder Glätten – ein Muss!',      en: 'Apply heat protectant', enHint: 'Before blow drying or straightening – a must!' });
+    base.push({ id: 'wh6', emoji: '🎀', name: 'Haare flechten zum Schlafen', hint: 'Losen Zopf oder French Braid – schützt vor Bruch', en: 'Braid hair for sleep', enHint: 'Loose braid or French braid protects from breakage' });
+    base.push({ id: 'wh7', emoji: '🧣', name: 'Satin-Kissenbezug nutzen',   hint: 'Reduziert Reibung & hält Feuchtigkeit',        en: 'Use satin pillowcase', enHint: 'Reduces friction & retains moisture' });
   }
   if (color === 'blond') {
-    base.push({ id: 'wh_c1', emoji: '💜', name: 'Silbershampoo anwenden',   hint: '1x pro Woche gegen Gelbstich' });
+    base.push({ id: 'wh_c1', emoji: '💜', name: 'Silbershampoo anwenden',   hint: '1x pro Woche gegen Gelbstich',                 en: 'Use purple shampoo',   enHint: 'Once a week to neutralize yellow tones' });
   } else if (color === 'gefarbt') {
-    base.push({ id: 'wh_c1', emoji: '🎨', name: 'Farb-Shampoo verwenden',   hint: 'Schützt die Farbe & hält sie frisch' });
-    base.push({ id: 'wh_c2', emoji: '💧', name: 'Farbschutz-Kur auftragen', hint: 'Gefärbtes Haar braucht extra Feuchtigkeit' });
+    base.push({ id: 'wh_c1', emoji: '🎨', name: 'Farb-Shampoo verwenden',   hint: 'Schützt die Farbe & hält sie frisch',          en: 'Use color shampoo',    enHint: 'Protects color & keeps it fresh' });
+    base.push({ id: 'wh_c2', emoji: '💧', name: 'Farbschutz-Kur auftragen', hint: 'Gefärbtes Haar braucht extra Feuchtigkeit',    en: 'Color-protect mask',   enHint: 'Colored hair needs extra moisture' });
   } else if (color === 'rot') {
-    base.push({ id: 'wh_c1', emoji: '🔴', name: 'Rotes Farbshampoo nutzen', hint: 'Rote Töne verblassen schnell – Farbe auffrischen' });
+    base.push({ id: 'wh_c1', emoji: '🔴', name: 'Rotes Farbshampoo nutzen', hint: 'Rote Töne verblassen schnell – Farbe auffrischen', en: 'Use red color shampoo', enHint: 'Red fades fast – refresh color regularly' });
   } else if (color === 'schwarz') {
-    base.push({ id: 'wh_c1', emoji: '🖤', name: 'Glanz-Spülung verwenden',  hint: 'Dunkles Haar strahlt mit Pflegebehandlungen' });
+    base.push({ id: 'wh_c1', emoji: '🖤', name: 'Glanz-Spülung verwenden',  hint: 'Dunkles Haar strahlt mit Pflegebehandlungen',  en: 'Use shine conditioner', enHint: 'Dark hair shines beautifully with treatments' });
   }
   return base;
 }
