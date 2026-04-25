@@ -231,6 +231,7 @@ body {
   margin-bottom: 9px;
   min-height: 0;
   transition: opacity 0.4s;
+  text-align: center;
 }
 
 .greeting-row:empty { margin-bottom: 0; }
@@ -407,17 +408,36 @@ body {
 
 .tab {
   flex: 1;
-  padding: 9px 6px;
+  padding: 9px 4px;
   border: none;
   background: transparent;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--text-soft);
   cursor: pointer;
   transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
   border-radius: 20px;
   touch-action: manipulation;
-  letter-spacing: 0.1px;
+  letter-spacing: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  line-height: 1.2;
+}
+
+.tab-emoji {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.tab-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .tab.active {
@@ -712,7 +732,7 @@ body {
 .btn-label {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   line-height: 1.2;
   font-size: 0.72rem;
   font-weight: 700;
