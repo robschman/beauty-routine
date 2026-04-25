@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Oswald:wght@500;600&display=swap');
 
 /* ===== Reset & Base ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1912,10 +1912,11 @@ body.theme-boy .footer {
 }
 
 body.theme-boy .logo-name {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  font-weight: 700;
+  font-family: 'Oswald', 'Impact', 'Arial Narrow', sans-serif;
+  font-weight: 600;
   font-style: normal;
-  letter-spacing: 0.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 body.theme-boy .modal-overlay {
