@@ -23,9 +23,22 @@
           <div class="onboarding-emoji">🌍</div>
           <h2 class="onboarding-title">Choose your language</h2>
           <p class="onboarding-text">Wähle deine Sprache</p>
+
+          <!-- AGB Akzeptieren -->
+          <div class="agb-accept">
+            <label class="agb-check-label">
+              <input type="checkbox" id="agbAcceptCheck" />
+              <span>
+                Ich akzeptiere die <button class="agb-inline-btn" id="agbInlineBtn" type="button">AGB &amp; Datenschutz</button>
+                &nbsp;/&nbsp;
+                I accept the <button class="agb-inline-btn" id="agbInlineBtn2" type="button">Terms &amp; Privacy</button>
+              </span>
+            </label>
+          </div>
+
           <div class="lang-options">
-            <button class="lang-btn" data-lang="de">🇩🇪<span>Deutsch</span></button>
-            <button class="lang-btn" data-lang="en">🇬🇧<span>English</span></button>
+            <button class="lang-btn" data-lang="de" disabled>🇩🇪<span>Deutsch</span></button>
+            <button class="lang-btn" data-lang="en" disabled>🇬🇧<span>English</span></button>
           </div>
         </div>
 

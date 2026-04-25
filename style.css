@@ -1021,7 +1021,7 @@ body {
 .tips-card {
   background: white;
   border-radius: var(--radius);
-  padding: 16px 16px 20px;
+  padding: 16px 16px 28px;
   margin-bottom: 16px;
   box-shadow: 0 2px 12px var(--shadow);
   border: 1px solid var(--border);
@@ -1031,31 +1031,118 @@ body {
   font-size: 0.9rem;
   font-weight: 800;
   color: var(--text);
-  margin-bottom: 13px;
+  margin-bottom: 14px;
 }
 
 .tips-bubbles {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 26px;
+  padding-bottom: 6px;
 }
 
+/* === Traumblase / Thought Bubble === */
 .tip-bubble {
-  background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 100%);
-  border: 1.5px solid rgba(248,187,208,0.7);
-  border-radius: 16px 16px 16px 4px;
-  padding: 11px 14px;
-  font-size: 0.81rem;
+  background: linear-gradient(145deg, #fff0f7 0%, #f8e8ff 55%, #fce4ec 100%);
+  border: 1.5px solid rgba(248,187,208,0.85);
+  border-radius: 22px;
+  padding: 13px 17px;
+  font-size: 0.82rem;
   color: var(--text);
-  line-height: 1.55;
-  box-shadow: 0 2px 8px rgba(240,98,146,0.1);
+  line-height: 1.6;
+  position: relative;
+  box-shadow:
+    0 6px 22px rgba(240,98,146,0.13),
+    inset 0 1px 4px rgba(255,255,255,0.95);
+  animation: tipFloat 4.5s ease-in-out infinite;
 }
 
-.tip-bubble:nth-child(even) {
-  border-radius: 16px 16px 4px 16px;
-  background: linear-gradient(135deg, #f3e5f5 0%, #fce4ec 100%);
+.tip-bubble:nth-child(2) {
+  animation-delay: 1.5s;
+  background: linear-gradient(145deg, #f3e5f5 0%, #fff0f7 55%, #f8e8ff 100%);
   align-self: flex-end;
-  width: 96%;
+  width: 93%;
+}
+
+.tip-bubble:nth-child(3) {
+  animation-delay: 3s;
+}
+
+/* Gedankenblase-Tail: zwei Kreise */
+.tip-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 22px;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(145deg, #fff0f7, #fce4ec);
+  border: 1.5px solid rgba(248,187,208,0.85);
+  border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(240,98,146,0.11);
+}
+
+.tip-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -24px;
+  left: 14px;
+  width: 7px;
+  height: 7px;
+  background: linear-gradient(145deg, #fff0f7, #fce4ec);
+  border: 1.5px solid rgba(248,187,208,0.85);
+  border-radius: 50%;
+}
+
+.tip-bubble:nth-child(even)::after { left: auto; right: 22px; }
+.tip-bubble:nth-child(even)::before { left: auto; right: 14px; }
+
+@keyframes tipFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* ===== AGB Accept (Onboarding Step 0) ===== */
+.agb-accept {
+  margin: 0 0 16px;
+  text-align: left;
+}
+
+.agb-check-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+  cursor: pointer;
+  line-height: 1.55;
+}
+
+.agb-check-label input[type="checkbox"] {
+  margin-top: 3px;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--pink-mid);
+  cursor: pointer;
+}
+
+.agb-inline-btn {
+  border: none;
+  background: none;
+  color: var(--pink-mid);
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: inherit;
+  padding: 0;
+  display: inline;
+}
+
+.lang-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
 }
 
 /* ===== Settings Modal ===== */

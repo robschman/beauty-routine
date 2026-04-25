@@ -1057,13 +1057,24 @@ function initOnboarding() {
     let selectedColor  = '';
     let selectedLength = '';
 
-    // ---- Step 0: Language ----
-    document.querySelectorAll('.lang-btn').forEach(btn => {
+    // ---- Step 0: AGB checkbox + Language ----
+    const agbCheck = document.getElementById('agbAcceptCheck');
+    const langBtns = document.querySelectorAll('.lang-btn');
+
+    // AGB inline open buttons
+    document.getElementById('agbInlineBtn')?.addEventListener('click', () => openAgb());
+    document.getElementById('agbInlineBtn2')?.addEventListener('click', () => openAgb());
+
+    // Enable lang buttons only after AGB accepted
+    agbCheck?.addEventListener('change', () => {
+      langBtns.forEach(btn => { btn.disabled = !agbCheck.checked; });
+    });
+
+    langBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         currentLang = btn.dataset.lang;
         store.set('routine_lang', currentLang);
         applyTranslations();
-        // Go to step 1
         document.getElementById('ob-step0').style.display = 'none';
         document.getElementById('ob-step1').style.display = 'block';
         setTimeout(() => document.getElementById('nameInput').focus(), 200);
@@ -1133,7 +1144,7 @@ function initOnboarding() {
 function init() {
   loadPersisted();
   currentLang = store.get('routine_lang') || 'de';
-  applyTranslations();
+  try { applyTranslations(); } catch(e) { console.error('Translation init error:', e); updateDate(); }
   updateDate();
   initOnboarding();
   renderAll();
