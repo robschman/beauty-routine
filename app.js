@@ -1507,6 +1507,86 @@ function closeTermineOverlay() {
 
 document.addEventListener('DOMContentLoaded', init);
 
+// ===== HEADER SPARKLES =====
+(function() {
+  const canvas = document.getElementById('header-sparkle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const sparkles = [];
+  const COUNT = 28;
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+
+  function createSparkle() {
+    return {
+      x: rand(0, canvas.width),
+      y: rand(0, canvas.height),
+      size: rand(1.5, 4),
+      alpha: 0,
+      maxAlpha: rand(0.4, 0.95),
+      speed: rand(0.008, 0.022),
+      phase: Math.random() < 0.5 ? 'in' : 'out',
+      delay: rand(0, 200),
+    };
+  }
+
+  for (let i = 0; i < COUNT; i++) {
+    const s = createSparkle();
+    s.alpha = rand(0, s.maxAlpha);
+    s.delay = 0;
+    sparkles.push(s);
+  }
+
+  function drawStar(x, y, r, alpha) {
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = '#ffffff';
+    ctx.shadowColor = '#fff';
+    ctx.shadowBlur = r * 4;
+    // 4-pointed star
+    ctx.beginPath();
+    for (let i = 0; i < 8; i++) {
+      const angle = (i * Math.PI) / 4;
+      const dist = i % 2 === 0 ? r : r * 0.35;
+      const px = x + Math.cos(angle) * dist;
+      const py = y + Math.sin(angle) * dist;
+      i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    sparkles.forEach(s => {
+      if (s.delay > 0) { s.delay--; return; }
+      if (s.phase === 'in') {
+        s.alpha += s.speed;
+        if (s.alpha >= s.maxAlpha) { s.alpha = s.maxAlpha; s.phase = 'out'; }
+      } else {
+        s.alpha -= s.speed;
+        if (s.alpha <= 0) {
+          Object.assign(s, createSparkle());
+          s.alpha = 0;
+          s.phase = 'in';
+        }
+      }
+      drawStar(s.x, s.y, s.size, s.alpha);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
 // ===== PULL TO REFRESH =====
 (function() {
   let startY = 0;
