@@ -447,6 +447,20 @@ const ROUTINES_BOY = {
     { id: 'beb3', emoji: '🧴', name: 'Körperlotion',       hint: 'Hände und Füße nicht vergessen',                 en: 'Body lotion',        enHint: 'Don\'t forget hands and feet' },
     { id: 'beb4', emoji: '💇‍♂️', name: 'Haare kämmen',   hint: 'Entwirren vor dem Schlafen',                     en: 'Comb hair',          enHint: 'Detangle before sleep' },
   ],
+  morning_wellness: [
+    { id: 'bmw1', emoji: '💧', name: 'Glas Wasser trinken',    hint: 'Hydration von innen – direkt nach dem Aufwachen',  en: 'Drink a glass of water',  enHint: 'Hydrate from within – right after waking up' },
+    { id: 'bmw2', emoji: '🧘‍♂️', name: 'Stretching',         hint: 'Muskeln lockern & den Körper aufwachen lassen',    en: 'Stretching',              enHint: 'Loosen muscles & let your body wake up' },
+    { id: 'bmw3', emoji: '💪', name: 'Kurzes Workout',         hint: 'Liegestütze, Kniebeugen oder Plank',              en: 'Short workout',           enHint: 'Push-ups, squats or plank' },
+    { id: 'bmw4', emoji: '📝', name: 'Tagesplan machen',       hint: 'Prioritäten setzen & den Tag strukturieren',      en: 'Plan your day',           enHint: 'Set priorities & structure your day' },
+    { id: 'bmw5', emoji: '🌟', name: 'Positiver Vorsatz',      hint: 'Ein Ziel für den heutigen Tag festlegen',         en: 'Set a daily intention',   enHint: 'Set one goal for today' },
+  ],
+  evening_wellness: [
+    { id: 'bew1', emoji: '📵', name: 'Handy weglegen',         hint: 'Mindestens 30 Min vor dem Schlafen',              en: 'Put phone away',          enHint: 'At least 30 min before sleep' },
+    { id: 'bew2', emoji: '📖', name: 'Lesen',                  hint: 'Entspannen mit einem guten Buch oder Sachbuch',   en: 'Read',                    enHint: 'Relax with a good book or non-fiction' },
+    { id: 'bew3', emoji: '🎧', name: 'Podcast hören',          hint: 'Interessantes Thema zum Abschalten',              en: 'Listen to podcast',       enHint: 'Interesting topic to wind down' },
+    { id: 'bew4', emoji: '🌬️', name: 'Atemübung',             hint: '4-7-8 Technik zum Einschlafen',                   en: 'Breathing exercise',      enHint: '4-7-8 technique to fall asleep' },
+    { id: 'bew5', emoji: '💭', name: 'Tag reflektieren',       hint: 'Was lief gut? Was kann ich morgen besser machen?', en: 'Reflect on the day',     enHint: 'What went well? What can I improve tomorrow?' },
+  ],
   weekly_nails: [
     { id: 'bwn1', emoji: '✂️', name: 'Nägel schneiden',   hint: 'Hände- und Fußnägel regelmäßig kürzen',         en: 'Cut nails',          enHint: 'Regularly trim finger and toenails' },
     { id: 'bwn2', emoji: '🪒', name: 'Nassrasur',          hint: 'Für eine besonders intensive, gründliche Rasur', en: 'Wet shave',          enHint: 'For an especially intensive, thorough shave' },
