@@ -937,6 +937,242 @@ body {
   font-size: 1.5rem;
 }
 
+/* ===== Language Buttons (Onboarding Step 0) ===== */
+.lang-options {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.lang-btn {
+  flex: 1;
+  max-width: 140px;
+  padding: 18px 12px;
+  border: 2.5px solid var(--border);
+  border-radius: var(--radius);
+  background: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+  font-family: inherit;
+  touch-action: manipulation;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(240,98,146,0.12);
+}
+
+.lang-btn span {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-soft);
+}
+
+.lang-btn:active {
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+  border-color: var(--pink-mid);
+  transform: scale(0.95);
+  box-shadow: 0 4px 14px rgba(240,98,146,0.28);
+}
+
+/* ===== Hair-color option label (below emoji) ===== */
+.ob-option-label {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  margin-top: 2px;
+  line-height: 1;
+}
+
+/* ===== Settings Open Button ===== */
+.settings-area {
+  margin: 4px 0 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.settings-open-btn {
+  padding: 11px 26px;
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  background: white;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  box-shadow: 0 2px 12px rgba(240,98,146,0.15);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  touch-action: manipulation;
+}
+
+.settings-open-btn:active {
+  background: var(--pink-light);
+  transform: scale(0.97);
+}
+
+/* ===== Tips Card ===== */
+.tips-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 12px var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.tips-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 13px;
+}
+
+.tips-bubbles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tip-bubble {
+  background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 100%);
+  border: 1.5px solid rgba(248,187,208,0.7);
+  border-radius: 16px 16px 16px 4px;
+  padding: 11px 14px;
+  font-size: 0.81rem;
+  color: var(--text);
+  line-height: 1.55;
+  box-shadow: 0 2px 8px rgba(240,98,146,0.1);
+}
+
+.tip-bubble:nth-child(even) {
+  border-radius: 16px 16px 4px 16px;
+  background: linear-gradient(135deg, #f3e5f5 0%, #fce4ec 100%);
+  align-self: flex-end;
+  width: 96%;
+}
+
+/* ===== Settings Modal ===== */
+.settings-modal {
+  max-height: 85vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.settings-section {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #fce4ec;
+}
+
+.settings-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.settings-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 9px;
+}
+
+.settings-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  color: var(--text);
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+  background: white;
+}
+
+.settings-input:focus { border-color: var(--pink-mid); }
+
+.settings-lang-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.settings-lang-btn {
+  flex: 1;
+  padding: 10px 8px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: white;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  touch-action: manipulation;
+}
+
+.settings-lang-btn.active {
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+  border-color: var(--pink-mid);
+  color: var(--pink-mid);
+}
+
+.settings-lang-btn:active { transform: scale(0.97); }
+
+/* ===== AGB Button ===== */
+.agb-btn {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--pink-light);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  touch-action: manipulation;
+  text-align: left;
+}
+
+.agb-btn:active { background: var(--border); }
+
+/* ===== AGB Modal ===== */
+.agb-modal {
+  max-height: 80vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.agb-content {
+  font-size: 0.82rem;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+.agb-content h4 {
+  color: var(--text);
+  font-size: 0.86rem;
+  margin: 14px 0 5px;
+  font-weight: 700;
+}
+
+.agb-content h4:first-child { margin-top: 0; }
+.agb-content p { margin-bottom: 6px; }
+.agb-content a { color: var(--pink-mid); }
+
 /* ===== Responsive ===== */
 @media (max-width: 400px) {
   .logo { font-size: 1.35rem; }

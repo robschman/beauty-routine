@@ -14,54 +14,64 @@
 <body>
   <div class="app">
 
-    <!-- Onboarding Screen (erste Verwendung) -->
+    <!-- Onboarding -->
     <div class="onboarding" id="onboarding">
       <div class="onboarding-card">
 
+        <!-- Schritt 0: Sprache -->
+        <div class="ob-step" id="ob-step0">
+          <div class="onboarding-emoji">🌍</div>
+          <h2 class="onboarding-title">Choose your language</h2>
+          <p class="onboarding-text">Wähle deine Sprache</p>
+          <div class="lang-options">
+            <button class="lang-btn" data-lang="de">🇩🇪<span>Deutsch</span></button>
+            <button class="lang-btn" data-lang="en">🇬🇧<span>English</span></button>
+          </div>
+        </div>
+
         <!-- Schritt 1: Name -->
-        <div class="ob-step" id="ob-step1">
+        <div class="ob-step" id="ob-step1" style="display:none">
           <div class="onboarding-emoji">🌸</div>
-          <h2 class="onboarding-title">Willkommen!</h2>
-          <p class="onboarding-text">Wie darf ich dich nennen?</p>
-          <input type="text" id="nameInput" class="name-input" placeholder="Dein Name..." maxlength="30" />
-          <button class="name-save-btn" id="obNext1">Weiter ✨</button>
+          <h2 class="onboarding-title" data-tr="welcome"></h2>
+          <p class="onboarding-text" data-tr="whatIsYourName"></p>
+          <input type="text" id="nameInput" class="name-input" maxlength="30" />
+          <button class="name-save-btn" id="obNext1" data-tr="next"></button>
         </div>
 
         <!-- Schritt 2: Haarfarbe -->
         <div class="ob-step" id="ob-step2" style="display:none">
           <div class="onboarding-emoji">💇‍♀️</div>
-          <h2 class="onboarding-title">Deine Haarfarbe?</h2>
-          <p class="onboarding-text">Damit ich die Pflegetipps anpasse</p>
+          <h2 class="onboarding-title" data-tr="yourHairColor"></h2>
+          <p class="onboarding-text" data-tr="hairColorHint"></p>
           <div class="ob-options" id="hairColorOptions">
-            <button class="ob-option" data-value="blond">👱‍♀️ Blond</button>
-            <button class="ob-option" data-value="braun">🟤 Braun</button>
-            <button class="ob-option" data-value="schwarz">🖤 Schwarz</button>
-            <button class="ob-option" data-value="rot">🔴 Rot</button>
-            <button class="ob-option" data-value="gefarbt">🌈 Gefärbt</button>
-            <button class="ob-option" data-value="grau">🩶 Grau/Silber</button>
+            <button class="ob-option" data-value="blond" data-tr-label="blond">👱‍♀️</button>
+            <button class="ob-option" data-value="braun" data-tr-label="braun">🟤</button>
+            <button class="ob-option" data-value="schwarz" data-tr-label="schwarz">🖤</button>
+            <button class="ob-option" data-value="rot" data-tr-label="rot">🔴</button>
+            <button class="ob-option" data-value="gefarbt" data-tr-label="gefarbt">🌈</button>
+            <button class="ob-option" data-value="grau" data-tr-label="grau">🩶</button>
           </div>
-          <button class="name-save-btn ob-next-btn" id="obNext2" disabled>Weiter →</button>
+          <button class="name-save-btn ob-next-btn" id="obNext2" disabled data-tr="next"></button>
         </div>
 
         <!-- Schritt 3: Haarlänge -->
         <div class="ob-step" id="ob-step3" style="display:none">
           <div class="onboarding-emoji">✂️</div>
-          <h2 class="onboarding-title">Deine Haarlänge?</h2>
-          <p class="onboarding-text">Kurz, mittel oder lang?</p>
+          <h2 class="onboarding-title" data-tr="yourHairLength"></h2>
+          <p class="onboarding-text" data-tr="hairLengthHint"></p>
           <div class="ob-options" id="hairLengthOptions">
-            <button class="ob-option ob-option-wide" data-value="kurz">💁‍♀️ Kurz<span>Pixie bis Kinn</span></button>
-            <button class="ob-option ob-option-wide" data-value="mittel">💇‍♀️ Mittel<span>Schulter bis Brust</span></button>
-            <button class="ob-option ob-option-wide" data-value="lang">👸 Lang<span>Unterhalb der Brust</span></button>
+            <button class="ob-option ob-option-wide" data-value="kurz">💁‍♀️ <span data-tr="short"></span><small data-tr="shortDesc"></small></button>
+            <button class="ob-option ob-option-wide" data-value="mittel">💇‍♀️ <span data-tr="medium"></span><small data-tr="mediumDesc"></small></button>
+            <button class="ob-option ob-option-wide" data-value="lang">👸 <span data-tr="long"></span><small data-tr="longDesc"></small></button>
           </div>
-          <button class="name-save-btn ob-next-btn" id="obFinish" disabled>Los geht's 🌸</button>
+          <button class="name-save-btn ob-next-btn" id="obFinish" disabled data-tr="letsGo"></button>
         </div>
 
       </div>
     </div>
 
-    <!-- Sticky Block: Header + Tabs bleiben IMMER sichtbar -->
+    <!-- Sticky Top -->
     <div class="sticky-top">
-
       <header class="header">
         <div class="header-row">
           <h1 class="logo">
@@ -81,17 +91,16 @@
           <div class="progress-bar-wrap">
             <div class="progress-bar" id="progressBar"></div>
           </div>
-          <span class="progress-label" id="progressLabel">0 / 0 erledigt</span>
+          <span class="progress-label" id="progressLabel">0 / 0</span>
         </div>
       </header>
 
       <nav class="tabs">
-        <button class="tab active" data-tab="morning">🌸 Morgen</button>
-        <button class="tab" data-tab="evening">🌙 Abend</button>
-        <button class="tab" data-tab="weekly">💅 Wöchentlich</button>
-        <button class="edit-toggle-btn" id="editToggleBtn" title="Bearbeiten">✏️</button>
+        <button class="tab active" data-tab="morning" data-tr="morning">🌸</button>
+        <button class="tab" data-tab="evening" data-tr="evening">🌙</button>
+        <button class="tab" data-tab="weekly" data-tr="weekly">💅</button>
+        <button class="edit-toggle-btn" id="editToggleBtn">✏️</button>
       </nav>
-
     </div>
 
     <!-- Main Content -->
@@ -99,119 +108,183 @@
 
       <!-- MORNING TAB -->
       <section class="tab-content active" id="tab-morning">
-        <div class="completion-banner" id="banner-morning">🎉 Morgenroutine geschafft!</div>
-
+        <div class="completion-banner" id="banner-morning" data-tr="morningDone"></div>
         <div class="category" data-key="morning_skincare">
-          <h2 class="category-title">🧖‍♀️ Gesichtspflege</h2>
+          <h2 class="category-title">🧖‍♀️ <span data-tr="skincare"></span></h2>
           <ul class="checklist" id="morning-skincare"></ul>
-          <button class="add-item-btn" data-key="morning_skincare">+ Hinzufügen</button>
+          <button class="add-item-btn" data-key="morning_skincare" data-tr="addItem"></button>
         </div>
         <div class="category" data-key="morning_makeup">
-          <h2 class="category-title">💄 Make-up</h2>
+          <h2 class="category-title">💄 <span data-tr="makeup"></span></h2>
           <ul class="checklist" id="morning-makeup"></ul>
-          <button class="add-item-btn" data-key="morning_makeup">+ Hinzufügen</button>
+          <button class="add-item-btn" data-key="morning_makeup" data-tr="addItem"></button>
         </div>
         <div class="category" data-key="morning_body">
-          <h2 class="category-title">💆‍♀️ Körper & Haare</h2>
+          <h2 class="category-title">💆‍♀️ <span data-tr="bodyHair"></span></h2>
           <ul class="checklist" id="morning-body"></ul>
-          <button class="add-item-btn" data-key="morning_body">+ Hinzufügen</button>
+          <button class="add-item-btn" data-key="morning_body" data-tr="addItem"></button>
         </div>
         <div class="category" data-key="morning_wellness">
-          <h2 class="category-title">🌿 Wohlbefinden</h2>
+          <h2 class="category-title">🌿 <span data-tr="wellness"></span></h2>
           <ul class="checklist" id="morning-wellness"></ul>
-          <button class="add-item-btn" data-key="morning_wellness">+ Hinzufügen</button>
+          <button class="add-item-btn" data-key="morning_wellness" data-tr="addItem"></button>
         </div>
       </section>
 
       <!-- EVENING TAB -->
       <section class="tab-content" id="tab-evening">
-        <div class="completion-banner" id="banner-evening">🎉 Abendroutine geschafft!</div>
-
+        <div class="completion-banner" id="banner-evening" data-tr="eveningDone"></div>
         <div class="category" data-key="evening_skincare">
-          <h2 class="category-title">🧖‍♀️ Gesichtspflege</h2>
+          <h2 class="category-title">🧖‍♀️ <span data-tr="skincare"></span></h2>
           <ul class="checklist" id="evening-skincare"></ul>
-          <button class="add-item-btn" data-key="evening_skincare">+ Hinzufügen</button>
+          <button class="add-item-btn" data-key="evening_skincare" data-tr="addItem"></button>
         </div>
         <div class="category" data-key="evening_body">
-          <h2 class="category-title">💆‍♀️ Körper & Haare</h2>
+          <h2 class="category-title">💆‍♀️ <span data-tr="bodyHair"></span></h2>
           <ul class="checklist" id="evening-body"></ul>
-          <button class="add-item-btn" data-key="evening_body">+ Hinzufügen</button>
+          <button class="add-item-btn" data-key="evening_body" data-tr="addItem"></button>
         </div>
         <div class="category" data-key="evening_wellness">
-          <h2 class="category-title">🌿 Wohlbefinden</h2>
+          <h2 class="category-title">🌿 <span data-tr="wellness"></span></h2>
           <ul class="checklist" id="evening-wellness"></ul>
-          <button class="add-item-btn" data-key="evening_wellness">+ Hinzufügen</button>
+          <button class="add-item-btn" data-key="evening_wellness" data-tr="addItem"></button>
         </div>
       </section>
 
       <!-- WEEKLY TAB -->
       <section class="tab-content" id="tab-weekly">
-        <div class="completion-banner" id="banner-weekly">🎉 Wochenroutine geschafft!</div>
-
+        <div class="completion-banner" id="banner-weekly" data-tr="weeklyDone"></div>
         <div class="category" data-key="weekly_skincare">
-          <h2 class="category-title">🧖‍♀️ Gesichtspflege</h2>
+          <h2 class="category-title">🧖‍♀️ <span data-tr="skincare"></span></h2>
           <ul class="checklist" id="weekly-skincare"></ul>
-          <button class="add-item-btn" data-key="weekly_skincare">+ Hinzufügen</button>
+          <button class="add-item-btn" data-key="weekly_skincare" data-tr="addItem"></button>
         </div>
         <div class="category" data-key="weekly_hair">
-          <h2 class="category-title">💇‍♀️ Haarpflege</h2>
+          <h2 class="category-title">💇‍♀️ <span data-tr="hairCare"></span></h2>
           <ul class="checklist" id="weekly-hair"></ul>
-          <button class="add-item-btn" data-key="weekly_hair">+ Hinzufügen</button>
+          <button class="add-item-btn" data-key="weekly_hair" data-tr="addItem"></button>
         </div>
         <div class="category" data-key="weekly_nails">
-          <h2 class="category-title">💅 Nagelpflege</h2>
+          <h2 class="category-title">💅 <span data-tr="nailCare"></span></h2>
           <ul class="checklist" id="weekly-nails"></ul>
-          <button class="add-item-btn" data-key="weekly_nails">+ Hinzufügen</button>
+          <button class="add-item-btn" data-key="weekly_nails" data-tr="addItem"></button>
         </div>
         <div class="category" data-key="weekly_body">
-          <h2 class="category-title">🛁 Körperpflege</h2>
+          <h2 class="category-title">🛁 <span data-tr="bodyCare"></span></h2>
           <ul class="checklist" id="weekly-body"></ul>
-          <button class="add-item-btn" data-key="weekly_body">+ Hinzufügen</button>
+          <button class="add-item-btn" data-key="weekly_body" data-tr="addItem"></button>
         </div>
       </section>
 
-    <!-- Ad Unit: zwischen Content und Footer -->
-    <div class="ad-container">
-      <div class="ad-label">Anzeige</div>
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-4308220666561084"
-           data-ad-slot="XXXXXXXX"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-    </div>
+      <!-- Pflegehinweise / Tips -->
+      <div class="tips-card" id="tipsCard">
+        <h3 class="tips-title">💡 <span data-tr="careTips"></span></h3>
+        <div class="tips-bubbles" id="tipsBubbles"></div>
+      </div>
+
+      <!-- Einstellungen Button (ersetzt Ad-Container) -->
+      <div class="settings-area">
+        <button class="settings-open-btn" id="settingsOpenBtn">
+          ⚙️ <span data-tr="settings"></span>
+        </button>
+      </div>
 
     </main>
 
-
     <!-- Footer -->
     <div class="footer">
-      <button class="reset-btn" id="resetBtn">🌸<span class="btn-label">Morgen & Abend<em>neu starten</em></span></button>
-      <button class="reset-weekly-btn" id="resetWeeklyBtn">🌷<span class="btn-label">Woche<em>neu starten</em></span></button>
-      <button class="reset-all-btn" id="resetAllBtn">💫<span class="btn-label">Alles<em>neu starten</em></span></button>
+      <button class="reset-btn" id="resetBtn">🌸<span class="btn-label"><span data-tr="morningEvening"></span><em data-tr="restart"></em></span></button>
+      <button class="reset-weekly-btn" id="resetWeeklyBtn">🌷<span class="btn-label"><span data-tr="week"></span><em data-tr="restart"></em></span></button>
+      <button class="reset-all-btn" id="resetAllBtn">💫<span class="btn-label"><span data-tr="all"></span><em data-tr="restart"></em></span></button>
     </div>
 
     <!-- Modal: Item hinzufügen / bearbeiten -->
     <div class="modal-overlay" id="modalOverlay">
       <div class="modal">
-        <h3 class="modal-title" id="modalTitle">Item hinzufügen</h3>
+        <h3 class="modal-title" id="modalTitle"></h3>
         <div class="modal-presets" id="modalPresets"></div>
         <div class="modal-field">
-          <label for="modalEmoji">Emoji</label>
+          <label for="modalEmoji" data-tr="emoji"></label>
           <input type="text" id="modalEmoji" maxlength="4" placeholder="🌸" autocomplete="off" />
           <div class="emoji-grid" id="emojiGrid"></div>
         </div>
         <div class="modal-field">
-          <label for="modalName">Name *</label>
-          <input type="text" id="modalName" placeholder="z.B. Gesicht eincremen" maxlength="60" />
+          <label for="modalName" data-tr="nameRequired"></label>
+          <input type="text" id="modalName" maxlength="60" />
         </div>
         <div class="modal-field">
-          <label for="modalHint">Tipp (optional)</label>
-          <input type="text" id="modalHint" placeholder="z.B. Morgens & abends" maxlength="100" />
+          <label for="modalHint" data-tr="tipOptional"></label>
+          <input type="text" id="modalHint" maxlength="100" />
         </div>
         <div class="modal-actions">
-          <button class="modal-cancel" id="modalCancel">Abbrechen</button>
-          <button class="modal-save" id="modalSave">Speichern</button>
+          <button class="modal-cancel" id="modalCancel" data-tr="cancel"></button>
+          <button class="modal-save" id="modalSave" data-tr="save"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsOverlay">
+      <div class="modal settings-modal">
+        <h3 class="modal-title">⚙️ <span data-tr="settings"></span></h3>
+
+        <!-- Sprache -->
+        <div class="settings-section">
+          <div class="settings-label">🌍 <span data-tr="language"></span></div>
+          <div class="settings-lang-btns">
+            <button class="settings-lang-btn" data-lang="de" id="settingsLangDe">🇩🇪 Deutsch</button>
+            <button class="settings-lang-btn" data-lang="en" id="settingsLangEn">🇬🇧 English</button>
+          </div>
+        </div>
+
+        <!-- Name -->
+        <div class="settings-section">
+          <div class="settings-label">✏️ <span data-tr="yourName"></span></div>
+          <input type="text" id="settingsName" class="settings-input" maxlength="30" />
+        </div>
+
+        <!-- Haarfarbe -->
+        <div class="settings-section">
+          <div class="settings-label">💇‍♀️ <span data-tr="yourHairColor"></span></div>
+          <div class="ob-options settings-hair-options" id="settingsHairColor">
+            <button class="ob-option" data-value="blond" data-tr-label="blond">👱‍♀️</button>
+            <button class="ob-option" data-value="braun" data-tr-label="braun">🟤</button>
+            <button class="ob-option" data-value="schwarz" data-tr-label="schwarz">🖤</button>
+            <button class="ob-option" data-value="rot" data-tr-label="rot">🔴</button>
+            <button class="ob-option" data-value="gefarbt" data-tr-label="gefarbt">🌈</button>
+            <button class="ob-option" data-value="grau" data-tr-label="grau">🩶</button>
+          </div>
+        </div>
+
+        <!-- Haarlänge -->
+        <div class="settings-section">
+          <div class="settings-label">✂️ <span data-tr="yourHairLength"></span></div>
+          <div class="ob-options" id="settingsHairLength">
+            <button class="ob-option ob-option-wide" data-value="kurz">💁‍♀️ <span data-tr="short"></span></button>
+            <button class="ob-option ob-option-wide" data-value="mittel">💇‍♀️ <span data-tr="medium"></span></button>
+            <button class="ob-option ob-option-wide" data-value="lang">👸 <span data-tr="long"></span></button>
+          </div>
+        </div>
+
+        <!-- AGB -->
+        <div class="settings-section">
+          <button class="agb-btn" id="agbOpenBtn">📋 <span data-tr="termsBtn"></span></button>
+        </div>
+
+        <div class="modal-actions">
+          <button class="modal-cancel" id="settingsCancel" data-tr="cancel"></button>
+          <button class="modal-save" id="settingsSave" data-tr="saveSettings"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AGB Modal -->
+    <div class="modal-overlay" id="agbOverlay">
+      <div class="modal agb-modal">
+        <h3 class="modal-title">📋 <span data-tr="termsTitle"></span></h3>
+        <div class="agb-content" id="agbContent"></div>
+        <div class="modal-actions">
+          <button class="modal-save" id="agbClose" data-tr="close"></button>
         </div>
       </div>
     </div>

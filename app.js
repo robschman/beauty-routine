@@ -1,95 +1,374 @@
-// ===== Routine Data (Standard-Items) =====
+// ===== TRANSLATIONS =====
+const TRANSLATIONS = {
+  de: {
+    welcome: '🌸 Willkommen!',
+    whatIsYourName: 'Wie heißt du?',
+    next: 'Weiter →',
+    letsGo: "Los geht's! 🌸",
+    yourHairColor: 'Welche Haarfarbe hast du?',
+    hairColorHint: 'Wähle deine aktuelle Haarfarbe',
+    yourHairLength: 'Wie lang sind deine Haare?',
+    hairLengthHint: 'Hilft uns, deine Routine anzupassen',
+    short: 'Kurz',
+    shortDesc: 'bis zur Schulter',
+    medium: 'Mittel',
+    mediumDesc: 'Schulter bis Brust',
+    long: 'Lang',
+    longDesc: 'länger als Brust',
+    blond: 'Blond',
+    braun: 'Braun',
+    schwarz: 'Schwarz',
+    rot: 'Rot',
+    gefarbt: 'Gefärbt',
+    grau: 'Grau/Weiß',
+    morning: '🌸 Morgen',
+    evening: '🌙 Abend',
+    weekly: '💅 Wöchentlich',
+    skincare: 'Hautpflege',
+    makeup: 'Make-up',
+    bodyHair: 'Körper & Haare',
+    wellness: 'Wellness',
+    hairCare: 'Haarpflege',
+    nailCare: 'Nagelpflege',
+    bodyCare: 'Körperpflege',
+    addItem: '+ Hinzufügen',
+    careTips: 'Heutige Pflegetipps 💡',
+    settings: 'Einstellungen',
+    morningDone: '🎉 Morgenroutine komplett – super gemacht!',
+    eveningDone: '🌙 Abendroutine abgeschlossen – gut gemacht!',
+    weeklyDone: '💅 Wochenroutine erledigt – du bist toll!',
+    morningEvening: 'Morgen & Abend',
+    week: 'Woche',
+    all: 'Alles',
+    restart: 'Zurücksetzen',
+    emoji: 'Emoji',
+    nameRequired: 'Name *',
+    tipOptional: 'Tipp (optional)',
+    cancel: 'Abbrechen',
+    save: 'Speichern',
+    language: 'Sprache',
+    yourName: 'Dein Name',
+    saveSettings: 'Speichern ✓',
+    termsBtn: 'AGB & Datenschutz',
+    termsTitle: 'AGB & Datenschutz',
+    close: 'Schließen',
+    editItem: 'Item bearbeiten',
+    addItemTitle: 'Item hinzufügen',
+    suggestions: '💡 Vorschläge',
+    confirmDelete: 'Item wirklich löschen?',
+    confirmResetAll: 'Wirklich alle Fortschritte löschen?',
+    done: 'erledigt',
+    hideItem: 'Ausblenden',
+    showItem: 'Einblenden',
+    logoNamePrefix: 'von',
+    greetingMorning: 'Guten Morgen',
+    greetingDay: 'Hallo',
+    greetingEvening: 'Guten Abend',
+    greetingNight: 'Hey',
+    days: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+    months: ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'],
+    motivations: [
+      'Du schaffst das heute! ✨',
+      'Strahle heute wie ein Diamant. 💎',
+      'Deine Haut wird es dir danken. 🌸',
+      'Ein kleines Ritual, ein großes Lächeln. 😊',
+      'Self-care ist kein Luxus – es ist ein Muss!',
+      'Du bist wunderschön, vergiss das nicht. 💕',
+      'Gönn dir heute etwas Gutes. 🌺',
+      'Heute wird ein guter Tag! 🌟',
+      'Du verdienst diese Zeit für dich. ✨',
+      'Jede Routine macht dich strahlender. 💫',
+    ],
+  },
+  en: {
+    welcome: '🌸 Welcome!',
+    whatIsYourName: "What's your name?",
+    next: 'Next →',
+    letsGo: "Let's go! 🌸",
+    yourHairColor: "What's your hair color?",
+    hairColorHint: 'Choose your current hair color',
+    yourHairLength: 'How long is your hair?',
+    hairLengthHint: 'Helps us tailor your routine',
+    short: 'Short',
+    shortDesc: 'up to shoulder',
+    medium: 'Medium',
+    mediumDesc: 'shoulder to chest',
+    long: 'Long',
+    longDesc: 'longer than chest',
+    blond: 'Blonde',
+    braun: 'Brown',
+    schwarz: 'Black',
+    rot: 'Red',
+    gefarbt: 'Colored',
+    grau: 'Grey/White',
+    morning: '🌸 Morning',
+    evening: '🌙 Evening',
+    weekly: '💅 Weekly',
+    skincare: 'Skincare',
+    makeup: 'Make-up',
+    bodyHair: 'Body & Hair',
+    wellness: 'Wellness',
+    hairCare: 'Hair Care',
+    nailCare: 'Nail Care',
+    bodyCare: 'Body Care',
+    addItem: '+ Add',
+    careTips: "Today's Care Tips 💡",
+    settings: 'Settings',
+    morningDone: '🎉 Morning routine complete – great job!',
+    eveningDone: '🌙 Evening routine done – well done!',
+    weeklyDone: '💅 Weekly routine complete – you rock!',
+    morningEvening: 'Morning & Eve',
+    week: 'Week',
+    all: 'All',
+    restart: 'Reset',
+    emoji: 'Emoji',
+    nameRequired: 'Name *',
+    tipOptional: 'Tip (optional)',
+    cancel: 'Cancel',
+    save: 'Save',
+    language: 'Language',
+    yourName: 'Your Name',
+    saveSettings: 'Save ✓',
+    termsBtn: 'Terms & Privacy',
+    termsTitle: 'Terms & Privacy',
+    close: 'Close',
+    editItem: 'Edit item',
+    addItemTitle: 'Add item',
+    suggestions: '💡 Suggestions',
+    confirmDelete: 'Really delete this item?',
+    confirmResetAll: 'Really delete all progress?',
+    done: 'done',
+    hideItem: 'Hide',
+    showItem: 'Show',
+    logoNamePrefix: 'by',
+    greetingMorning: 'Good morning',
+    greetingDay: 'Hello',
+    greetingEvening: 'Good evening',
+    greetingNight: 'Hey',
+    days: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+    months: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    motivations: [
+      "You've got this today! ✨",
+      'Shine like a diamond today. 💎',
+      'Your skin will thank you. 🌸',
+      'A small ritual, a big smile. 😊',
+      "Self-care isn't a luxury – it's a must!",
+      'You are beautiful, never forget that. 💕',
+      'Treat yourself to something good today. 🌺',
+      'Today is going to be a great day! 🌟',
+      'You deserve this time for yourself. ✨',
+      'Every routine makes you more radiant. 💫',
+    ],
+  }
+};
+
+// ===== TIPS POOL =====
+const TIPS_POOL = {
+  general: [
+    { de: '☀️ Sonnencreme täglich auftragen – auch im Winter! SPF ist der beste Anti-Aging-Schutz.', en: '☀️ Apply sunscreen daily – even in winter! SPF is the best anti-aging protection.' },
+    { de: '💧 2 Liter Wasser täglich trinken für strahlende, gut hydrierte Haut.', en: '💧 Drink 2 liters of water daily for radiant, well-hydrated skin.' },
+    { de: '😴 7–9 Stunden Schlaf sind dein bestes Beauty-Treatment – komplett kostenlos!', en: '😴 7–9 hours of sleep are your best beauty treatment – completely free!' },
+    { de: '🧼 Make-up-Pinsel wöchentlich reinigen – schmutzige Pinsel verursachen Pickel.', en: '🧼 Clean makeup brushes weekly – dirty brushes cause breakouts.' },
+    { de: '🛏️ Kopfkissen öfter wechseln – sauberes Kissen bedeutet weniger Bakterien auf der Haut.', en: '🛏️ Change pillowcase more often – clean pillow means fewer bacteria on your skin.' },
+    { de: '🌡️ Lauwarmes Wasser beim Reinigen ist besser – heißes Wasser trocknet die Haut aus.', en: '🌡️ Use lukewarm water for cleansing – hot water dries out your skin.' },
+    { de: '🧴 Nach dem Duschen sofort eincremen – feuchte Haut nimmt Feuchtigkeit besser auf.', en: '🧴 Moisturize right after showering – damp skin absorbs moisture better.' },
+    { de: '📱 Handy-Display regelmäßig reinigen – es überträgt Bakterien aufs Gesicht!', en: '📱 Clean your phone screen regularly – it transfers bacteria to your face!' },
+    { de: '✨ Hyaluronsäure auf leicht feuchte Haut auftragen für maximale Wirkung.', en: '✨ Apply hyaluronic acid to slightly damp skin for maximum effect.' },
+    { de: '💎 Hals und Dekolleté mitpflegen – diese Zonen verraten das Alter zuerst.', en: '💎 Care for neck and décolleté too – these areas show age first.' },
+    { de: '🌿 Retinol nur abends verwenden und morgens immer mit SPF schützen.', en: '🌿 Use retinol only at night and always protect with SPF in the morning.' },
+    { de: '💜 Vitamin C morgens + Retinol abends – das Power-Duo für jugendliche Haut.', en: '💜 Vitamin C in the morning + retinol at night – the power duo for youthful skin.' },
+    { de: '🧊 Eiswasser-Splash verfeinert die Poren und erfrischt die Haut im Handumdrehen.', en: '🧊 Ice water face splash visibly refines pores and refreshes skin instantly.' },
+    { de: '🪷 1–2x pro Woche peelen reicht – zu viel Peeling schadet der Hautbarriere.', en: '🪷 Exfoliating 1–2x per week is enough – over-exfoliating damages the skin barrier.' },
+    { de: '💅 Nagelhautöl täglich anwenden macht Nägel widerstandsfähiger und Hände gepflegter.', en: '💅 Daily cuticle oil application makes nails stronger and hands more well-groomed.' },
+    { de: '🌊 Kalt abspülen nach dem Duschen strafft die Haut und belebt den Kreislauf.', en: '🌊 Cold rinse after showering tightens skin and boosts circulation.' },
+    { de: '🧘‍♀️ Jade-Roller oder Gua-Sha morgens benutzen – reduziert Schwellungen und fördert Durchblutung.', en: '🧘‍♀️ Use jade roller or Gua-Sha in the morning – reduces puffiness and boosts circulation.' },
+    { de: '🌙 Eine Schlafmaske overnight gibt deiner Haut intensive Feuchtigkeit während du schläfst.', en: '🌙 An overnight sleeping mask gives your skin intensive moisture while you sleep.' },
+    { de: '🫧 Körperpeeling 1–2x pro Woche für weiche Haut und bessere Creme-Aufnahme.', en: '🫧 Body scrub 1–2x per week for soft skin and better cream absorption.' },
+    { de: '🦶 Fußcreme abends + Söckchen drüber = weiche Fersen über Nacht ganz ohne Aufwand.', en: '🦶 Foot cream at night + socks = soft heels effortlessly overnight.' },
+    { de: '🌺 Kerze beim Abschminken anzünden macht die Routine zum schönen Wellness-Ritual.', en: '🌺 Light a candle while removing makeup to turn your routine into a wellness ritual.' },
+    { de: '💧 Mizellenwasser oder ein Reinigungsöl löst Make-up besonders schonend und gründlich.', en: '💧 Micellar water or cleansing oil removes makeup especially gently and thoroughly.' },
+    { de: '🌿 Grüner Tee enthält Antioxidantien – gut für die Haut von innen UND außen!', en: '🌿 Green tea contains antioxidants – great for skin from the inside AND outside!' },
+    { de: '☕ Augencreme mit Koffein tupfen gegen Tränensäcke und Augenringe – wirkt wunderbar!', en: '☕ Pat eye cream with caffeine for bags and dark circles – it works wonderfully!' },
+    { de: '🎨 Make-up regelmäßig erneuern – veraltete Produkte können Irritationen verursachen.', en: '🎨 Replace makeup regularly – old products can cause skin irritations.' },
+    { de: '🫧 Trockenbürsten vor der Dusche stimuliert die Lymphe und hinterlässt seidig-glatte Haut.', en: '🫧 Dry brushing before the shower stimulates lymph and leaves skin silky smooth.' },
+    { de: '🌟 SPF auch auf Hände und Décolleté auftragen – diese Stellen zeigen Hautalterung zuerst.', en: '🌟 Apply SPF to hands and décolleté too – these areas show skin aging first.' },
+  ],
+  hairGeneral: [
+    { de: '🚿 Nasse Haare nie bürsten – sie reißen leichter! Einen Entwirrkamm benutzen.', en: '🚿 Never brush wet hair – it breaks more easily! Use a detangling comb instead.' },
+    { de: '🌊 Haare kalt abspülen nach dem Waschen – versiegelt die Haarschuppe und gibt extra Glanz.', en: '🌊 Rinse hair with cold water after washing – seals the cuticle and adds extra shine.' },
+    { de: '💆‍♀️ Kopfhautmassage beim Waschen regt die Durchblutung an und fördert das Haarwachstum.', en: '💆‍♀️ Scalp massage while washing stimulates circulation and promotes hair growth.' },
+    { de: '🔥 Hitzeschutz vor Föhn & Glätteisen ist ein absolutes Muss – schützt vor Haarbruch!', en: '🔥 Heat protection before blow dryer & straightener is an absolute must – prevents breakage!' },
+    { de: '🛏️ Satin-Kissenbezug nutzen – er reduziert Reibung und hält deine Haare glatter.', en: '🛏️ Use a satin pillowcase – it reduces friction and keeps your hair smoother.' },
+  ],
+  byColor: {
+    blond: [
+      { de: '💜 Silbershampoo 1x pro Woche benutzen – neutralisiert Gelbstich und hält Blond frisch.', en: '💜 Use purple shampoo once a week – neutralizes yellow tones and keeps blonde fresh.' },
+      { de: '☀️ UV-Schutz-Spray für Haare: Sonne lässt blondes Haar schneller verblassen!', en: '☀️ UV protection spray for hair: sun makes blonde hair fade much faster!' },
+      { de: '💧 Intensive Haarkuren halten blondes Haar gesund, weich und glänzend.', en: '💧 Intensive hair masks keep blonde hair healthy, soft and shiny.' },
+    ],
+    braun: [
+      { de: '✨ Glanz-Shampoo für dunkle Haare lässt Brauntöne intensiv und tief leuchten.', en: '✨ Shine shampoo for dark hair makes brown tones glow intensely and deeply.' },
+      { de: '🥥 Arganöl verleiht braunem Haar extra Tiefe, Glanz und wunderbare Geschmeidigkeit.', en: '🥥 Argan oil gives brown hair extra depth, shine and wonderful smoothness.' },
+      { de: '🌿 Glossing-Behandlung alle paar Wochen hält Brauntöne lebendig und frisch.', en: '🌿 Glossing treatment every few weeks keeps brown tones vibrant and fresh.' },
+    ],
+    schwarz: [
+      { de: '🖤 Schwarze Haare glänzen mit Arganöl und intensiven Pflegemasken besonders schön.', en: '🖤 Black hair shines especially beautifully with argan oil and intensive masks.' },
+      { de: '🌿 Sonne lässt dunkles Haar rötlich schimmern – Haare bei starker Sonne schützen!', en: '🌿 Sun makes dark hair shimmer reddish – protect hair in strong sunlight!' },
+      { de: '💎 Glanz-Serum macht schwarze Haare intensiv glänzend und geschmeidig.', en: '💎 Shine serum makes black hair intensely glossy and silky smooth.' },
+    ],
+    rot: [
+      { de: '🔴 Farbschonendes Shampoo nutzen – Rot verblasst am schnellsten von allen Haarfarben!', en: '🔴 Use color-protecting shampoo – red fades the fastest of all hair colors!' },
+      { de: '❄️ Kalt ausspülen hält die rote Farbe länger frisch und verhindert frühes Verblassen.', en: '❄️ Rinsing cold keeps the red color fresh longer and prevents early fading.' },
+      { de: '🎨 Farb-Refresher-Conditioner regelmäßig nutzen um rote Pigmente aufzufrischen.', en: '🎨 Use color-refreshing conditioner regularly to top up red pigments.' },
+    ],
+    gefarbt: [
+      { de: '🎨 Farbschutz-Shampoo verlängert die Lebensdauer deiner Haarfarbe deutlich.', en: '🎨 Color-protecting shampoo significantly extends the life of your hair color.' },
+      { de: '⏰ Gefärbte Haare 48h nach dem Färben nicht waschen – maximale Farbhaltbarkeit!', en: '⏰ Don\'t wash colored hair for 48h after coloring – maximum color durability!' },
+      { de: '💧 Farbschutz-Haarkur wöchentlich – gefärbtes Haar braucht extra intensive Pflege.', en: '💧 Color-protecting mask weekly – colored hair needs extra intensive care.' },
+    ],
+    grau: [
+      { de: '💙 Blaues oder silbernes Shampoo wöchentlich: neutralisiert Gelbstich bei grauen Haaren.', en: '💙 Blue or silver shampoo weekly: neutralizes yellow tones in grey hair.' },
+      { de: '✨ Glanzbehandlungen lassen graue Haare silbrig, strahlend und gepflegt wirken.', en: '✨ Gloss treatments make grey hair look silvery, radiant and well-groomed.' },
+      { de: '🧴 Graue Haare sind oft trockener – extra feuchtigkeitsspendende Pflege ist wichtig!', en: '🧴 Grey hair is often drier – extra moisturizing care is especially important!' },
+    ],
+  },
+  byLength: {
+    kurz: [
+      { de: '✂️ Kurze Haare alle 4–6 Wochen schneiden lassen für eine gepflegte, schöne Form.', en: '✂️ Get short hair cut every 4–6 weeks to maintain a neat, beautiful shape.' },
+      { de: '💡 Wenig Produkt reicht bei kurzen Haaren – ein kleines Stück Wax wirkt Wunder!', en: '💡 Less product is needed for short hair – a small amount of wax works wonders!' },
+    ],
+    mittel: [
+      { de: '🎀 Mittellange Haare nachts mit einem losen Zopf schützen – verhindert Verfilzung.', en: '🎀 Protect medium-length hair at night with a loose braid – prevents tangles.' },
+      { de: '💧 Leave-in Conditioner hält mittellange Haare den ganzen Tag gepflegt und weich.', en: '💧 Leave-in conditioner keeps medium-length hair nourished and soft all day.' },
+    ],
+    lang: [
+      { de: '🧣 Satin-Kissenbezug bei langen Haaren: weniger Bruch und Reibung beim Schlafen.', en: '🧣 Satin pillowcase for long hair: less breakage and friction while sleeping.' },
+      { de: '💆‍♀️ Wöchentliche Haarkur ist bei langen Haaren unverzichtbar für Glanz und Geschmeidigkeit.', en: '💆‍♀️ Weekly hair mask is essential for long hair to maintain shine and smoothness.' },
+    ],
+  },
+};
+
+// ===== AGB / Terms =====
+const AGB_TEXT = {
+  de: `<h4>📋 Nutzungsbedingungen</h4>
+<p>Willkommen bei Beauty Routine! Diese App ist ein persönliches Wellness-Tool für deine tägliche Beauty-Routine.</p>
+<h4>📱 Datenspeicherung</h4>
+<p>Alle deine Daten (Name, Haarfarbe, Haarlänge, Checklisten-Status) werden ausschließlich lokal auf deinem Gerät im Browser-Speicher (localStorage) gespeichert. Es werden keine Daten an externe Server übertragen.</p>
+<h4>🔒 Datenschutz</h4>
+<p>Wir erheben keine personenbezogenen Daten. Deine eingegebenen Informationen verlassen niemals dein Gerät. Es gibt keine Benutzerkonten, keine Cloud-Speicherung und keine Weitergabe an Dritte.</p>
+<h4>🍪 Cookies & Tracking</h4>
+<p>Diese App verwendet keine eigenen Tracking-Cookies. Google AdSense kann jedoch eigene Cookies für die Anzeigenauslieferung nutzen. Mehr dazu in der <a href="https://policies.google.com/privacy" target="_blank">Google Datenschutzrichtlinie</a>.</p>
+<h4>⚠️ Haftungsausschluss</h4>
+<p>Die Beauty-Tipps und Routinen in dieser App sind allgemeine Empfehlungen und kein medizinischer Rat. Bei Hautproblemen oder Allergien bitte immer eine Ärztin oder Dermatologin konsultieren.</p>
+<h4>✏️ Änderungen</h4>
+<p>Diese App wird kontinuierlich weiterentwickelt. Wir behalten uns vor, Inhalte und Funktionen jederzeit anzupassen.</p>
+<p style="margin-top:14px;font-size:0.75rem;color:#bbb">Version 1.1 · made with 🌸 by zoe &amp; robschman</p>`,
+
+  en: `<h4>📋 Terms of Use</h4>
+<p>Welcome to Beauty Routine! This app is a personal wellness tool for your daily beauty routine.</p>
+<h4>📱 Data Storage</h4>
+<p>All your data (name, hair color, hair length, checklist status) is stored exclusively locally on your device in browser storage (localStorage). No data is transmitted to external servers.</p>
+<h4>🔒 Privacy</h4>
+<p>We do not collect any personal data. The information you enter never leaves your device. There are no user accounts, no cloud storage, and no sharing with third parties.</p>
+<h4>🍪 Cookies & Tracking</h4>
+<p>This app does not use its own tracking cookies. However, Google AdSense may use its own cookies for ad delivery. Learn more in the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</p>
+<h4>⚠️ Disclaimer</h4>
+<p>The beauty tips and routines in this app are general recommendations and not medical advice. For skin problems or allergies, always consult a doctor or dermatologist.</p>
+<h4>✏️ Changes</h4>
+<p>This app is continuously being developed. We reserve the right to adjust content and features at any time.</p>
+<p style="margin-top:14px;font-size:0.75rem;color:#bbb">Version 1.1 · made with 🌸 by zoe &amp; robschman</p>`,
+};
+
+// ===== Routine Data =====
 const ROUTINES = {
   morning_skincare: [
     { id: 'ms1', emoji: '💧', name: 'Gesicht reinigen',       hint: 'Sanfter Cleanser für einen frischen Start' },
     { id: 'ms2', emoji: '🌸', name: 'Toner auftragen',        hint: 'pH-Balance & Vorbereitung für die Pflege' },
-    { id: 'ms3', emoji: '💎', name: 'Serum auftragen',         hint: 'Konzentrierte Wirkstoffe für deine Haut' },
-    { id: 'ms4', emoji: '👁️', name: 'Augencreme',              hint: 'Sanft unter den Augen eintupfen' },
-    { id: 'ms5', emoji: '🧴', name: 'Feuchtigkeitscreme',      hint: 'Hautbarriere schützen & hydratisieren' },
-    { id: 'ms6', emoji: '☀️', name: 'Sonnencreme SPF 30+',    hint: 'Täglich – der wichtigste Anti-Aging-Schritt!' },
+    { id: 'ms3', emoji: '💎', name: 'Serum auftragen',        hint: 'Konzentrierte Wirkstoffe für deine Haut' },
+    { id: 'ms4', emoji: '👁️', name: 'Augencreme',             hint: 'Sanft unter den Augen eintupfen' },
+    { id: 'ms5', emoji: '🧴', name: 'Feuchtigkeitscreme',     hint: 'Hautbarriere schützen & hydratisieren' },
+    { id: 'ms6', emoji: '☀️', name: 'Sonnencreme SPF 30+',   hint: 'Täglich – der wichtigste Anti-Aging-Schritt!' },
   ],
   morning_makeup: [
-    { id: 'mm1', emoji: '🌟', name: 'Primer auftragen',        hint: 'Make-up hält länger & Poren kaschieren' },
-    { id: 'mm2', emoji: '🪞', name: 'Foundation / BB Cream',   hint: 'Gleichmäßiges Hautbild' },
-    { id: 'mm3', emoji: '✨', name: 'Concealer',               hint: 'Augenringe & Unreinheiten abdecken' },
-    { id: 'mm4', emoji: '🎨', name: 'Rouge / Bronzer',         hint: 'Farbe ins Gesicht bringen' },
-    { id: 'mm5', emoji: '👀', name: 'Augen schminken',         hint: 'Lidschatten, Eyeliner & Mascara' },
+    { id: 'mm1', emoji: '🌟', name: 'Primer auftragen',       hint: 'Make-up hält länger & Poren kaschieren' },
+    { id: 'mm2', emoji: '🪞', name: 'Foundation / BB Cream',  hint: 'Gleichmäßiges Hautbild' },
+    { id: 'mm3', emoji: '✨', name: 'Concealer',              hint: 'Augenringe & Unreinheiten abdecken' },
+    { id: 'mm4', emoji: '🎨', name: 'Rouge / Bronzer',        hint: 'Farbe ins Gesicht bringen' },
+    { id: 'mm5', emoji: '👀', name: 'Augen schminken',        hint: 'Lidschatten, Eyeliner & Mascara' },
     { id: 'mm6', emoji: '💋', name: 'Lippen pflegen / Lippenstift', hint: 'Lippenpflege oder Lippenstift' },
-    { id: 'mm7', emoji: '🔒', name: 'Setting Spray',           hint: 'Make-up fixieren den ganzen Tag' },
+    { id: 'mm7', emoji: '🔒', name: 'Setting Spray',          hint: 'Make-up fixieren den ganzen Tag' },
   ],
   morning_body: [
-    { id: 'mb1', emoji: '🚿', name: 'Duschen',                 hint: 'Frisch und sauber in den Tag starten' },
-    { id: 'mb2', emoji: '🦷', name: 'Zähneputzen',             hint: '2 Minuten – morgens nicht vergessen!' },
-    { id: 'mb3', emoji: '🧴', name: 'Körperlotion',            hint: 'Am besten nach dem Duschen eincremen' },
-    { id: 'mb4', emoji: '🌸', name: 'Deodorant',               hint: 'Frisch bleiben den ganzen Tag' },
-    { id: 'mb5', emoji: '💇‍♀️', name: 'Haare stylen',          hint: 'Kämmen, föhnen oder stylen' },
-    { id: 'mb6', emoji: '💅', name: 'Parfüm',                  hint: 'Dein Signature-Duft' },
+    { id: 'mb1', emoji: '🚿', name: 'Duschen',                hint: 'Frisch und sauber in den Tag starten' },
+    { id: 'mb2', emoji: '🦷', name: 'Zähneputzen',            hint: '2 Minuten – morgens nicht vergessen!' },
+    { id: 'mb3', emoji: '🧴', name: 'Körperlotion',           hint: 'Am besten nach dem Duschen eincremen' },
+    { id: 'mb4', emoji: '🌸', name: 'Deodorant',              hint: 'Frisch bleiben den ganzen Tag' },
+    { id: 'mb5', emoji: '💇‍♀️', name: 'Haare stylen',         hint: 'Kämmen, föhnen oder stylen' },
+    { id: 'mb6', emoji: '💅', name: 'Parfüm',                 hint: 'Dein Signature-Duft' },
   ],
   morning_wellness: [
-    { id: 'mw1', emoji: '💧', name: 'Glas Wasser trinken',     hint: 'Hydration von innen – direkt nach dem Aufwachen' },
-    { id: 'mw2', emoji: '🧘‍♀️', name: 'Stretching / Yoga',   hint: 'Den Körper aufwachen lassen' },
-    { id: 'mw3', emoji: '📓', name: 'Journaling',              hint: '5 Minuten Gedanken aufschreiben' },
-    { id: 'mw4', emoji: '🌟', name: 'Affirmation',             hint: 'Den Tag positiv beginnen' },
+    { id: 'mw1', emoji: '💧', name: 'Glas Wasser trinken',    hint: 'Hydration von innen – direkt nach dem Aufwachen' },
+    { id: 'mw2', emoji: '🧘‍♀️', name: 'Stretching / Yoga',  hint: 'Den Körper aufwachen lassen' },
+    { id: 'mw3', emoji: '📓', name: 'Journaling',             hint: '5 Minuten Gedanken aufschreiben' },
+    { id: 'mw4', emoji: '🌟', name: 'Affirmation',            hint: 'Den Tag positiv beginnen' },
   ],
   evening_skincare: [
-    { id: 'es1', emoji: '🧹', name: 'Make-up entfernen',       hint: 'Mizellenwater, Reinigungsöl oder Balm' },
-    { id: 'es2', emoji: '💧', name: 'Doppelte Reinigung',      hint: 'Schaum-Cleanser für die tiefe Reinigung' },
-    { id: 'es3', emoji: '🌸', name: 'Toner auftragen',         hint: 'Haut auf die Nachtpflege vorbereiten' },
-    { id: 'es4', emoji: '🔬', name: 'Serum / Wirkstoffe',      hint: 'Retinol, Hyaluronsäure oder Niacinamid' },
-    { id: 'es5', emoji: '👁️', name: 'Augencreme',              hint: 'Sanft eintupfen – nicht einreiben' },
-    { id: 'es6', emoji: '🌙', name: 'Nachtcreme',              hint: 'Reichhaltige Feuchtigkeitspflege' },
-    { id: 'es7', emoji: '💋', name: 'Lippenpflege',            hint: 'Lippenbalsam über Nacht einwirken lassen' },
+    { id: 'es1', emoji: '🧹', name: 'Make-up entfernen',      hint: 'Mizellenwater, Reinigungsöl oder Balm' },
+    { id: 'es2', emoji: '💧', name: 'Doppelte Reinigung',     hint: 'Schaum-Cleanser für die tiefe Reinigung' },
+    { id: 'es3', emoji: '🌸', name: 'Toner auftragen',        hint: 'Haut auf die Nachtpflege vorbereiten' },
+    { id: 'es4', emoji: '🔬', name: 'Serum / Wirkstoffe',     hint: 'Retinol, Hyaluronsäure oder Niacinamid' },
+    { id: 'es5', emoji: '👁️', name: 'Augencreme',             hint: 'Sanft eintupfen – nicht einreiben' },
+    { id: 'es6', emoji: '🌙', name: 'Nachtcreme',             hint: 'Reichhaltige Feuchtigkeitspflege' },
+    { id: 'es7', emoji: '💋', name: 'Lippenpflege',           hint: 'Lippenbalsam über Nacht einwirken lassen' },
   ],
   evening_body: [
-    { id: 'eb1', emoji: '🦷', name: 'Zähneputzen',             hint: '2 Minuten – Abends besonders wichtig' },
-    { id: 'eb2', emoji: '🧵', name: 'Zahnseide',               hint: 'Einmal täglich – am besten abends' },
-    { id: 'eb3', emoji: '🧴', name: 'Körperlotion / Öl',       hint: 'Hände, Ellenbogen & Füße nicht vergessen' },
-    { id: 'eb4', emoji: '💇‍♀️', name: 'Haare bürsten',         hint: '100 Züge oder einfach entwirren' },
+    { id: 'eb1', emoji: '🦷', name: 'Zähneputzen',            hint: '2 Minuten – Abends besonders wichtig' },
+    { id: 'eb2', emoji: '🧵', name: 'Zahnseide',              hint: 'Einmal täglich – am besten abends' },
+    { id: 'eb3', emoji: '🧴', name: 'Körperlotion / Öl',      hint: 'Hände, Ellenbogen & Füße nicht vergessen' },
+    { id: 'eb4', emoji: '💇‍♀️', name: 'Haare bürsten',        hint: '100 Züge oder einfach entwirren' },
     { id: 'eb5', emoji: '🎀', name: 'Haare flechten / schützen', hint: 'Geflochtener Zopf verhindert Bruch' },
   ],
   evening_wellness: [
-    { id: 'ew1', emoji: '📵', name: 'Handy weglegen',          hint: 'Mindestens 30 Min vor dem Schlafen' },
-    { id: 'ew2', emoji: '📖', name: 'Lesen',                   hint: 'Entspannen mit einem guten Buch' },
-    { id: 'ew3', emoji: '📓', name: 'Tagebuch schreiben',      hint: 'Den Tag reflektieren & Dankbarkeit notieren' },
+    { id: 'ew1', emoji: '📵', name: 'Handy weglegen',         hint: 'Mindestens 30 Min vor dem Schlafen' },
+    { id: 'ew2', emoji: '📖', name: 'Lesen',                  hint: 'Entspannen mit einem guten Buch' },
+    { id: 'ew3', emoji: '📓', name: 'Tagebuch schreiben',     hint: 'Den Tag reflektieren & Dankbarkeit notieren' },
     { id: 'ew4', emoji: '🫖', name: 'Beruhigenden Tee trinken', hint: 'Kamille oder Lavendel zum Einschlafen' },
-    { id: 'ew5', emoji: '🌬️', name: 'Atemübung',              hint: '4-7-8 Technik zum Einschlafen' },
+    { id: 'ew5', emoji: '🌬️', name: 'Atemübung',             hint: '4-7-8 Technik zum Einschlafen' },
   ],
   weekly_skincare: [
-    { id: 'ws1', emoji: '🫧', name: 'Gesichtspeeling',         hint: '1-2x pro Woche – abgestorbene Hautzellen entfernen' },
-    { id: 'ws2', emoji: '🎭', name: 'Gesichtsmaske',           hint: 'Tonerde-, Hydro- oder Sheet-Mask (10–20 Min)' },
-    { id: 'ws3', emoji: '💎', name: 'Peel-off Maske',          hint: 'Poren reinigen & Mitesser entfernen' },
-    { id: 'ws4', emoji: '🌿', name: 'Gesichtsmassage',         hint: 'Gua-Sha oder Jade Roller für Lymphdrainage' },
-    { id: 'ws5', emoji: '👄', name: 'Lippenpeeling',           hint: 'Sanft peelen für weiche Lippen' },
+    { id: 'ws1', emoji: '🫧', name: 'Gesichtspeeling',        hint: '1-2x pro Woche – abgestorbene Hautzellen entfernen' },
+    { id: 'ws2', emoji: '🎭', name: 'Gesichtsmaske',          hint: 'Tonerde-, Hydro- oder Sheet-Mask (10–20 Min)' },
+    { id: 'ws3', emoji: '💎', name: 'Peel-off Maske',         hint: 'Poren reinigen & Mitesser entfernen' },
+    { id: 'ws4', emoji: '🌿', name: 'Gesichtsmassage',        hint: 'Gua-Sha oder Jade Roller für Lymphdrainage' },
+    { id: 'ws5', emoji: '👄', name: 'Lippenpeeling',          hint: 'Sanft peelen für weiche Lippen' },
   ],
   weekly_hair: [
     { id: 'wh1', emoji: '🧴', name: 'Haarkur / Deep Conditioning', hint: 'Mindestens 20 Min einwirken lassen' },
-    { id: 'wh2', emoji: '🥥', name: 'Haaröl-Behandlung',      hint: 'Kokos-, Argan- oder Jojobaöl vor dem Waschen' },
-    { id: 'wh3', emoji: '💆‍♀️', name: 'Kopfhautmassage',      hint: 'Durchblutung fördern & Haarwachstum anregen' },
-    { id: 'wh4', emoji: '✂️', name: 'Haare trimmen',           hint: 'Alle 8–12 Wochen für gesunde Spitzen' },
+    { id: 'wh2', emoji: '🥥', name: 'Haaröl-Behandlung',     hint: 'Kokos-, Argan- oder Jojobaöl vor dem Waschen' },
+    { id: 'wh3', emoji: '💆‍♀️', name: 'Kopfhautmassage',     hint: 'Durchblutung fördern & Haarwachstum anregen' },
+    { id: 'wh4', emoji: '✂️', name: 'Haare trimmen',          hint: 'Alle 8–12 Wochen für gesunde Spitzen' },
   ],
   weekly_nails: [
-    { id: 'wn1', emoji: '💅', name: 'Maniküre',               hint: 'Nägel feilen, formen & lackieren' },
-    { id: 'wn2', emoji: '🦶', name: 'Pediküre',               hint: 'Fußnägel pflegen & lackieren' },
-    { id: 'wn3', emoji: '✨', name: 'Nagelhautpflege',         hint: 'Nagelhautöl auftragen & sanft zurückschieben' },
-    { id: 'wn4', emoji: '🫧', name: 'Nagelbad',               hint: 'Warmes Öl-Bad für 10–15 Minuten' },
+    { id: 'wn1', emoji: '💅', name: 'Maniküre',              hint: 'Nägel feilen, formen & lackieren' },
+    { id: 'wn2', emoji: '🦶', name: 'Pediküre',              hint: 'Fußnägel pflegen & lackieren' },
+    { id: 'wn3', emoji: '✨', name: 'Nagelhautpflege',        hint: 'Nagelhautöl auftragen & sanft zurückschieben' },
+    { id: 'wn4', emoji: '🫧', name: 'Nagelbad',              hint: 'Warmes Öl-Bad für 10–15 Minuten' },
   ],
   weekly_body: [
-    { id: 'wbo1', emoji: '🧂', name: 'Körperpeeling',          hint: 'Salzpeeling für seidige Haut' },
-    { id: 'wbo2', emoji: '🛁', name: 'Entspannungsbad',        hint: 'Mit Badesalz, Ölen oder Badebomben' },
-    { id: 'wbo3', emoji: '🦵', name: 'Rasieren / Epilieren',   hint: 'Beine, Achseln & Co. pflegen' },
-    { id: 'wbo4', emoji: '🧴', name: 'Körpermaske',            hint: 'Intensive Feuchtigkeit für trockene Haut' },
-    { id: 'wbo5', emoji: '🦶', name: 'Fußpflege',              hint: 'Hornhaut entfernen & gut eincremen' },
+    { id: 'wbo1', emoji: '🧂', name: 'Körperpeeling',         hint: 'Salzpeeling für seidige Haut' },
+    { id: 'wbo2', emoji: '🛁', name: 'Entspannungsbad',       hint: 'Mit Badesalz, Ölen oder Badebomben' },
+    { id: 'wbo3', emoji: '🦵', name: 'Rasieren / Epilieren',  hint: 'Beine, Achseln & Co. pflegen' },
+    { id: 'wbo4', emoji: '🧴', name: 'Körpermaske',           hint: 'Intensive Feuchtigkeit für trockene Haut' },
+    { id: 'wbo5', emoji: '🦶', name: 'Fußpflege',             hint: 'Hornhaut entfernen & gut eincremen' },
   ],
 };
 
-// Tab → Kategorie-Keys
 const TAB_KEYS = {
   morning: ['morning_skincare','morning_makeup','morning_body','morning_wellness'],
   evening: ['evening_skincare','evening_body','evening_wellness'],
   weekly:  ['weekly_skincare','weekly_hair','weekly_nails','weekly_body'],
 };
 
-// Kategorie-Key → Checklist-Element-ID
 const KEY_TO_LIST = {
   morning_skincare: 'morning-skincare', morning_makeup: 'morning-makeup',
   morning_body:     'morning-body',     morning_wellness: 'morning-wellness',
@@ -99,23 +378,17 @@ const KEY_TO_LIST = {
   weekly_nails:     'weekly-nails',     weekly_body: 'weekly-body',
 };
 
-// ===== localStorage Wrapper (sicher für file:// und Safari) =====
+// ===== localStorage Wrapper =====
 const store = {
-  get(key) {
-    try { return localStorage.getItem(key); } catch(e) { return null; }
-  },
-  set(key, val) {
-    try { localStorage.setItem(key, val); } catch(e) {}
-  },
-  remove(key) {
-    try { localStorage.removeItem(key); } catch(e) {}
-  }
+  get(key)      { try { return localStorage.getItem(key); }    catch(e) { return null; } },
+  set(key, val) { try { localStorage.setItem(key, val); }      catch(e) {} },
+  remove(key)   { try { localStorage.removeItem(key); }        catch(e) {} },
 };
 
 // ===== Persistenz =====
-let checkState   = {};
-let hiddenItems  = new Set();
-let customItems  = {};
+let checkState  = {};
+let hiddenItems = new Set();
+let customItems = {};
 
 function getTodayKey() { return new Date().toISOString().split('T')[0]; }
 
@@ -123,10 +396,8 @@ function loadPersisted() {
   try {
     const cs = store.get('routine_check');
     checkState = cs ? JSON.parse(cs) : {};
-
     const hi = store.get('routine_hidden');
     hiddenItems = new Set(hi ? JSON.parse(hi) : []);
-
     const ci = store.get('routine_custom');
     customItems = ci ? JSON.parse(ci) : {};
   } catch(e) {
@@ -150,6 +421,82 @@ function toggleCheck(id) {
   checkCompletion();
 }
 
+// ===== Language =====
+let currentLang = store.get('routine_lang') || 'de';
+
+function t(key) {
+  const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.de;
+  return dict[key] !== undefined ? dict[key] : (TRANSLATIONS.de[key] || key);
+}
+
+function applyTranslations() {
+  // Fill all data-tr elements
+  document.querySelectorAll('[data-tr]').forEach(el => {
+    const key = el.dataset.tr;
+    const val = t(key);
+    if (typeof val === 'string') el.textContent = val;
+  });
+
+  // data-tr-label: emoji button with label below
+  document.querySelectorAll('[data-tr-label]').forEach(el => {
+    if (!el.dataset.emojiSaved) {
+      el.dataset.emojiSaved = el.textContent.trim();
+    }
+    const val = t(el.dataset.trLabel);
+    if (typeof val !== 'string') return;
+    el.textContent = '';
+    el.appendChild(document.createTextNode(el.dataset.emojiSaved));
+    const span = document.createElement('span');
+    span.className = 'ob-option-label';
+    span.textContent = val;
+    el.appendChild(span);
+  });
+
+  // Highlight active language button in settings
+  document.querySelectorAll('.settings-lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === currentLang);
+  });
+
+  updateDate();
+  updateProgress();
+  renderTips();
+  const name = getUsername();
+  if (name) showGreeting(name);
+}
+
+// ===== Daily Tips =====
+function getDailyTips() {
+  const color  = store.get('routine_haircolor')  || '';
+  const length = store.get('routine_hairlength') || '';
+
+  let pool = [...TIPS_POOL.general, ...TIPS_POOL.hairGeneral];
+  if (color  && TIPS_POOL.byColor[color])    pool = [...pool, ...TIPS_POOL.byColor[color]];
+  if (length && TIPS_POOL.byLength[length])  pool = [...pool, ...TIPS_POOL.byLength[length]];
+
+  // Deterministic daily shuffle using day number as seed
+  const dayNum = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
+  const shuffled = [...pool];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const seed = Math.abs((dayNum * 1664525 + i * 1013904223) | 0);
+    const j = seed % (i + 1);
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled.slice(0, 3);
+}
+
+function renderTips() {
+  const container = document.getElementById('tipsBubbles');
+  if (!container) return;
+  const tips = getDailyTips();
+  container.innerHTML = '';
+  tips.forEach(tip => {
+    const bubble = document.createElement('div');
+    bubble.className = 'tip-bubble';
+    bubble.textContent = tip[currentLang] || tip.de;
+    container.appendChild(bubble);
+  });
+}
+
 // ===== Edit Mode =====
 let editMode = false;
 
@@ -160,40 +507,30 @@ function setEditMode(on) {
   renderAll();
 }
 
-// ===== Alle Items einer Kategorie (Standard + Custom) =====
+// ===== Items =====
 function getItems(catKey) {
-  const standard = ROUTINES[catKey] || [];
-  const custom   = customItems[catKey] || [];
-  return [...standard, ...custom];
+  return [...(ROUTINES[catKey] || []), ...(customItems[catKey] || [])];
 }
 
-// ===== Render =====
 function buildList(catKey) {
-  const listId = KEY_TO_LIST[catKey];
-  const ul = document.getElementById(listId);
+  const ul = document.getElementById(KEY_TO_LIST[catKey]);
   if (!ul) return;
   ul.innerHTML = '';
 
-  const items = getItems(catKey);
-  items.forEach(item => {
-    const hidden  = hiddenItems.has(item.id);
-    const checked = isChecked(item.id);
+  getItems(catKey).forEach(item => {
+    const hidden   = hiddenItems.has(item.id);
+    const checked  = isChecked(item.id);
     const isCustom = (customItems[catKey] || []).some(c => c.id === item.id);
 
     const li = document.createElement('li');
-    li.className = [
-      'checklist-item',
-      checked ? 'done' : '',
-      hidden  ? 'item-hidden' : '',
-    ].filter(Boolean).join(' ');
+    li.className = ['checklist-item', checked ? 'done' : '', hidden ? 'item-hidden' : ''].filter(Boolean).join(' ');
     li.dataset.id = item.id;
 
-    // Actions (nur in edit-mode sichtbar via CSS)
-    const toggleTitle = hidden ? 'Einblenden' : 'Ausblenden';
+    const toggleTitle = hidden ? t('showItem') : t('hideItem');
     const toggleIcon  = hidden ? '👁️' : '🙈';
     const customBtns  = isCustom
-      ? `<button class="action-btn edit-btn"   data-id="${item.id}" data-cat="${catKey}" title="Bearbeiten">✏️</button>
-         <button class="action-btn delete-btn" data-id="${item.id}" data-cat="${catKey}" title="Löschen">🗑️</button>`
+      ? `<button class="action-btn edit-btn"   data-id="${item.id}" data-cat="${catKey}">✏️</button>
+         <button class="action-btn delete-btn" data-id="${item.id}" data-cat="${catKey}">🗑️</button>`
       : '';
 
     li.innerHTML = `
@@ -214,7 +551,6 @@ function buildList(catKey) {
       </span>
     `;
 
-    // Click: normal mode → check/uncheck; edit mode → nichts
     li.addEventListener('click', e => {
       if (editMode) return;
       if (e.target.closest('.item-actions')) return;
@@ -224,7 +560,6 @@ function buildList(catKey) {
     ul.appendChild(li);
   });
 
-  // Action-Button Events
   ul.querySelectorAll('.toggle-btn').forEach(btn =>
     btn.addEventListener('click', e => { e.stopPropagation(); toggleHidden(btn.dataset.id); })
   );
@@ -236,9 +571,7 @@ function buildList(catKey) {
   );
 }
 
-function renderAll() {
-  Object.keys(KEY_TO_LIST).forEach(buildList);
-}
+function renderAll() { Object.keys(KEY_TO_LIST).forEach(buildList); }
 
 function escHtml(s) {
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -255,7 +588,7 @@ function toggleHidden(id) {
 
 // ===== Custom Items =====
 function deleteCustomItem(catKey, id) {
-  if (!confirm('Item löschen?')) return;
+  if (!confirm(t('confirmDelete'))) return;
   customItems[catKey] = (customItems[catKey] || []).filter(i => i.id !== id);
   hiddenItems.delete(id);
   delete checkState[getTodayKey()]?.[id];
@@ -263,7 +596,7 @@ function deleteCustomItem(catKey, id) {
   renderAll(); updateProgress();
 }
 
-// ===== Vorschläge je Kategorie =====
+// ===== Presets =====
 const PRESETS = {
   morning_skincare: [
     { emoji: '🌊', name: 'Mizellenwasser',        hint: 'Sanft reinigen ohne ausspülen' },
@@ -352,7 +685,7 @@ function buildPresets(catKey) {
 
   const label = document.createElement('div');
   label.className = 'preset-label';
-  label.textContent = '💡 Vorschläge';
+  label.textContent = t('suggestions');
   container.appendChild(label);
 
   const chips = document.createElement('div');
@@ -368,15 +701,12 @@ function buildPresets(catKey) {
       document.getElementById('modalName').value  = p.name;
       document.getElementById('modalHint').value  = p.hint;
       syncEmojiSelection();
-      // Visuelles Feedback
       chips.querySelectorAll('.preset-chip').forEach(c => {
-        c.style.background = '';
-        c.style.color = '';
-        c.style.borderColor = '';
+        c.style.background = ''; c.style.color = ''; c.style.borderColor = '';
       });
-      chip.style.background = 'linear-gradient(135deg, #f06292, #ab47bc)';
-      chip.style.color = 'white';
-      chip.style.borderColor = 'transparent';
+      chip.style.background   = 'linear-gradient(135deg, #f06292, #ab47bc)';
+      chip.style.color        = 'white';
+      chip.style.borderColor  = 'transparent';
     });
     chips.appendChild(chip);
   });
@@ -384,7 +714,7 @@ function buildPresets(catKey) {
   container.appendChild(chips);
 }
 
-// ===== Beauty Emoji Picker =====
+// ===== Emoji Picker =====
 const BEAUTY_EMOJIS = [
   '💄','💋','👄','💅','🧴','🪞','🧼','🛁','🚿','🪥',
   '🦷','🧖‍♀️','💆‍♀️','💇‍♀️','🪮','👁️','🦶','🎀','🌸','🌺',
@@ -411,19 +741,18 @@ function buildEmojiGrid() {
 
 function syncEmojiSelection() {
   const val  = document.getElementById('modalEmoji').value.trim();
-  const grid = document.getElementById('emojiGrid');
-  grid.querySelectorAll('.emoji-btn').forEach(b => {
+  document.getElementById('emojiGrid').querySelectorAll('.emoji-btn').forEach(b => {
     b.classList.toggle('selected', b.textContent === val);
   });
 }
 
-// ===== Modal =====
-let modalCtx = null; // {catKey, itemId|null}
+// ===== Add/Edit Modal =====
+let modalCtx = null;
 
 function openModal(catKey, itemId = null) {
   modalCtx = { catKey, itemId };
   const isEdit = itemId !== null;
-  document.getElementById('modalTitle').textContent = isEdit ? 'Item bearbeiten' : 'Item hinzufügen';
+  document.getElementById('modalTitle').textContent = isEdit ? t('editItem') : t('addItemTitle');
 
   if (isEdit) {
     const item = (customItems[catKey] || []).find(i => i.id === itemId);
@@ -451,22 +780,17 @@ function saveModal() {
   const name  = document.getElementById('modalName').value.trim();
   const emoji = document.getElementById('modalEmoji').value.trim() || '📌';
   const hint  = document.getElementById('modalHint').value.trim();
-
   if (!name) { document.getElementById('modalName').focus(); return; }
 
   const { catKey, itemId } = modalCtx;
-
   if (itemId) {
-    // Bearbeiten
     const list = customItems[catKey] || [];
     const idx  = list.findIndex(i => i.id === itemId);
     if (idx >= 0) list[idx] = { ...list[idx], emoji, name, hint };
   } else {
-    // Neu hinzufügen
     if (!customItems[catKey]) customItems[catKey] = [];
     customItems[catKey].push({ id: 'c_' + Date.now(), emoji, name, hint });
   }
-
   saveCustom();
   closeModal();
   renderAll();
@@ -479,8 +803,9 @@ function getActiveTab() {
 }
 
 function getActiveVisibleItems() {
-  const keys = TAB_KEYS[getActiveTab()] || [];
-  return keys.flatMap(k => getItems(k)).filter(i => !hiddenItems.has(i.id));
+  return (TAB_KEYS[getActiveTab()] || [])
+    .flatMap(k => getItems(k))
+    .filter(i => !hiddenItems.has(i.id));
 }
 
 function updateProgress() {
@@ -488,29 +813,21 @@ function updateProgress() {
   const done  = items.filter(i => isChecked(i.id)).length;
   const total = items.length;
   const pct   = total ? Math.round((done / total) * 100) : 0;
-
   document.getElementById('progressBar').style.width = pct + '%';
-  document.getElementById('progressLabel').textContent =
-    `${done} / ${total} erledigt`;
+  document.getElementById('progressLabel').textContent = `${done} / ${total} ${t('done')}`;
 }
 
 // ===== Completion =====
 let confettiShown = false;
 
 function checkCompletion() {
-  const tab   = getActiveTab();
-  const items = getActiveVisibleItems();
+  const tab    = getActiveTab();
+  const items  = getActiveVisibleItems();
   const allDone = items.length > 0 && items.every(i => isChecked(i.id));
   const banner  = document.getElementById('banner-' + tab);
-
   if (banner) banner.classList.toggle('show', allDone);
-
-  if (allDone && !confettiShown) {
-    launchConfetti();
-    confettiShown = true;
-  } else if (!allDone) {
-    confettiShown = false;
-  }
+  if (allDone && !confettiShown) { launchConfetti(); confettiShown = true; }
+  else if (!allDone) confettiShown = false;
 }
 
 // ===== Confetti =====
@@ -519,8 +836,8 @@ function launchConfetti() {
   const ctx    = canvas.getContext('2d');
   canvas.width  = window.innerWidth;
   canvas.height = window.innerHeight;
-  const colors  = ['#f48fb1','#ce93d8','#f06292','#fff','#ffe082','#80cbc4'];
-  const pieces  = Array.from({ length: 110 }, () => ({
+  const colors = ['#f48fb1','#ce93d8','#f06292','#fff','#ffe082','#80cbc4'];
+  const pieces = Array.from({ length: 110 }, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * -canvas.height,
     r: Math.random() * 8 + 4,
@@ -552,15 +869,14 @@ function launchConfetti() {
 // ===== Date & Time =====
 function updateDate() {
   const now    = new Date();
-  const days   = ['So','Mo','Di','Mi','Do','Fr','Sa'];
-  const months = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+  const days   = t('days');
+  const months = t('months');
   const date   = `${days[now.getDay()]}, ${now.getDate()}. ${months[now.getMonth()]}`;
   const time   = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
   document.getElementById('dateDisplay').innerHTML =
     `<span class="date-date">${date}</span><span class="date-time">${time}</span>`;
 }
 
-// Uhrzeit jede Minute aktualisieren
 setInterval(updateDate, 60000);
 
 // ===== Reset =====
@@ -569,14 +885,8 @@ function clearBanners(tabs) {
 }
 
 function resetToday() {
-  // Nur Morgen & Abend zurücksetzen, nicht Wöchentlich
   const day = getTodayKey();
   if (checkState[day]) {
-    const weeklyIds = TAB_KEYS.weekly.flatMap(k => getItems(k)).map(i => i.id);
-    weeklyIds.forEach(id => {
-      // Weekly-Checks aufbewahren
-    });
-    // Nur morning + evening Keys löschen
     const keepIds = new Set(TAB_KEYS.weekly.flatMap(k => getItems(k)).map(i => i.id));
     Object.keys(checkState[day]).forEach(id => {
       if (!keepIds.has(id)) delete checkState[day][id];
@@ -591,8 +901,7 @@ function resetToday() {
 function resetWeekly() {
   const day = getTodayKey();
   if (checkState[day]) {
-    const weeklyIds = TAB_KEYS.weekly.flatMap(k => getItems(k)).map(i => i.id);
-    weeklyIds.forEach(id => delete checkState[day][id]);
+    TAB_KEYS.weekly.flatMap(k => getItems(k)).forEach(i => delete checkState[day][i.id]);
   }
   saveCheck();
   confettiShown = false;
@@ -601,7 +910,7 @@ function resetWeekly() {
 }
 
 function resetAll() {
-  if (!confirm('Wirklich alle gespeicherten Fortschritte löschen?')) return;
+  if (!confirm(t('confirmResetAll'))) return;
   store.remove('routine_check');
   checkState = {};
   confettiShown = false;
@@ -609,16 +918,13 @@ function resetAll() {
   clearBanners(['morning', 'evening', 'weekly']);
 }
 
-// ===== Haar-Routinen je nach Profil =====
+// ===== Hair Profile =====
 function getHairItems(color, length) {
-  // Basis-Items die immer passen
   const base = [
     { id: 'wh1', emoji: '🧴', name: 'Haarkur / Deep Conditioning', hint: 'Mindestens 20 Min einwirken lassen' },
     { id: 'wh2', emoji: '🥥', name: 'Haaröl-Behandlung',           hint: 'Kokos-, Argan- oder Jojobaöl vor dem Waschen' },
     { id: 'wh3', emoji: '💆‍♀️', name: 'Kopfhautmassage',           hint: 'Durchblutung fördern & Haarwachstum anregen' },
   ];
-
-  // Längen-spezifisch
   if (length === 'kurz') {
     base.push({ id: 'wh4', emoji: '✂️', name: 'Haare nachschneiden lassen', hint: 'Alle 4–6 Wochen für gepflegte Kurzhaarfrisur' });
     base.push({ id: 'wh5', emoji: '🪮', name: 'Stylingprodukt auftragen',   hint: 'Pomade oder Wax für Definition & Halt' });
@@ -632,8 +938,6 @@ function getHairItems(color, length) {
     base.push({ id: 'wh6', emoji: '🎀', name: 'Haare flechten zum Schlafen', hint: 'Losen Zopf oder French Braid – schützt vor Bruch' });
     base.push({ id: 'wh7', emoji: '🧣', name: 'Satin-Kissenbezug nutzen',   hint: 'Reduziert Reibung & hält Feuchtigkeit' });
   }
-
-  // Farb-spezifisch
   if (color === 'blond') {
     base.push({ id: 'wh_c1', emoji: '💜', name: 'Silbershampoo anwenden',   hint: '1x pro Woche gegen Gelbstich' });
   } else if (color === 'gefarbt') {
@@ -644,17 +948,14 @@ function getHairItems(color, length) {
   } else if (color === 'schwarz') {
     base.push({ id: 'wh_c1', emoji: '🖤', name: 'Glanz-Spülung verwenden',  hint: 'Dunkles Haar strahlt mit Pflegebehandlungen' });
   }
-
   return base;
 }
 
 function applyHairProfile() {
-  const color  = store.get('routine_haircolor') || '';
+  const color  = store.get('routine_haircolor')  || '';
   const length = store.get('routine_hairlength') || '';
   if (!color && !length) return;
   ROUTINES.weekly_hair = getHairItems(color, length);
-
-  // Auch morning_body Haar-Style-Hint anpassen
   const styleItem = ROUTINES.morning_body.find(i => i.id === 'mb5');
   if (styleItem && length) {
     const hints = { kurz: 'Styling-Wax oder Pomade für deinen Look', mittel: 'Föhnen, wellen oder glätten', lang: 'Föhnen, flechten oder offen tragen' };
@@ -662,64 +963,128 @@ function applyHairProfile() {
   }
 }
 
-// ===== Onboarding & Greeting =====
-function getUsername()  { return store.get('routine_username') || ''; }
-function saveUsername(n){ store.set('routine_username', n); }
+// ===== Greeting =====
+function getUsername() { return store.get('routine_username') || ''; }
+function saveUsername(n) { store.set('routine_username', n); }
 
 function getGreeting() {
   const h = new Date().getHours();
-  if (h >= 5  && h < 12) return { text: 'Guten Morgen',  emoji: '☀️' };
-  if (h >= 12 && h < 17) return { text: 'Hallo',         emoji: '🌸' };
-  if (h >= 17 && h < 22) return { text: 'Guten Abend',   emoji: '🌙' };
-  return                         { text: 'Hey',           emoji: '⭐' };
+  if (h >= 5  && h < 12) return { text: t('greetingMorning'), emoji: '☀️' };
+  if (h >= 12 && h < 17) return { text: t('greetingDay'),     emoji: '🌸' };
+  if (h >= 17 && h < 22) return { text: t('greetingEvening'), emoji: '🌙' };
+  return                         { text: t('greetingNight'),   emoji: '⭐' };
 }
-
-const DAILY_MESSAGES = [
-  'Du schaffst das heute!',
-  'Strahle heute wie ein Diamant.',
-  'Deine Haut wird es dir danken.',
-  'Ein kleines Ritual, ein großes Lächeln.',
-  'Self-care ist keine Seltenheit – es ist ein Muss!',
-  'Du bist wunderschön, vergiss das nicht.',
-  'Gönn dir heute etwas Gutes.',
-  'Heute wird ein guter Tag!',
-];
 
 function showGreeting(name) {
-  // Name in der dicken Logo-Leiste
   const logoName = document.getElementById('logoName');
-  if (logoName) logoName.textContent = `von ${name} 🌸✨`;
+  if (logoName) logoName.textContent = `${t('logoNamePrefix')} ${name} 🌸✨`;
 
-  // Kleine Begrüßungszeile darunter
   const { text, emoji } = getGreeting();
-  const msg = DAILY_MESSAGES[Math.floor(Math.random() * DAILY_MESSAGES.length)];
+  const motivations = t('motivations');
+  const msg = motivations[Math.floor(Math.random() * motivations.length)];
   const row = document.getElementById('greetingRow');
-  if (row) row.innerHTML =
-    `${emoji} ${text}, <strong>${escHtml(name)}</strong>! — <em>${msg}</em>`;
+  if (row) row.innerHTML = `${emoji} ${text}, <strong>${escHtml(name)}</strong>! — <em>${msg}</em>`;
 }
 
+// ===== Settings Modal =====
+function openSettings() {
+  document.getElementById('settingsName').value = getUsername();
+
+  const color = store.get('routine_haircolor') || '';
+  document.querySelectorAll('#settingsHairColor .ob-option').forEach(btn => {
+    btn.classList.toggle('selected', btn.dataset.value === color);
+  });
+
+  const length = store.get('routine_hairlength') || '';
+  document.querySelectorAll('#settingsHairLength .ob-option').forEach(btn => {
+    btn.classList.toggle('selected', btn.dataset.value === length);
+  });
+
+  document.querySelectorAll('.settings-lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === currentLang);
+  });
+
+  document.getElementById('settingsOverlay').classList.add('open');
+}
+
+function closeSettings() {
+  document.getElementById('settingsOverlay').classList.remove('open');
+}
+
+function saveSettings() {
+  const name = document.getElementById('settingsName').value.trim();
+
+  const activeLangBtn = document.querySelector('.settings-lang-btn.active');
+  const newLang = activeLangBtn ? activeLangBtn.dataset.lang : currentLang;
+
+  const selColor  = document.querySelector('#settingsHairColor .ob-option.selected');
+  const newColor  = selColor  ? selColor.dataset.value  : '';
+  const selLength = document.querySelector('#settingsHairLength .ob-option.selected');
+  const newLength = selLength ? selLength.dataset.value : '';
+
+  if (name) saveUsername(name);
+  store.set('routine_lang',       newLang);
+  store.set('routine_haircolor',  newColor);
+  store.set('routine_hairlength', newLength);
+
+  currentLang = newLang;
+  applyHairProfile();
+  applyTranslations();
+  renderAll();
+  updateProgress();
+  if (name) showGreeting(name);
+
+  closeSettings();
+}
+
+function openAgb() {
+  document.getElementById('agbContent').innerHTML = AGB_TEXT[currentLang] || AGB_TEXT.de;
+  document.getElementById('agbOverlay').classList.add('open');
+}
+
+function closeAgb() {
+  document.getElementById('agbOverlay').classList.remove('open');
+}
+
+// ===== Onboarding =====
 function initOnboarding() {
   const name = getUsername();
 
   if (!name) {
     const screen = document.getElementById('onboarding');
     screen.classList.add('show');
-    setTimeout(() => document.getElementById('nameInput').focus(), 300);
 
     let selectedColor  = '';
     let selectedLength = '';
 
-    // Schritt 1 → 2
+    // ---- Step 0: Language ----
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentLang = btn.dataset.lang;
+        store.set('routine_lang', currentLang);
+        applyTranslations();
+        // Go to step 1
+        document.getElementById('ob-step0').style.display = 'none';
+        document.getElementById('ob-step1').style.display = 'block';
+        setTimeout(() => document.getElementById('nameInput').focus(), 200);
+      });
+    });
+
+    // ---- Step 1 → 2 ----
     const goStep2 = () => {
-      const val = document.getElementById('nameInput').value.trim();
-      if (!val) { document.getElementById('nameInput').focus(); return; }
+      if (!document.getElementById('nameInput').value.trim()) {
+        document.getElementById('nameInput').focus();
+        return;
+      }
       document.getElementById('ob-step1').style.display = 'none';
       document.getElementById('ob-step2').style.display = 'block';
     };
     document.getElementById('obNext1').addEventListener('click', goStep2);
-    document.getElementById('nameInput').addEventListener('keydown', e => { if (e.key === 'Enter') goStep2(); });
+    document.getElementById('nameInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') goStep2();
+    });
 
-    // Haarfarbe auswählen
+    // ---- Step 2: Hair color ----
     document.querySelectorAll('#hairColorOptions .ob-option').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('#hairColorOptions .ob-option').forEach(b => b.classList.remove('selected'));
@@ -729,13 +1094,12 @@ function initOnboarding() {
       });
     });
 
-    // Schritt 2 → 3
     document.getElementById('obNext2').addEventListener('click', () => {
       document.getElementById('ob-step2').style.display = 'none';
       document.getElementById('ob-step3').style.display = 'block';
     });
 
-    // Haarlänge auswählen
+    // ---- Step 3: Hair length ----
     document.querySelectorAll('#hairLengthOptions .ob-option').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('#hairLengthOptions .ob-option').forEach(b => b.classList.remove('selected'));
@@ -745,9 +1109,9 @@ function initOnboarding() {
       });
     });
 
-    // Fertig
     document.getElementById('obFinish').addEventListener('click', () => {
       const val = document.getElementById('nameInput').value.trim();
+      if (!val) return;
       saveUsername(val);
       store.set('routine_haircolor',  selectedColor);
       store.set('routine_hairlength', selectedLength);
@@ -756,6 +1120,7 @@ function initOnboarding() {
       showGreeting(val);
       renderAll();
       updateProgress();
+      renderTips();
     });
 
   } else {
@@ -767,6 +1132,8 @@ function initOnboarding() {
 // ===== Init =====
 function init() {
   loadPersisted();
+  currentLang = store.get('routine_lang') || 'de';
+  applyTranslations();
   updateDate();
   initOnboarding();
   renderAll();
@@ -789,12 +1156,12 @@ function init() {
   // Edit-Toggle
   document.getElementById('editToggleBtn').addEventListener('click', () => setEditMode(!editMode));
 
-  // Add-Item Buttons
+  // Add-Item buttons
   document.querySelectorAll('.add-item-btn').forEach(btn =>
     btn.addEventListener('click', () => openModal(btn.dataset.key))
   );
 
-  // Modal
+  // Item Modal
   buildEmojiGrid();
   document.getElementById('modalEmoji').addEventListener('input', syncEmojiSelection);
   document.getElementById('modalSave').addEventListener('click', saveModal);
@@ -807,10 +1174,49 @@ function init() {
     if (e.key === 'Escape') closeModal();
   });
 
-  // Reset Buttons
+  // Reset buttons
   document.getElementById('resetBtn').addEventListener('click', resetToday);
   document.getElementById('resetWeeklyBtn').addEventListener('click', resetWeekly);
   document.getElementById('resetAllBtn').addEventListener('click', resetAll);
+
+  // Settings
+  document.getElementById('settingsOpenBtn').addEventListener('click', openSettings);
+  document.getElementById('settingsCancel').addEventListener('click', closeSettings);
+  document.getElementById('settingsSave').addEventListener('click', saveSettings);
+  document.getElementById('settingsOverlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('settingsOverlay')) closeSettings();
+  });
+
+  // Settings: language toggle
+  document.querySelectorAll('.settings-lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.settings-lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // Settings: hair color selection
+  document.querySelectorAll('#settingsHairColor .ob-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#settingsHairColor .ob-option').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+  });
+
+  // Settings: hair length selection
+  document.querySelectorAll('#settingsHairLength .ob-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#settingsHairLength .ob-option').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+  });
+
+  // AGB
+  document.getElementById('agbOpenBtn').addEventListener('click', openAgb);
+  document.getElementById('agbClose').addEventListener('click', closeAgb);
+  document.getElementById('agbOverlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('agbOverlay')) closeAgb();
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);
