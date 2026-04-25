@@ -898,7 +898,8 @@ function updateDate() {
   const date   = `${days[now.getDay()]}, ${now.getDate()}. ${months[now.getMonth()]}`;
   const time   = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
   document.getElementById('dateDisplay').innerHTML =
-    `<span class="date-date">${date}</span><span class="date-time">${time}</span>`;
+    `<span class="date-date">${date}</span><span class="date-time">${time}</span><span class="date-today-badge" id="dateTodayBadge" style="display:none"></span>`;
+  updateTodayBadge();
 }
 
 setInterval(updateDate, 60000);
@@ -1248,6 +1249,7 @@ function init() {
 
   // Termine
   loadTermine();
+  updateTodayBadge();
   document.getElementById('termineOpenBtn').addEventListener('click', openTermineOverlay);
   document.getElementById('termineCloseBtn').addEventListener('click', closeTermineOverlay);
   document.getElementById('addTerminBtn').addEventListener('click', () => openTerminEdit(null));
@@ -1330,21 +1332,35 @@ function updateFabPosition() {
 }
 
 function updateTodayBadge() {
-  const btn = document.getElementById('termineOpenBtn');
-  if (!btn) return;
   const today = new Date();
   const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
   const todayCount = termine.filter(t => t.date === todayStr).length;
-  let badge = btn.querySelector('.today-badge');
-  if (todayCount > 0) {
-    if (!badge) {
-      badge = document.createElement('span');
-      badge.className = 'today-badge';
-      btn.appendChild(badge);
+
+  // Badge auf dem Termine-Footer-Button
+  const btn = document.getElementById('termineOpenBtn');
+  if (btn) {
+    let badge = btn.querySelector('.today-badge');
+    if (todayCount > 0) {
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'today-badge';
+        btn.appendChild(badge);
+      }
+      badge.textContent = todayCount;
+    } else {
+      if (badge) badge.remove();
     }
-    badge.textContent = todayCount;
-  } else {
-    if (badge) badge.remove();
+  }
+
+  // Badge auf dem Datum/Uhrzeit-Kästchen im Header
+  const dateBadge = document.getElementById('dateTodayBadge');
+  if (dateBadge) {
+    if (todayCount > 0) {
+      dateBadge.textContent = todayCount;
+      dateBadge.style.display = 'flex';
+    } else {
+      dateBadge.style.display = 'none';
+    }
   }
 }
 
