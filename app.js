@@ -1189,10 +1189,11 @@ function saveUsername(n) { store.set('routine_username', n); }
 
 function getGreeting() {
   const h = new Date().getHours();
-  if (h >= 5  && h < 12) return { text: t('greetingMorning'), emoji: '☀️' };
-  if (h >= 12 && h < 17) return { text: t('greetingDay'),     emoji: '🌸' };
-  if (h >= 17 && h < 22) return { text: t('greetingEvening'), emoji: '🌙' };
-  return                         { text: t('greetingNight'),   emoji: '⭐' };
+  const isBoy = getGender() === 'boy';
+  if (h >= 5  && h < 12) return { text: t('greetingMorning'), emoji: isBoy ? '☀️' : '☀️' };
+  if (h >= 12 && h < 17) return { text: t('greetingDay'),     emoji: isBoy ? '💪' : '🌸' };
+  if (h >= 17 && h < 22) return { text: t('greetingEvening'), emoji: isBoy ? '🌙' : '🌙' };
+  return                         { text: t('greetingNight'),   emoji: isBoy ? '😎' : '⭐' };
 }
 
 // ===== THEME =====
@@ -1292,7 +1293,7 @@ function fitLogoText() {
 function showGreeting(name) {
   const isBoy = getGender() === 'boy';
   const logoName = document.getElementById('logoName');
-  if (logoName) logoName.textContent = `${t('logoNamePrefix')} ${name}${isBoy ? ' ⚡' : ' 🌸✨'}`;
+  if (logoName) logoName.textContent = `${t('logoNamePrefix')} ${name}${isBoy ? ' 💪' : ' 🌸✨'}`;
   setTimeout(fitLogoText, 0);
 
   const { text, emoji } = getGreeting();
