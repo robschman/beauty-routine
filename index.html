@@ -9,7 +9,15 @@
   <meta name="apple-mobile-web-app-title" content="Beauty Routine" />
   <title>Beauty Routine</title>
   <link rel="stylesheet" href="style.css" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4308220666561084" crossorigin="anonymous"></script>
+  <script>
+    // AdSense nur auf echter Website laden, nicht beim lokalen Test
+    if (location.protocol !== 'file:') {
+      var _a = document.createElement('script');
+      _a.async = true; _a.crossOrigin = 'anonymous';
+      _a.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4308220666561084';
+      document.head.appendChild(_a);
+    }
+  </script>
 </head>
 <body>
   <div class="app">
