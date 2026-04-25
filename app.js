@@ -52,6 +52,12 @@ const TRANSLATIONS = {
     termsBtn: 'AGB & Datenschutz',
     termsTitle: 'AGB & Datenschutz',
     close: 'Schließen',
+    genderTitle: 'Wer bist du?',
+    genderHint: 'Das passt das Design an',
+    girl: 'Mädchen',
+    boy: 'Bub',
+    beardCare: 'Bart & Rasur',
+    boyGrooming: 'Grooming',
     my: 'Meine',
     appointmentsWord: 'Termine',
     appointments: 'Meine Termine',
@@ -138,6 +144,12 @@ const TRANSLATIONS = {
     language: 'Language',
     yourName: 'Your Name',
     saveSettings: 'Save ✓',
+    genderTitle: 'Who are you?',
+    genderHint: 'This adapts the design',
+    girl: 'Girl',
+    boy: 'Boy',
+    beardCare: 'Beard & Shaving',
+    boyGrooming: 'Grooming',
     termsBtn: 'Terms & Privacy',
     termsTitle: 'Terms & Privacy',
     close: 'Close',
@@ -382,6 +394,154 @@ const ROUTINES = {
   ],
 };
 
+// ===== BOY ROUTINES (ersetzt Mädchen-Kategorien im Bub-Modus) =====
+const ROUTINES_BOY = {
+  morning_makeup: [
+    { id: 'bmm1', emoji: '🪒', name: 'Rasieren',           hint: 'Mit Rasierschaum für eine glatte Rasur',         en: 'Shave',              enHint: 'With shaving foam for a smooth shave' },
+    { id: 'bmm2', emoji: '✂️', name: 'Bart trimmen',       hint: 'Form halten und regelmäßig pflegen',             en: 'Trim beard',         enHint: 'Maintain and groom your beard shape' },
+    { id: 'bmm3', emoji: '🧴', name: 'Bartöl auftragen',   hint: 'Hält den Bart weich und gepflegt',               en: 'Apply beard oil',    enHint: 'Keeps beard soft and well-groomed' },
+    { id: 'bmm4', emoji: '🪮', name: 'Bart kämmen',        hint: 'Mit Bartbürste oder Bartkamm formen',            en: 'Comb beard',         enHint: 'Shape with beard brush or comb' },
+    { id: 'bmm5', emoji: '💆‍♂️', name: 'Aftershave auftragen', hint: 'Haut beruhigen und pflegen nach der Rasur', en: 'Apply aftershave',   enHint: 'Soothe and care for skin after shaving' },
+  ],
+  morning_body: [
+    { id: 'bmb1', emoji: '🚿', name: 'Duschen',            hint: 'Frisch und sauber in den Tag starten',           en: 'Shower',             enHint: 'Start the day fresh and clean' },
+    { id: 'bmb2', emoji: '🦷', name: 'Zähneputzen',        hint: '2 Minuten – morgens nicht vergessen!',           en: 'Brush teeth',        enHint: '2 minutes – don\'t skip in the morning!' },
+    { id: 'bmb3', emoji: '🧴', name: 'Körperlotion',       hint: 'Am besten nach dem Duschen eincremen',           en: 'Body lotion',        enHint: 'Best applied right after showering' },
+    { id: 'bmb4', emoji: '💨', name: 'Deodorant',          hint: 'Frisch bleiben den ganzen Tag',                  en: 'Deodorant',          enHint: 'Stay fresh all day long' },
+    { id: 'bmb5', emoji: '💇‍♂️', name: 'Haare stylen',   hint: 'Kämmen, föhnen oder mit Pomade stylen',          en: 'Style hair',         enHint: 'Comb, blow dry or style with pomade' },
+    { id: 'bmb6', emoji: '🌿', name: 'Cologne auftragen',  hint: 'Dein Signature-Duft',                            en: 'Apply cologne',      enHint: 'Your signature scent' },
+  ],
+  evening_skincare: [
+    { id: 'bes1', emoji: '💧', name: 'Gesicht reinigen',   hint: 'Cleanser für die Abend-Reinigung',               en: 'Cleanse face',       enHint: 'Cleanser for evening cleanse' },
+    { id: 'bes2', emoji: '🔬', name: 'Serum auftragen',    hint: 'Hyaluronsäure oder Niacinamid',                  en: 'Apply serum',        enHint: 'Hyaluronic acid or niacinamide' },
+    { id: 'bes3', emoji: '🧴', name: 'Feuchtigkeitscreme', hint: 'Haut über Nacht pflegen',                        en: 'Moisturizer',        enHint: 'Nourish skin overnight' },
+    { id: 'bes4', emoji: '🌙', name: 'Nachtcreme',         hint: 'Reichhaltige Pflege für die Nacht',              en: 'Night cream',        enHint: 'Rich care for the night' },
+  ],
+  evening_body: [
+    { id: 'beb1', emoji: '🦷', name: 'Zähneputzen',        hint: '2 Minuten – Abends besonders wichtig',           en: 'Brush teeth',        enHint: '2 minutes – especially important at night' },
+    { id: 'beb2', emoji: '🧵', name: 'Zahnseide',          hint: 'Einmal täglich – am besten abends',              en: 'Floss',              enHint: 'Once daily – best done in the evening' },
+    { id: 'beb3', emoji: '🧴', name: 'Körperlotion',       hint: 'Hände und Füße nicht vergessen',                 en: 'Body lotion',        enHint: 'Don\'t forget hands and feet' },
+    { id: 'beb4', emoji: '💇‍♂️', name: 'Haare kämmen',   hint: 'Entwirren vor dem Schlafen',                     en: 'Comb hair',          enHint: 'Detangle before sleep' },
+  ],
+  weekly_nails: [
+    { id: 'bwn1', emoji: '✂️', name: 'Nägel schneiden',   hint: 'Hände- und Fußnägel regelmäßig kürzen',         en: 'Cut nails',          enHint: 'Regularly trim finger and toenails' },
+    { id: 'bwn2', emoji: '🪒', name: 'Nassrasur',          hint: 'Für eine besonders intensive, gründliche Rasur', en: 'Wet shave',          enHint: 'For an especially intensive, thorough shave' },
+    { id: 'bwn3', emoji: '✂️', name: 'Augenbrauen trimmen', hint: 'Ordnung halten für ein gepflegtes Aussehen',   en: 'Trim eyebrows',      enHint: 'Keep tidy for a groomed look' },
+    { id: 'bwn4', emoji: '👃', name: 'Nasen-/Ohrenhaare', hint: 'Regelmäßig kontrollieren und entfernen',         en: 'Nose/ear hair',      enHint: 'Check and remove regularly' },
+  ],
+};
+
+// ===== BOY TERMIN PRESETS =====
+const TERMIN_PRESETS_BOY = [
+  { emoji: '💈', name: { de: 'Barbier',           en: 'Barber' } },
+  { emoji: '✂️', name: { de: 'Haarschnitt',       en: 'Haircut' } },
+  { emoji: '🪒', name: { de: 'Rasur beim Barbier', en: 'Barber shave' } },
+  { emoji: '💪', name: { de: 'Gym / Training',    en: 'Gym / Workout' } },
+  { emoji: '🦷', name: { de: 'Zahnarzt',          en: 'Dentist' } },
+  { emoji: '🤸‍♂️', name: { de: 'Massage',        en: 'Massage' } },
+  { emoji: '🧴', name: { de: 'Hautarzt',          en: 'Dermatologist' } },
+  { emoji: '👕', name: { de: 'Shopping',          en: 'Shopping' } },
+  { emoji: '🌿', name: { de: 'Spa / Wellness',    en: 'Spa / Wellness' } },
+  { emoji: '🏃‍♂️', name: { de: 'Arzt / Check-up', en: 'Doctor / Check-up' } },
+];
+
+// ===== BOY EMOJIS =====
+const BOY_EMOJIS = [
+  '🪒','✂️','💈','🧴','🪮','💆‍♂️','💇‍♂️','🚿','🛁','🦷',
+  '💪','🏋️‍♂️','🏃‍♂️','⚽','🎯','🎮','🌿','☕','💧','🫧',
+  '🌊','❄️','🔥','💊','☀️','😎','🧘‍♂️','🤸‍♂️','💨','🎵',
+  '📱','📝','🌞','🏆','💎','✨','🌟','💫','🧠','🦁',
+];
+
+// ===== BOY PRESET SUGGESTIONS =====
+const PRESETS_BOY = {
+  morning_makeup: [
+    { emoji: '🪒', name: 'Rasierklingen wechseln', hint: 'Neue Klinge für saubere, glatte Rasur',          en: 'Change razor blades', enHint: 'Fresh blade for a clean, smooth shave' },
+    { emoji: '🧴', name: 'Bartbalsam',              hint: 'Bart weich und formbar halten',                  en: 'Beard balm',          enHint: 'Keep beard soft and manageable' },
+    { emoji: '🌿', name: 'Pre-Shave Öl',            hint: 'Haut vor der Rasur schützen',                   en: 'Pre-shave oil',       enHint: 'Protect skin before shaving' },
+    { emoji: '🌡️', name: 'Heißes Tuch',            hint: 'Poren öffnen vor der Rasur',                    en: 'Hot towel',           enHint: 'Open pores before shaving' },
+    { emoji: '💊', name: 'Vitamine einnehmen',      hint: 'Biotin, Zink & Vitamin D',                      en: 'Take vitamins',       enHint: 'Biotin, zinc & vitamin D' },
+  ],
+  morning_body: [
+    { emoji: '🌊', name: 'Kalte Dusche',            hint: 'Wach werden & Durchblutung ankurbeln',           en: 'Cold shower',         enHint: 'Wake up & boost circulation' },
+    { emoji: '💧', name: 'Kneipp-Dusche',           hint: 'Warm-kalt wechseln für den Kreislauf',          en: 'Contrast shower',     enHint: 'Alternate warm & cold for circulation' },
+    { emoji: '🫧', name: 'Körperpeeling',           hint: 'Glatte Haut durch regelmäßiges Peelen',         en: 'Body scrub',          enHint: 'Smooth skin through regular exfoliation' },
+    { emoji: '💪', name: 'Protein-Shake',           hint: 'Nach dem Sport für Muskelregeneration',         en: 'Protein shake',       enHint: 'After workout for muscle recovery' },
+    { emoji: '🧖‍♂️', name: 'Trockenbürsten',     hint: 'Vor dem Duschen für bessere Durchblutung',       en: 'Dry brushing',        enHint: 'Before showering for better circulation' },
+  ],
+  morning_wellness: [
+    { emoji: '☕', name: 'Kaffee genießen',         hint: 'Morgenritual für den perfekten Start',           en: 'Enjoy coffee',        enHint: 'Morning ritual for the perfect start' },
+    { emoji: '📱', name: 'Handy-freie Zeit',        hint: '30 Min ohne Social Media am Morgen',             en: 'Phone-free time',     enHint: '30 min without social media in the morning' },
+    { emoji: '🌞', name: 'Kurzer Spaziergang',      hint: 'Frische Luft belebt Körper & Geist',            en: 'Short walk',          enHint: 'Fresh air revives body & mind' },
+    { emoji: '🎵', name: 'Lieblingsmusik',          hint: 'Gute Laune-Playlist für den Morgen',            en: 'Listen to music',     enHint: 'Good mood playlist for the morning' },
+    { emoji: '📝', name: 'To-Do Liste',             hint: 'Den Tag planen & strukturieren',                en: 'Write to-do list',    enHint: 'Plan & structure your day' },
+  ],
+  evening_skincare: [
+    { emoji: '🌙', name: 'Nachtöl auftragen',       hint: 'Arganöl für gepflegte Haut',                    en: 'Apply face oil',      enHint: 'Argan oil for healthy skin' },
+    { emoji: '❄️', name: 'Kühlende Augenpads',      hint: 'Abschwellen & Augenringe reduzieren',            en: 'Cooling eye pads',    enHint: 'Depuff & reduce dark circles' },
+    { emoji: '🧴', name: 'Bartöl abends',           hint: 'Intensivpflege für den Bart über Nacht',        en: 'Beard oil overnight', enHint: 'Intensive beard care overnight' },
+    { emoji: '💎', name: 'Halspflege',              hint: 'Hals miteincremen für gepflegtes Aussehen',     en: 'Neck care',           enHint: 'Moisturize neck too' },
+  ],
+  evening_body: [
+    { emoji: '🛁', name: 'Entspannungsbad',         hint: 'Mit Badesalz oder Ölen',                        en: 'Relaxing bath',       enHint: 'With bath salts or oils' },
+    { emoji: '🧴', name: 'Fußcreme',                hint: 'Besonders die Fersen eincremen',                en: 'Foot cream',          enHint: 'Especially moisturize the heels' },
+    { emoji: '🌿', name: 'Selbstmassage',           hint: 'Faszienrolle für Muskelregeneration',           en: 'Self massage',        enHint: 'Foam roller for muscle recovery' },
+  ],
+  evening_wellness: [
+    { emoji: '🕯️', name: 'Entspannen',             hint: 'Abschalten nach einem langen Tag',               en: 'Relax',               enHint: 'Wind down after a long day' },
+    { emoji: '🛌', name: 'Schlafzeit festlegen',    hint: 'Regelmäßige Schlafzeiten für bessere Erholung', en: 'Set sleep schedule',  enHint: 'Regular sleep times for better recovery' },
+    { emoji: '🎧', name: 'Entspannungsmusik',       hint: 'Ruhige Musik oder Podcast',                     en: 'Relax music',         enHint: 'Calm music or podcast' },
+    { emoji: '🙏', name: 'Dankbarkeit',             hint: '3 Dinge für die du dankbar bist',               en: 'Gratitude',           enHint: '3 things you are grateful for' },
+  ],
+  weekly_skincare: [
+    { emoji: '🌡️', name: 'Dampfbad',               hint: 'Poren öffnen vor der Reinigung',                en: 'Face steam',          enHint: 'Open pores before cleansing' },
+    { emoji: '🍯', name: 'Honigmaske',              hint: 'Antibakteriell & feuchtigkeitsspendend',        en: 'Honey mask',          enHint: 'Antibacterial & moisturizing' },
+    { emoji: '🧴', name: 'Bartbalsam einmassieren', hint: 'Intensive Wochenpflege für den Bart',           en: 'Massage in beard balm', enHint: 'Intensive weekly beard care' },
+    { emoji: '💆‍♂️', name: 'Gesichtsmassage',      hint: 'Durchblutung fördern & entspannen',              en: 'Face massage',        enHint: 'Boost circulation & relax' },
+  ],
+  weekly_hair: [
+    { emoji: '🚿', name: 'Haare waschen',           hint: 'Mit Shampoo & Spülung für deinen Haartyp',      en: 'Wash hair',           enHint: 'With shampoo & conditioner for your hair type' },
+    { emoji: '💨', name: 'Föhnen',                  hint: 'Richtig föhnen für mehr Volumen',               en: 'Blow dry',            enHint: 'Blow dry for more volume' },
+    { emoji: '🧴', name: 'Haarpflege-Öl',           hint: 'Arganöl für glänzende, gesunde Haare',          en: 'Hair oil',            enHint: 'Argan oil for shiny, healthy hair' },
+    { emoji: '✨', name: 'Haargel / Pomade',         hint: 'Für den richtigen Style',                       en: 'Hair gel / Pomade',   enHint: 'For the right style' },
+    { emoji: '🧴', name: 'Leave-In Conditioner',    hint: 'Ohne ausspülen – für den ganzen Tag Pflege',    en: 'Leave-in conditioner', enHint: 'No rinse – nourishment all day' },
+  ],
+  weekly_nails: [
+    { emoji: '🪒', name: 'Rasierklingen wechseln',  hint: 'Neue Klinge für saubere Rasur',                 en: 'Change razor blades', enHint: 'New blade for a clean shave' },
+    { emoji: '🧴', name: 'Bartshampoo',             hint: 'Den Bart gründlich reinigen',                   en: 'Beard shampoo',       enHint: 'Thoroughly clean the beard' },
+    { emoji: '✂️', name: 'Bartwerkzeug reinigen',   hint: 'Kamm, Bürste & Schere säubern',                en: 'Clean beard tools',   enHint: 'Clean comb, brush & scissors' },
+  ],
+  weekly_body: [
+    { emoji: '🌊', name: 'Schwimmen gehen',         hint: 'Sport & Entspannung für Körper & Geist',        en: 'Go swimming',         enHint: 'Exercise & relaxation for body & mind' },
+    { emoji: '🧘‍♂️', name: 'Yoga / Stretching',  hint: 'Flexibilität & Entspannung fördern',             en: 'Yoga / Stretching',   enHint: 'Promote flexibility & relaxation' },
+    { emoji: '🌿', name: 'Selbstmassage',           hint: 'Faszienrolle oder Massageball benutzen',        en: 'Self massage',        enHint: 'Use foam roller or massage ball' },
+    { emoji: '💪', name: 'Sport treiben',           hint: 'Regelmäßig aktiv bleiben',                      en: 'Exercise',            enHint: 'Stay regularly active' },
+    { emoji: '🧂', name: 'Körperpeeling',           hint: 'Für seidige, glatte Haut',                      en: 'Body scrub',          enHint: 'For silky smooth skin' },
+  ],
+};
+
+// ===== BOY TIPS =====
+const TIPS_POOL_BOY = [
+  { de: '🪒 Rasierklinge nach 5–7 Rasuren wechseln – stumpfe Klingen reizen die Haut.', en: '🪒 Change razor blade after 5–7 shaves – dull blades irritate the skin.' },
+  { de: '🧴 Aftershave ohne Alkohol wählen – alkoholhaltige Produkte trocknen die Haut stark aus.', en: '🧴 Choose alcohol-free aftershave – alcohol-based products dry out skin significantly.' },
+  { de: '💧 2 Liter Wasser täglich trinken für gesunde, hydratisierte Haut.', en: '💧 Drink 2 liters of water daily for healthy, hydrated skin.' },
+  { de: '☀️ Sonnencreme täglich auftragen – auch Männer brauchen SPF-Schutz!', en: '☀️ Apply sunscreen daily – men need SPF protection too!' },
+  { de: '🌿 Bartöl täglich anwenden hält den Bart weich und die Haut darunter gepflegt.', en: '🌿 Daily beard oil keeps your beard soft and the skin underneath nourished.' },
+  { de: '🪮 Den Bart gegen den Strich kämmen vor dem Trimmen – für ein gleichmäßigeres Ergebnis.', en: '🪮 Comb beard against the grain before trimming – for a more even result.' },
+  { de: '😴 7–9 Stunden Schlaf sind essenziell – Haut und Muskel regenerieren sich nachts am besten.', en: '😴 7–9 hours of sleep are essential – skin and muscles recover best at night.' },
+  { de: '🌊 Kalt abduschen nach dem Training – belebt den Kreislauf und fördert die Muskelregeneration.', en: '🌊 Cold shower after training – boosts circulation and promotes muscle recovery.' },
+  { de: '✂️ Bart alle 2–3 Wochen trimmen – regelmäßiges Pflegen hält die Form sauber.', en: '✂️ Trim beard every 2–3 weeks – regular grooming keeps the shape clean.' },
+  { de: '🦷 Zähne 2x täglich 2 Minuten putzen – gepflegte Zähne sind Teil des ersten Eindrucks.', en: '🦷 Brush teeth 2x daily for 2 minutes – well-cared-for teeth are part of a first impression.' },
+  { de: '💊 Zink, Biotin & Vitamin D unterstützen Haarwachstum und Bartpflege von innen.', en: '💊 Zinc, biotin & vitamin D support hair growth and beard care from within.' },
+  { de: '🧴 Feuchtigkeitscreme täglich nutzen – auch Männerhaut braucht regelmäßige Pflege.', en: '🧴 Use moisturizer daily – men\'s skin needs regular care too.' },
+  { de: '💪 Regelmäßiger Sport verbessert die Durchblutung – gut für Haut, Haare und Wohlbefinden.', en: '💪 Regular exercise improves circulation – great for skin, hair and wellbeing.' },
+  { de: '🌡️ Heißes Tuch vor der Rasur öffnet Poren und weicht die Barthaare auf.', en: '🌡️ Hot towel before shaving opens pores and softens beard hairs.' },
+  { de: '📱 Handy-Display reinigen – es überträgt Bakterien aufs Gesicht!', en: '📱 Clean your phone screen – it transfers bacteria to your face!' },
+  { de: '🌿 Bartshampoo statt normales Shampoo – normales Shampoo trocknet Barthaare aus.', en: '🌿 Use beard shampoo instead of regular shampoo – regular shampoo dries out beard hair.' },
+  { de: '🫧 Gesichtspeeling 1x pro Woche beugt eingewachsenen Haaren nach der Rasur vor.', en: '🫧 Face scrub once a week prevents ingrown hairs after shaving.' },
+  { de: '☕ Koffein kurbelt die Durchblutung der Kopfhaut an und kann Haarwachstum fördern.', en: '☕ Caffeine boosts scalp circulation and can promote hair growth.' },
+];
+
 const TAB_KEYS = {
   morning: ['morning_skincare','morning_makeup','morning_body','morning_wellness'],
   evening: ['evening_skincare','evening_body','evening_wellness'],
@@ -479,21 +639,27 @@ function applyTranslations() {
   updateDate();
   updateProgress();
   renderTips();
+  applyGenderContent();
   const name = getUsername();
   if (name) showGreeting(name);
 }
 
 // ===== Daily Tips =====
 function getDailyTips() {
-  const color  = store.get('routine_haircolor')  || '';
-  const length = store.get('routine_hairlength') || '';
+  const dayNum = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
 
-  let pool = [...TIPS_POOL.general, ...TIPS_POOL.hairGeneral];
-  if (color  && TIPS_POOL.byColor[color])    pool = [...pool, ...TIPS_POOL.byColor[color]];
-  if (length && TIPS_POOL.byLength[length])  pool = [...pool, ...TIPS_POOL.byLength[length]];
+  let pool;
+  if (getGender() === 'boy') {
+    pool = [...TIPS_POOL_BOY];
+  } else {
+    const color  = store.get('routine_haircolor')  || '';
+    const length = store.get('routine_hairlength') || '';
+    pool = [...TIPS_POOL.general, ...TIPS_POOL.hairGeneral];
+    if (color  && TIPS_POOL.byColor[color])   pool = [...pool, ...TIPS_POOL.byColor[color]];
+    if (length && TIPS_POOL.byLength[length]) pool = [...pool, ...TIPS_POOL.byLength[length]];
+  }
 
   // Deterministic daily shuffle using day number as seed
-  const dayNum = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
   const shuffled = [...pool];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const seed = Math.abs((dayNum * 1664525 + i * 1013904223) | 0);
@@ -528,7 +694,9 @@ function setEditMode(on) {
 
 // ===== Items =====
 function getItems(catKey) {
-  return [...(ROUTINES[catKey] || []), ...(customItems[catKey] || [])];
+  const isBoy = getGender() === 'boy';
+  const base = (isBoy && ROUTINES_BOY[catKey]) ? ROUTINES_BOY[catKey] : (ROUTINES[catKey] || []);
+  return [...base, ...(customItems[catKey] || [])];
 }
 
 function buildList(catKey) {
@@ -702,7 +870,8 @@ const PRESETS = {
 function buildPresets(catKey) {
   const container = document.getElementById('modalPresets');
   container.innerHTML = '';
-  const presets = PRESETS[catKey];
+  const isBoy = getGender() === 'boy';
+  const presets = (isBoy && PRESETS_BOY[catKey]) ? PRESETS_BOY[catKey] : PRESETS[catKey];
   if (!presets) return;
 
   const label = document.createElement('div');
@@ -712,6 +881,7 @@ function buildPresets(catKey) {
 
   const chips = document.createElement('div');
   chips.className = 'preset-chips';
+  const selectedBg = isBoy ? 'linear-gradient(135deg, #42a5f5, #1565c0)' : 'linear-gradient(135deg, #f06292, #ab47bc)';
 
   presets.forEach(p => {
     const displayName = (currentLang === 'en' && p.en)     ? p.en     : p.name;
@@ -728,7 +898,7 @@ function buildPresets(catKey) {
       chips.querySelectorAll('.preset-chip').forEach(c => {
         c.style.background = ''; c.style.color = ''; c.style.borderColor = '';
       });
-      chip.style.background   = 'linear-gradient(135deg, #f06292, #ab47bc)';
+      chip.style.background   = selectedBg;
       chip.style.color        = 'white';
       chip.style.borderColor  = 'transparent';
     });
@@ -747,9 +917,10 @@ const BEAUTY_EMOJIS = [
 ];
 
 function buildEmojiGrid() {
+  const emojis = getGender() === 'boy' ? BOY_EMOJIS : BEAUTY_EMOJIS;
   const grid = document.getElementById('emojiGrid');
   grid.innerHTML = '';
-  BEAUTY_EMOJIS.forEach(em => {
+  emojis.forEach(em => {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'emoji-btn';
@@ -1000,6 +1171,56 @@ function getGreeting() {
   return                         { text: t('greetingNight'),   emoji: '⭐' };
 }
 
+// ===== THEME =====
+function applyTheme(gender) {
+  document.body.classList.toggle('theme-boy', gender === 'boy');
+  applyGenderContent();
+  renderAll();
+  renderTips();
+}
+
+function getGender() {
+  return store.get('routine_gender') || 'girl';
+}
+
+function applyGenderContent() {
+  const isBoy = getGender() === 'boy';
+
+  function setCat(key, emoji, label) {
+    const cat = document.querySelector(`.category[data-key="${key}"]`);
+    if (!cat) return;
+    const h2 = cat.querySelector('.category-title');
+    if (!h2) return;
+    h2.innerHTML = `${emoji} <span>${label}</span>`;
+  }
+
+  setCat('morning_skincare',  isBoy ? '🧖‍♂️' : '🧖‍♀️', t('skincare'));
+  setCat('morning_makeup',    isBoy ? '🪒'    : '💄',    isBoy ? t('beardCare') : t('makeup'));
+  setCat('morning_body',      isBoy ? '💪'    : '💆‍♀️', t('bodyHair'));
+  setCat('morning_wellness',  '🌿', t('wellness'));
+  setCat('evening_skincare',  isBoy ? '🧖‍♂️' : '🧖‍♀️', t('skincare'));
+  setCat('evening_body',      isBoy ? '💪'    : '💆‍♀️', t('bodyHair'));
+  setCat('evening_wellness',  '🌿', t('wellness'));
+  setCat('weekly_skincare',   isBoy ? '🧖‍♂️' : '🧖‍♀️', t('skincare'));
+  setCat('weekly_hair',       isBoy ? '💇‍♂️' : '💇‍♀️', t('hairCare'));
+  setCat('weekly_nails',      isBoy ? '✂️'   : '💅',    isBoy ? t('boyGrooming') : t('nailCare'));
+  setCat('weekly_body',       isBoy ? '🏋️‍♂️' : '🛁',  t('bodyCare'));
+
+  // Emoji in erstem Text-Node eines Elements setzen (ohne innerHTML zu zerstören)
+  function setFirstTextNode(el, text) {
+    if (!el) return;
+    for (const node of el.childNodes) {
+      if (node.nodeType === Node.TEXT_NODE) { node.textContent = text; return; }
+    }
+    el.insertBefore(document.createTextNode(text), el.firstChild);
+  }
+
+  setFirstTextNode(document.querySelector('.termine-title'), isBoy ? '📅 ' : '💜 ');
+  setFirstTextNode(document.getElementById('resetBtn'),      isBoy ? '🔄'  : '🌸');
+  setFirstTextNode(document.getElementById('resetAllBtn'),   isBoy ? '🗑️' : '💫');
+  setFirstTextNode(document.getElementById('termineOpenBtn'),isBoy ? '📅'  : '💜');
+}
+
 function fitLogoText() {
   const logoTop     = document.querySelector('.logo-top');
   const beauty      = document.querySelector('.logo-beauty');
@@ -1040,6 +1261,11 @@ function showGreeting(name) {
 function openSettings() {
   document.getElementById('settingsName').value = getUsername();
 
+  const gender = getGender();
+  document.querySelectorAll('.settings-gender .gender-btn').forEach(btn => {
+    btn.classList.toggle('selected', btn.dataset.value === gender);
+  });
+
   const color = store.get('routine_haircolor') || '';
   document.querySelectorAll('#settingsHairColor .ob-option').forEach(btn => {
     btn.classList.toggle('selected', btn.dataset.value === color);
@@ -1071,6 +1297,11 @@ function saveSettings() {
   const newColor  = selColor  ? selColor.dataset.value  : '';
   const selLength = document.querySelector('#settingsHairLength .ob-option.selected');
   const newLength = selLength ? selLength.dataset.value : '';
+
+  const selGender = document.querySelector('.settings-gender .gender-btn.selected');
+  const newGender = selGender ? selGender.dataset.value : getGender();
+  store.set('routine_gender', newGender);
+  applyTheme(newGender);
 
   if (name) saveUsername(name);
   store.set('routine_lang',       newLang);
@@ -1131,18 +1362,33 @@ function initOnboarding() {
       });
     });
 
-    // ---- Step 1 → 2 ----
-    const goStep2 = () => {
+    // ---- Step 1 → 1b (Gender) ----
+    let selectedGender = 'girl';
+    const goStep1b = () => {
       if (!document.getElementById('nameInput').value.trim()) {
         document.getElementById('nameInput').focus();
         return;
       }
       document.getElementById('ob-step1').style.display = 'none';
-      document.getElementById('ob-step2').style.display = 'block';
+      document.getElementById('ob-step1b').style.display = 'block';
     };
-    document.getElementById('obNext1').addEventListener('click', goStep2);
+    document.getElementById('obNext1').addEventListener('click', goStep1b);
     document.getElementById('nameInput').addEventListener('keydown', e => {
-      if (e.key === 'Enter') goStep2();
+      if (e.key === 'Enter') goStep1b();
+    });
+
+    // ---- Step 1b: Gender selection ----
+    document.querySelectorAll('#ob-step1b .gender-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#ob-step1b .gender-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedGender = btn.dataset.value;
+        applyTheme(selectedGender);
+      });
+    });
+    document.getElementById('obNext1b').addEventListener('click', () => {
+      document.getElementById('ob-step1b').style.display = 'none';
+      document.getElementById('ob-step2').style.display = 'block';
     });
 
     // ---- Step 2: Hair color ----
@@ -1176,6 +1422,7 @@ function initOnboarding() {
       saveUsername(val);
       store.set('routine_haircolor',  selectedColor);
       store.set('routine_hairlength', selectedLength);
+      store.set('routine_gender', selectedGender);
       applyHairProfile();
       screen.classList.remove('show');
       showGreeting(val);
@@ -1256,6 +1503,14 @@ function init() {
     });
   });
 
+  // Settings: gender selection
+  document.querySelectorAll('.settings-gender .gender-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.settings-gender .gender-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+  });
+
   // Settings: hair color selection
   document.querySelectorAll('#settingsHairColor .ob-option').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1275,6 +1530,7 @@ function init() {
   // Termine
   loadTermine();
   updateTodayBadge();
+  applyTheme(getGender());
   setTimeout(fitLogoText, 50);
   document.getElementById('termineOpenBtn').addEventListener('click', openTermineOverlay);
   document.getElementById('termineCloseBtn').addEventListener('click', closeTermineOverlay);
@@ -1543,7 +1799,8 @@ function buildTerminPresets() {
   const chips = document.createElement('div');
   chips.className = 'termin-preset-chips';
 
-  TERMIN_PRESETS.forEach(p => {
+  const presetList = getGender() === 'boy' ? TERMIN_PRESETS_BOY : TERMIN_PRESETS;
+  presetList.forEach(p => {
     const chip = document.createElement('button');
     chip.type = 'button';
     chip.className = 'termin-preset-chip';

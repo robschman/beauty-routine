@@ -59,6 +59,24 @@
           <button class="name-save-btn" id="obNext1" data-tr="next"></button>
         </div>
 
+        <!-- Schritt 1b: Geschlecht -->
+        <div class="ob-step" id="ob-step1b" style="display:none">
+          <div class="onboarding-emoji" id="genderEmoji">👧</div>
+          <h2 class="onboarding-title" data-tr="genderTitle"></h2>
+          <p class="onboarding-text" data-tr="genderHint"></p>
+          <div class="gender-options">
+            <button class="gender-btn selected" id="genderGirl" data-value="girl">
+              <span class="gender-icon">👧</span>
+              <span data-tr="girl"></span>
+            </button>
+            <button class="gender-btn" id="genderBoy" data-value="boy">
+              <span class="gender-icon">👦</span>
+              <span data-tr="boy"></span>
+            </button>
+          </div>
+          <button class="name-save-btn" id="obNext1b" data-tr="next"></button>
+        </div>
+
         <!-- Schritt 2: Haarfarbe -->
         <div class="ob-step" id="ob-step2" style="display:none">
           <div class="onboarding-emoji">💇‍♀️</div>
@@ -296,6 +314,21 @@
     <div class="modal-overlay" id="settingsOverlay">
       <div class="modal settings-modal">
         <h3 class="modal-title">⚙️ <span data-tr="settings"></span></h3>
+
+        <!-- Geschlecht -->
+        <div class="settings-section">
+          <div class="settings-label">🎀 <span data-tr="genderTitle"></span></div>
+          <div class="gender-options settings-gender">
+            <button class="gender-btn" id="settingsGenderGirl" data-value="girl">
+              <span class="gender-icon">👧</span>
+              <span data-tr="girl"></span>
+            </button>
+            <button class="gender-btn" id="settingsGenderBoy" data-value="boy">
+              <span class="gender-icon">👦</span>
+              <span data-tr="boy"></span>
+            </button>
+          </div>
+        </div>
 
         <!-- Sprache -->
         <div class="settings-section">
