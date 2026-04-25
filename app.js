@@ -1506,3 +1506,57 @@ function closeTermineOverlay() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+// ===== PULL TO REFRESH =====
+(function() {
+  let startY = 0;
+  let pulling = false;
+  let indicator = null;
+
+  function createIndicator() {
+    indicator = document.createElement('div');
+    indicator.id = 'ptr-indicator';
+    indicator.style.cssText = `
+      position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+      background: rgba(255,255,255,0.9); backdrop-filter: blur(8px);
+      border-radius: 0 0 20px 20px; padding: 8px 20px;
+      font-size: 0.8rem; color: #c2185b; font-weight: 600;
+      box-shadow: 0 2px 12px rgba(194,24,91,0.2);
+      transition: opacity 0.3s; opacity: 0; z-index: 9999;
+      pointer-events: none;
+    `;
+    indicator.textContent = '↓ Zum Aktualisieren ziehen';
+    document.body.appendChild(indicator);
+  }
+
+  document.addEventListener('touchstart', e => {
+    if (window.scrollY === 0) {
+      startY = e.touches[0].clientY;
+      pulling = true;
+      if (!indicator) createIndicator();
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchmove', e => {
+    if (!pulling) return;
+    const dy = e.touches[0].clientY - startY;
+    if (dy > 10) {
+      indicator.style.opacity = Math.min(1, dy / 80);
+      indicator.textContent = dy > 70 ? '↑ Loslassen zum Aktualisieren' : '↓ Zum Aktualisieren ziehen';
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
+    if (!pulling) return;
+    const dy = e.changedTouches[0].clientY - startY;
+    if (dy > 70) {
+      indicator.textContent = '🔄 Wird aktualisiert…';
+      indicator.style.opacity = '1';
+      setTimeout(() => location.reload(), 300);
+    } else {
+      indicator.style.opacity = '0';
+    }
+    pulling = false;
+    startY = 0;
+  }, { passive: true });
+})();
