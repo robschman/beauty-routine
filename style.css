@@ -1915,6 +1915,15 @@ body.theme-boy .modal-overlay {
   background: rgba(21, 101, 192, 0.35);
 }
 
+body.theme-boy .settings-open-btn {
+  box-shadow: 0 2px 12px rgba(30,136,229,0.15);
+  border-color: #bbdefb;
+}
+
+body.theme-boy .settings-open-btn:active {
+  background: #e3f2fd;
+}
+
 body.theme-boy .preset-chip {
   background: linear-gradient(160deg, rgba(255,255,255,0.9) 0%, rgba(227,242,253,0.75) 100%);
   box-shadow:
