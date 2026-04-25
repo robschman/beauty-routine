@@ -1328,7 +1328,7 @@ function fitLogoText() {
 function showGreeting(name) {
   const isBoy = getGender() === 'boy';
   const logoName = document.getElementById('logoName');
-  if (logoName) logoName.textContent = `${t('logoNamePrefix')} ${name}${isBoy ? ' 💪' : ' 🌸✨'}`;
+  if (logoName) logoName.textContent = `${t('logoNamePrefix')} ${isBoy ? name.toUpperCase() : name}${isBoy ? ' 💪' : ' 🌸✨'}`;
   setTimeout(fitLogoText, 0);
 
   const { text, emoji } = getGreeting();
