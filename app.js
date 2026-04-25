@@ -1174,6 +1174,7 @@ function init() {
   renderAll();
   updateProgress();
   checkCompletion();
+  updateTodayBadge();
 
   // Tabs
   document.querySelectorAll('.tab').forEach(tab => {
@@ -1328,9 +1329,29 @@ function updateFabPosition() {
   }
 }
 
+function updateTodayBadge() {
+  const btn = document.getElementById('termineOpenBtn');
+  if (!btn) return;
+  const today = new Date();
+  const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+  const todayCount = termine.filter(t => t.date === todayStr).length;
+  let badge = btn.querySelector('.today-badge');
+  if (todayCount > 0) {
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.className = 'today-badge';
+      btn.appendChild(badge);
+    }
+    badge.textContent = todayCount;
+  } else {
+    if (badge) badge.remove();
+  }
+}
+
 function renderTermine() {
   const list = document.getElementById('termineList');
   if (!list) return;
+  updateTodayBadge();
 
   // Sort by date ascending (soonest first), undated at bottom
   const sorted = [...termine].sort((a, b) => {
@@ -1597,15 +1618,17 @@ document.addEventListener('DOMContentLoaded', init);
     indicator = document.createElement('div');
     indicator.id = 'ptr-indicator';
     indicator.style.cssText = `
-      position: fixed; top: calc(env(safe-area-inset-top) + 50px); left: 50%; transform: translateX(-50%);
-      background: rgba(255,255,255,0.9); backdrop-filter: blur(8px);
-      border-radius: 20px; padding: 8px 20px;
-      font-size: 0.8rem; color: #c2185b; font-weight: 600;
-      box-shadow: 0 2px 12px rgba(194,24,91,0.2);
+      position: fixed; top: calc(env(safe-area-inset-top) + 50px); left: 50%; transform: translateX(-50%) translateY(-2px);
+      background: linear-gradient(135deg, rgba(255,182,214,0.95), rgba(255,255,255,0.95));
+      backdrop-filter: blur(12px);
+      border-radius: 30px; padding: 9px 22px;
+      font-size: 0.78rem; color: #c2185b; font-weight: 700;
+      font-family: Georgia, serif; letter-spacing: 0.3px;
+      box-shadow: 0 4px 20px rgba(233,30,140,0.25), 0 0 0 1.5px rgba(233,30,140,0.15);
       transition: opacity 0.3s; opacity: 0; z-index: 9999;
-      pointer-events: none;
+      pointer-events: none; white-space: nowrap;
     `;
-    indicator.textContent = '↓ Zum Aktualisieren ziehen';
+    indicator.textContent = '🌸 Zum Aktualisieren ziehen';
     document.body.appendChild(indicator);
   }
 
@@ -1622,7 +1645,7 @@ document.addEventListener('DOMContentLoaded', init);
     const dy = e.touches[0].clientY - startY;
     if (dy > 10) {
       indicator.style.opacity = Math.min(1, dy / 80);
-      indicator.textContent = dy > 70 ? '↑ Loslassen zum Aktualisieren' : '↓ Zum Aktualisieren ziehen';
+      indicator.textContent = dy > 70 ? '💜 Loslassen zum Aktualisieren' : '🌸 Zum Aktualisieren ziehen';
     }
   }, { passive: true });
 
@@ -1630,7 +1653,7 @@ document.addEventListener('DOMContentLoaded', init);
     if (!pulling) return;
     const dy = e.changedTouches[0].clientY - startY;
     if (dy > 70) {
-      indicator.textContent = '🔄 Wird aktualisiert…';
+      indicator.textContent = '✨ Wird aktualisiert…';
       indicator.style.opacity = '1';
       setTimeout(() => location.reload(), 300);
     } else {
