@@ -1001,25 +1001,26 @@ function getGreeting() {
 }
 
 function fitLogoText() {
-  const logoTop = document.querySelector('.logo-top');
-  const beauty  = document.querySelector('.logo-beauty');
-  const name    = document.querySelector('.logo-name');
-  if (!logoTop || !beauty || !name) return;
+  const logoTop     = document.querySelector('.logo-top');
+  const beauty      = document.querySelector('.logo-beauty');
+  const name        = document.querySelector('.logo-name');
+  const dateDisplay = document.getElementById('dateDisplay');
+  if (!logoTop || !beauty || !name || !dateDisplay) return;
 
-  // Reset to max sizes first
-  beauty.style.fontSize = '2.6rem';
-  name.style.fontSize   = '1.75rem';
-
-  // Scale down until it fits within the header-row
+  // Verfügbare Breite = Header - Datumsbox - etwas Abstand
   const headerRow = document.querySelector('.header-row');
   if (!headerRow) return;
-  const maxWidth = headerRow.offsetWidth * 0.58; // logo gets ~58% of header width
+  const available = headerRow.offsetWidth - dateDisplay.offsetWidth - 16;
 
-  let scale = 1;
-  while (logoTop.scrollWidth > maxWidth && scale > 0.55) {
-    scale -= 0.02;
-    beauty.style.fontSize = (2.6 * scale) + 'rem';
-    name.style.fontSize   = (1.75 * scale) + 'rem';
+  // Maximale Schriftgröße für den Namen bestimmen (füllt bis fast ans Kästchen)
+  const maxSize = 2.2;
+  const minSize = 0.75;
+  name.style.fontSize = maxSize + 'rem';
+
+  let size = maxSize;
+  while (logoTop.scrollWidth > available && size > minSize) {
+    size -= 0.03;
+    name.style.fontSize = size + 'rem';
   }
 }
 
