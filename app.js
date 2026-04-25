@@ -52,6 +52,13 @@ const TRANSLATIONS = {
     termsBtn: 'AGB & Datenschutz',
     termsTitle: 'AGB & Datenschutz',
     close: 'Schließen',
+    appointments: 'Termine',
+    manage: 'verwalten',
+    myAppointments: 'Meine Termine',
+    addAppointment: 'Termin hinzufügen',
+    date: 'Datum',
+    time: 'Uhrzeit',
+    noteOptional: 'Notiz (optional)',
     editItem: 'Item bearbeiten',
     addItemTitle: 'Item hinzufügen',
     suggestions: '💡 Vorschläge',
@@ -132,6 +139,13 @@ const TRANSLATIONS = {
     termsBtn: 'Terms & Privacy',
     termsTitle: 'Terms & Privacy',
     close: 'Close',
+    appointments: 'Appointments',
+    manage: 'manage',
+    myAppointments: 'My Appointments',
+    addAppointment: 'Add appointment',
+    date: 'Date',
+    time: 'Time',
+    noteOptional: 'Note (optional)',
     editItem: 'Edit item',
     addItemTitle: 'Add item',
     suggestions: '💡 Suggestions',
@@ -1193,7 +1207,6 @@ function init() {
 
   // Reset buttons
   document.getElementById('resetBtn').addEventListener('click', resetToday);
-  document.getElementById('resetWeeklyBtn').addEventListener('click', resetWeekly);
   document.getElementById('resetAllBtn').addEventListener('click', resetAll);
 
   // Settings
@@ -1228,12 +1241,264 @@ function init() {
     });
   });
 
+  // Termine
+  loadTermine();
+  document.getElementById('termineOpenBtn').addEventListener('click', openTermineOverlay);
+  document.getElementById('termineCloseBtn').addEventListener('click', closeTermineOverlay);
+  document.getElementById('addTerminBtn').addEventListener('click', () => openTerminEdit(null));
+  document.getElementById('terminEmoji').addEventListener('input', syncTerminEmojiSelection);
+  document.getElementById('terminEditSave').addEventListener('click', saveTerminEdit);
+  document.getElementById('terminEditCancel').addEventListener('click', closeTerminEdit);
+  document.getElementById('terminEditOverlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('terminEditOverlay')) closeTerminEdit();
+  });
+  document.getElementById('terminName').addEventListener('keydown', e => {
+    if (e.key === 'Enter') saveTerminEdit();
+    if (e.key === 'Escape') closeTerminEdit();
+  });
+
   // AGB
   document.getElementById('agbOpenBtn').addEventListener('click', openAgb);
   document.getElementById('agbClose').addEventListener('click', closeAgb);
   document.getElementById('agbOverlay').addEventListener('click', e => {
     if (e.target === document.getElementById('agbOverlay')) closeAgb();
   });
+}
+
+// ===== TERMINE =====
+const TERMIN_PRESETS = [
+  { emoji: '✂️', name: { de: 'Frisör',           en: 'Hairdresser' } },
+  { emoji: '💅', name: { de: 'Nägel machen',      en: 'Nail appointment' } },
+  { emoji: '🦶', name: { de: 'Fußpflege',         en: 'Pedicure' } },
+  { emoji: '🧖‍♀️', name: { de: 'Kosmetikerin',   en: 'Beautician' } },
+  { emoji: '👁️', name: { de: 'Wimpern liften',   en: 'Lash lift' } },
+  { emoji: '🤸‍♀️', name: { de: 'Massage',        en: 'Massage' } },
+  { emoji: '🦷', name: { de: 'Zahnarzt',          en: 'Dentist' } },
+  { emoji: '👗', name: { de: 'Shopping',          en: 'Shopping' } },
+  { emoji: '💉', name: { de: 'Botox / Filler',    en: 'Botox / Filler' } },
+  { emoji: '🌿', name: { de: 'Spa / Wellness',    en: 'Spa / Wellness' } },
+  { emoji: '🧴', name: { de: 'Hautarzt',          en: 'Dermatologist' } },
+  { emoji: '🏋️‍♀️', name: { de: 'Sport / Gym',  en: 'Sport / Gym' } },
+];
+
+let termine = [];
+
+function loadTermine() {
+  try {
+    const t = store.get('routine_termine');
+    termine = t ? JSON.parse(t) : [];
+  } catch(e) { termine = []; }
+}
+
+function saveTermine() {
+  store.set('routine_termine', JSON.stringify(termine));
+}
+
+function formatTerminDate(dateStr, timeStr) {
+  if (!dateStr) return '';
+  const lang = currentLang;
+  const d = new Date(dateStr + (timeStr ? 'T' + timeStr : 'T00:00'));
+  const days   = t('days');
+  const months = t('months');
+  const dayName = days[d.getDay()];
+  const dateFormatted = `${dayName}, ${d.getDate()}. ${months[d.getMonth()]}`;
+  if (timeStr) return `${dateFormatted} · ${timeStr} ${lang === 'de' ? 'Uhr' : ''}`;
+  return dateFormatted;
+}
+
+function isTerminSoon(dateStr, timeStr) {
+  if (!dateStr) return false;
+  const now  = new Date();
+  const appt = new Date(dateStr + (timeStr ? 'T' + timeStr : 'T23:59'));
+  const diff = appt - now;
+  return diff >= 0 && diff < 7 * 24 * 60 * 60 * 1000; // within 7 days
+}
+
+function updateFabPosition() {
+  const fab = document.getElementById('addTerminBtn');
+  if (!fab) return;
+  if (termine.length === 0) {
+    fab.classList.remove('at-bottom');
+  } else {
+    fab.classList.add('at-bottom');
+  }
+}
+
+function renderTermine() {
+  const list = document.getElementById('termineList');
+  if (!list) return;
+
+  // Sort by date ascending (soonest first), undated at bottom
+  const sorted = [...termine].sort((a, b) => {
+    const da = new Date((a.date || '9999-12-31') + 'T' + (a.time || '00:00'));
+    const db = new Date((b.date || '9999-12-31') + 'T' + (b.time || '00:00'));
+    return da - db;
+  });
+
+  updateFabPosition();
+
+  if (sorted.length === 0) {
+    const emptyText = currentLang === 'en'
+      ? '<span>🗓️</span>No appointments yet.<br>Tap the button to add one!'
+      : '<span>🗓️</span>Noch keine Termine.<br>Tippe auf den Button!';
+    list.innerHTML = `<div class="termine-empty">${emptyText}</div>`;
+    return;
+  }
+
+  list.innerHTML = '';
+  sorted.forEach(termin => {
+    const soon = isTerminSoon(termin.date, termin.time);
+    const card = document.createElement('div');
+    card.className = 'termin-card' + (soon ? ' termin-soon' : '');
+
+    card.innerHTML = `
+      <div class="termin-emoji">${termin.emoji || '📅'}</div>
+      <div class="termin-info">
+        <div class="termin-name">${escHtml(termin.name)}</div>
+        ${termin.date ? `<div class="termin-datetime">${formatTerminDate(termin.date, termin.time)}</div>` : ''}
+        ${termin.note ? `<div class="termin-note">${escHtml(termin.note)}</div>` : ''}
+      </div>
+      <div class="termin-actions">
+        <button class="termin-action-btn" data-id="${termin.id}" data-action="edit">✏️</button>
+        <button class="termin-action-btn delete" data-id="${termin.id}" data-action="delete">🗑️</button>
+      </div>
+    `;
+    list.appendChild(card);
+  });
+
+  list.querySelectorAll('.termin-action-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (btn.dataset.action === 'edit') openTerminEdit(btn.dataset.id);
+      if (btn.dataset.action === 'delete') deleteTermin(btn.dataset.id);
+    });
+  });
+}
+
+function deleteTermin(id) {
+  if (!confirm(currentLang === 'en' ? 'Delete this appointment?' : 'Termin löschen?')) return;
+  termine = termine.filter(t => t.id !== id);
+  saveTermine();
+  renderTermine();
+}
+
+// Termin Edit Modal
+let terminCtx = null;
+
+function buildTerminEmojiGrid() {
+  const APPT_EMOJIS = [
+    '✂️','💅','🦶','🧖‍♀️','👁️','💉','🌿','🧴','🦷','💊',
+    '🏋️‍♀️','🧘‍♀️','🛁','🌸','💄','💋','🪞','👗','🛍️','🎀',
+    '🌺','🌷','💎','✨','🌙','☀️','🫧','🍃','🩺','💆‍♀️',
+  ];
+  const grid = document.getElementById('terminEmojiGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  APPT_EMOJIS.forEach(em => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'emoji-btn';
+    btn.textContent = em;
+    btn.addEventListener('click', () => {
+      document.getElementById('terminEmoji').value = em;
+      grid.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+    grid.appendChild(btn);
+  });
+}
+
+function syncTerminEmojiSelection() {
+  const val = document.getElementById('terminEmoji').value.trim();
+  const grid = document.getElementById('terminEmojiGrid');
+  if (!grid) return;
+  grid.querySelectorAll('.emoji-btn').forEach(b => {
+    b.classList.toggle('selected', b.textContent === val);
+  });
+}
+
+function openTerminEdit(id = null) {
+  terminCtx = id;
+  const isEdit = id !== null;
+  const existing = isEdit ? termine.find(t => t.id === id) : null;
+
+  document.getElementById('terminEditTitle').textContent =
+    isEdit ? (currentLang === 'en' ? 'Edit appointment' : 'Termin bearbeiten')
+           : (currentLang === 'en' ? 'New appointment'  : 'Neuer Termin');
+
+  document.getElementById('terminEmoji').value = existing?.emoji || '';
+  document.getElementById('terminName').value  = existing?.name  || '';
+  document.getElementById('terminDate').value  = existing?.date  || '';
+  document.getElementById('terminTime').value  = existing?.time  || '';
+  document.getElementById('terminNote').value  = existing?.note  || '';
+
+  buildTerminPresets();
+  buildTerminEmojiGrid();
+  syncTerminEmojiSelection();
+  document.getElementById('terminEditOverlay').classList.add('open');
+  setTimeout(() => document.getElementById('terminName').focus(), 80);
+}
+
+function closeTerminEdit() {
+  document.getElementById('terminEditOverlay').classList.remove('open');
+  terminCtx = null;
+}
+
+function saveTerminEdit() {
+  const name  = document.getElementById('terminName').value.trim();
+  const emoji = document.getElementById('terminEmoji').value.trim() || '📅';
+  const date  = document.getElementById('terminDate').value;
+  const time  = document.getElementById('terminTime').value;
+  const note  = document.getElementById('terminNote').value.trim();
+
+  if (!name) { document.getElementById('terminName').focus(); return; }
+
+  if (terminCtx) {
+    const idx = termine.findIndex(t => t.id === terminCtx);
+    if (idx >= 0) termine[idx] = { ...termine[idx], emoji, name, date, time, note };
+  } else {
+    termine.push({ id: 'tr_' + Date.now(), emoji, name, date, time, note });
+  }
+  saveTermine();
+  closeTerminEdit();
+  renderTermine();
+}
+
+function buildTerminPresets() {
+  const container = document.getElementById('terminPresets');
+  container.innerHTML = '';
+
+  const label = document.createElement('div');
+  label.className = 'termin-preset-label';
+  label.textContent = currentLang === 'en' ? '💡 Quick add' : '💡 Vorschläge';
+  container.appendChild(label);
+
+  const chips = document.createElement('div');
+  chips.className = 'termin-preset-chips';
+
+  TERMIN_PRESETS.forEach(p => {
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'termin-preset-chip';
+    const name = p.name[currentLang] || p.name.de;
+    chip.textContent = `${p.emoji} ${name}`;
+    chip.addEventListener('click', () => {
+      document.getElementById('terminEmoji').value = p.emoji;
+      document.getElementById('terminName').value  = name;
+    });
+    chips.appendChild(chip);
+  });
+
+  container.appendChild(chips);
+}
+
+function openTermineOverlay() {
+  renderTermine();
+  document.getElementById('termineOverlay').classList.add('open');
+}
+
+function closeTermineOverlay() {
+  document.getElementById('termineOverlay').classList.remove('open');
 }
 
 document.addEventListener('DOMContentLoaded', init);

@@ -215,8 +215,55 @@
     <!-- Footer -->
     <div class="footer">
       <button class="reset-btn" id="resetBtn">🌸<span class="btn-label"><span data-tr="morningEvening"></span><em data-tr="restart"></em></span></button>
-      <button class="reset-weekly-btn" id="resetWeeklyBtn">🌷<span class="btn-label"><span data-tr="week"></span><em data-tr="restart"></em></span></button>
       <button class="reset-all-btn" id="resetAllBtn">💫<span class="btn-label"><span data-tr="all"></span><em data-tr="restart"></em></span></button>
+      <button class="termine-btn" id="termineOpenBtn">💜<span class="btn-label"><span data-tr="appointments"></span><em data-tr="manage"></em></span></button>
+    </div>
+
+    <!-- Termine Overlay (Vollbild) -->
+    <div class="termine-overlay" id="termineOverlay">
+      <div class="termine-panel">
+        <div class="termine-header">
+          <h2 class="termine-title">💜 <span data-tr="myAppointments"></span></h2>
+          <button class="termine-close-btn" id="termineCloseBtn">✕</button>
+        </div>
+        <div class="termine-list" id="termineList"></div>
+        <button class="add-termin-fab" id="addTerminBtn">
+          <span>＋</span><span data-tr="addAppointment"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Termin Hinzufügen / Bearbeiten Modal -->
+    <div class="modal-overlay" id="terminEditOverlay">
+      <div class="modal termin-edit-modal">
+        <h3 class="modal-title" id="terminEditTitle"></h3>
+        <div class="termin-presets" id="terminPresets"></div>
+        <div class="modal-field">
+          <label data-tr="emoji"></label>
+          <input type="text" id="terminEmoji" maxlength="4" placeholder="✂️" autocomplete="off" />
+          <div class="emoji-grid" id="terminEmojiGrid"></div>
+        </div>
+        <div class="modal-field">
+          <label data-tr="nameRequired"></label>
+          <input type="text" id="terminName" maxlength="60" />
+        </div>
+        <div class="modal-field">
+          <label data-tr="date"></label>
+          <input type="date" id="terminDate" />
+        </div>
+        <div class="modal-field">
+          <label data-tr="time"></label>
+          <input type="time" id="terminTime" />
+        </div>
+        <div class="modal-field">
+          <label data-tr="noteOptional"></label>
+          <input type="text" id="terminNote" maxlength="120" />
+        </div>
+        <div class="modal-actions">
+          <button class="modal-cancel" id="terminEditCancel" data-tr="cancel"></button>
+          <button class="modal-save" id="terminEditSave" data-tr="save"></button>
+        </div>
+      </div>
     </div>
 
     <!-- Modal: Item hinzufügen / bearbeiten -->
