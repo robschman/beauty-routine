@@ -420,6 +420,12 @@ const ROUTINES = {
 
 // ===== BOY ROUTINES (ersetzt Mädchen-Kategorien im Bub-Modus) =====
 const ROUTINES_BOY = {
+  morning_skincare: [
+    { id: 'bms1', emoji: '💧', name: 'Gesicht reinigen',     hint: 'Sanfter Cleanser für einen frischen Start',         en: 'Cleanse face',      enHint: 'Gentle cleanser for a fresh start' },
+    { id: 'bms2', emoji: '💎', name: 'Serum auftragen',      hint: 'Konzentrierte Wirkstoffe für deine Haut',           en: 'Apply serum',       enHint: 'Concentrated actives for your skin' },
+    { id: 'bms3', emoji: '🧴', name: 'Feuchtigkeitscreme',   hint: 'Hautbarriere schützen & hydratisieren',             en: 'Moisturizer',       enHint: 'Protect skin barrier & hydrate' },
+    { id: 'bms4', emoji: '☀️', name: 'Sonnencreme SPF 30+', hint: 'Täglich – der wichtigste Anti-Aging-Schritt!',      en: 'Sunscreen SPF 30+', enHint: 'Daily – the most important anti-aging step!' },
+  ],
   morning_makeup: [
     { id: 'bmm1', emoji: '🪒', name: 'Rasieren',           hint: 'Mit Rasierschaum für eine glatte Rasur',         en: 'Shave',              enHint: 'With shaving foam for a smooth shave' },
     { id: 'bmm2', emoji: '✂️', name: 'Bart trimmen',       hint: 'Form halten und regelmäßig pflegen',             en: 'Trim beard',         enHint: 'Maintain and groom your beard shape' },
@@ -493,6 +499,13 @@ const BOY_EMOJIS = [
 
 // ===== BOY PRESET SUGGESTIONS =====
 const PRESETS_BOY = {
+  morning_skincare: [
+    { emoji: '🧊', name: 'Eiswasser-Splash',      hint: 'Poren verfeinern & Haut wecken',               en: 'Ice water splash',    enHint: 'Refine pores & wake up your skin' },
+    { emoji: '🌿', name: 'Aloe Vera auftragen',   hint: 'Beruhigt & hydratisiert sofort',                en: 'Apply aloe vera',     enHint: 'Soothes & hydrates instantly' },
+    { emoji: '💊', name: 'Vitamine einnehmen',    hint: 'Biotin, Zink & Vitamin C für die Haut',        en: 'Take vitamins',       enHint: 'Biotin, zinc & vitamin C for your skin' },
+    { emoji: '☀️', name: 'SPF nicht vergessen',   hint: 'Sonnencreme täglich – beugt Hautalterung vor', en: 'Don\'t skip SPF',     enHint: 'Sunscreen daily – prevents skin aging' },
+    { emoji: '🧴', name: 'Toner / Gesichtswasser', hint: 'pH-Balance & Vorbereitung für die Pflege',    en: 'Apply toner',         enHint: 'pH balance & prep for skincare' },
+  ],
   morning_makeup: [
     { emoji: '🪒', name: 'Rasierklingen wechseln', hint: 'Neue Klinge für saubere, glatte Rasur',          en: 'Change razor blades', enHint: 'Fresh blade for a clean, smooth shave' },
     { emoji: '🧴', name: 'Bartbalsam',              hint: 'Bart weich und formbar halten',                  en: 'Beard balm',          enHint: 'Keep beard soft and manageable' },
@@ -1252,6 +1265,14 @@ function applyGenderContent() {
       if (node.nodeType === Node.TEXT_NODE) { node.textContent = text; return; }
     }
     el.insertBefore(document.createTextNode(text), el.firstChild);
+  }
+
+  // "made with" Branding
+  const branding = document.querySelector('.header-branding');
+  if (branding) {
+    branding.innerHTML = isBoy
+      ? '💪 made with 💪<br>⚡ zoe &amp; robschman'
+      : '🌸 made with 🌸<br>✨ zoe &amp; robschman';
   }
 
   setFirstTextNode(document.querySelector('.termine-title'), isBoy ? '📅 ' : '💜 ');
