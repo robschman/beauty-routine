@@ -94,6 +94,18 @@ const TRANSLATIONS = {
       'Du verdienst diese Zeit für dich. ✨',
       'Jede Routine macht dich strahlender. 💫',
     ],
+    motivationsBoy: [
+      'Du schaffst das heute! 💪',
+      'Gepflegt und selbstbewusst – das bist du! 😎',
+      'Deine Haut wird es dir danken. 👊',
+      'Ein starker Mann pflegt sich. 🦁',
+      'Routine ist der Schlüssel zum Erfolg! 🏆',
+      'Heute rockst du das! 🔥',
+      'Gönn dir heute etwas Gutes. ✨',
+      'Heute wird ein guter Tag! 🌟',
+      'Investiere in dich – es lohnt sich. 💎',
+      'Stark, gepflegt, bereit für den Tag! 🚀',
+    ],
   },
   en: {
     welcome: '🌸 Welcome!',
@@ -188,6 +200,18 @@ const TRANSLATIONS = {
       'Today is going to be a great day! 🌟',
       'You deserve this time for yourself. ✨',
       'Every routine makes you more radiant. 💫',
+    ],
+    motivationsBoy: [
+      "You've got this today! 💪",
+      'Groomed and confident – that\'s you! 😎',
+      'Your skin will thank you. 👊',
+      'A strong man takes care of himself. 🦁',
+      'Routine is the key to success! 🏆',
+      'You\'re going to crush it today! 🔥',
+      'Treat yourself to something good today. ✨',
+      'Today is going to be a great day! 🌟',
+      'Invest in yourself – it\'s worth it. 💎',
+      'Strong, groomed, ready for the day! 🚀',
     ],
   }
 };
@@ -1266,12 +1290,13 @@ function fitLogoText() {
 }
 
 function showGreeting(name) {
+  const isBoy = getGender() === 'boy';
   const logoName = document.getElementById('logoName');
-  if (logoName) logoName.textContent = `${t('logoNamePrefix')} ${name} 🌸✨`;
+  if (logoName) logoName.textContent = `${t('logoNamePrefix')} ${name}${isBoy ? ' ⚡' : ' 🌸✨'}`;
   setTimeout(fitLogoText, 0);
 
   const { text, emoji } = getGreeting();
-  const motivations = t('motivations');
+  const motivations = isBoy ? t('motivationsBoy') : t('motivations');
   const msg = motivations[Math.floor(Math.random() * motivations.length)];
   const row = document.getElementById('greetingRow');
   if (row) row.innerHTML = `${emoji} ${text}, <strong>${escHtml(name)}</strong>! — <em>${msg}</em>`;
