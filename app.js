@@ -1994,21 +1994,37 @@ document.addEventListener('DOMContentLoaded', init);
   let pulling = false;
   let indicator = null;
 
+  function getPtr() {
+    const isBoy = getGender() === 'boy';
+    return {
+      bg:     isBoy ? 'linear-gradient(135deg, rgba(144,202,249,0.95), rgba(255,255,255,0.95))'
+                    : 'linear-gradient(135deg, rgba(255,182,214,0.95), rgba(255,255,255,0.95))',
+      color:  isBoy ? '#1565c0' : '#c2185b',
+      shadow: isBoy ? '0 4px 20px rgba(30,136,229,0.25), 0 0 0 1.5px rgba(30,136,229,0.15)'
+                    : '0 4px 20px rgba(233,30,140,0.25), 0 0 0 1.5px rgba(233,30,140,0.15)',
+      pull:   isBoy ? '💪 Zum Aktualisieren ziehen' : '🌸 Zum Aktualisieren ziehen',
+      ready:  isBoy ? '⚡ Loslassen zum Aktualisieren' : '💜 Loslassen zum Aktualisieren',
+      done:   isBoy ? '🔄 Wird aktualisiert…' : '✨ Wird aktualisiert…',
+    };
+  }
+
   function createIndicator() {
+    if (indicator) indicator.remove();
+    const p = getPtr();
     indicator = document.createElement('div');
     indicator.id = 'ptr-indicator';
     indicator.style.cssText = `
       position: fixed; top: calc(env(safe-area-inset-top) + 50px); left: 50%; transform: translateX(-50%) translateY(-2px);
-      background: linear-gradient(135deg, rgba(255,182,214,0.95), rgba(255,255,255,0.95));
+      background: ${p.bg};
       backdrop-filter: blur(12px);
       border-radius: 30px; padding: 9px 22px;
-      font-size: 0.78rem; color: #c2185b; font-weight: 700;
+      font-size: 0.78rem; color: ${p.color}; font-weight: 700;
       font-family: Georgia, serif; letter-spacing: 0.3px;
-      box-shadow: 0 4px 20px rgba(233,30,140,0.25), 0 0 0 1.5px rgba(233,30,140,0.15);
+      box-shadow: ${p.shadow};
       transition: opacity 0.3s; opacity: 0; z-index: 9999;
       pointer-events: none; white-space: nowrap;
     `;
-    indicator.textContent = '🌸 Zum Aktualisieren ziehen';
+    indicator.textContent = p.pull;
     document.body.appendChild(indicator);
   }
 
@@ -2016,7 +2032,7 @@ document.addEventListener('DOMContentLoaded', init);
     if (window.scrollY === 0) {
       startY = e.touches[0].clientY;
       pulling = true;
-      if (!indicator) createIndicator();
+      createIndicator();
     }
   }, { passive: true });
 
@@ -2024,8 +2040,9 @@ document.addEventListener('DOMContentLoaded', init);
     if (!pulling) return;
     const dy = e.touches[0].clientY - startY;
     if (dy > 10) {
+      const p = getPtr();
       indicator.style.opacity = Math.min(1, dy / 80);
-      indicator.textContent = dy > 70 ? '💜 Loslassen zum Aktualisieren' : '🌸 Zum Aktualisieren ziehen';
+      indicator.textContent = dy > 70 ? p.ready : p.pull;
     }
   }, { passive: true });
 
@@ -2033,7 +2050,7 @@ document.addEventListener('DOMContentLoaded', init);
     if (!pulling) return;
     const dy = e.changedTouches[0].clientY - startY;
     if (dy > 70) {
-      indicator.textContent = '✨ Wird aktualisiert…';
+      indicator.textContent = getPtr().done;
       indicator.style.opacity = '1';
       setTimeout(() => location.reload(), 300);
     } else {
