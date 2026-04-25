@@ -1219,6 +1219,26 @@ function applyGenderContent() {
   setFirstTextNode(document.getElementById('resetBtn'),      isBoy ? '🔄'  : '🌸');
   setFirstTextNode(document.getElementById('resetAllBtn'),   isBoy ? '🗑️' : '💫');
   setFirstTextNode(document.getElementById('termineOpenBtn'),isBoy ? '📅'  : '💜');
+
+  // Tab-Emojis
+  const tabEmojis = { morning: isBoy ? '💪' : '🌸', evening: isBoy ? '🌙' : '🌙', weekly: isBoy ? '✂️' : '💅' };
+  document.querySelectorAll('.tab').forEach(tab => {
+    const e = tab.querySelector('.tab-emoji');
+    if (e && tabEmojis[tab.dataset.tab]) e.textContent = tabEmojis[tab.dataset.tab];
+  });
+
+  // Haarlänge-Emojis (Einstellungen + Onboarding)
+  const lengthEmojis = isBoy
+    ? { kurz: '💇‍♂️', mittel: '✂️', lang: '🧔' }
+    : { kurz: '💁‍♀️', mittel: '💇‍♀️', lang: '👸' };
+  document.querySelectorAll('.ob-option[data-value]').forEach(btn => {
+    const emoji = lengthEmojis[btn.dataset.value];
+    if (!emoji) return;
+    // Ersten Textnode (Emoji) ersetzen
+    for (const node of btn.childNodes) {
+      if (node.nodeType === Node.TEXT_NODE) { node.textContent = emoji; return; }
+    }
+  });
 }
 
 function fitLogoText() {

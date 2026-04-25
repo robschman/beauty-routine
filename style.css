@@ -1911,6 +1911,10 @@ body.theme-boy .footer {
   border-top-color: #90caf9;
 }
 
+body.theme-boy .modal-overlay {
+  background: rgba(21, 101, 192, 0.35);
+}
+
 body.theme-boy .preset-chip {
   background: linear-gradient(160deg, rgba(255,255,255,0.9) 0%, rgba(227,242,253,0.75) 100%);
   box-shadow:
