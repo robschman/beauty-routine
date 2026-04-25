@@ -603,81 +603,81 @@ function deleteCustomItem(catKey, id) {
 // ===== Presets =====
 const PRESETS = {
   morning_skincare: [
-    { emoji: '🌊', name: 'Mizellenwasser',        hint: 'Sanft reinigen ohne ausspülen' },
-    { emoji: '🧊', name: 'Eiswasser-Splash',      hint: 'Poren verfeinern & Haut wecken' },
-    { emoji: '🌿', name: 'Aloe Vera auftragen',   hint: 'Beruhigt & hydratisiert sofort' },
-    { emoji: '💊', name: 'Vitamine einnehmen',    hint: 'Biotin, Vitamin C & D für die Haut' },
-    { emoji: '🌺', name: 'Rosenwasser sprühen',   hint: 'Erfrischt & setzt Make-up' },
+    { emoji: '🌊', name: 'Mizellenwasser',        hint: 'Sanft reinigen ohne ausspülen',                 en: 'Micellar water',          enHint: 'Cleanse gently without rinsing' },
+    { emoji: '🧊', name: 'Eiswasser-Splash',      hint: 'Poren verfeinern & Haut wecken',               en: 'Ice water splash',        enHint: 'Refine pores & wake up your skin' },
+    { emoji: '🌿', name: 'Aloe Vera auftragen',   hint: 'Beruhigt & hydratisiert sofort',                en: 'Apply aloe vera',         enHint: 'Soothes & hydrates instantly' },
+    { emoji: '💊', name: 'Vitamine einnehmen',    hint: 'Biotin, Vitamin C & D für die Haut',           en: 'Take vitamins',           enHint: 'Biotin, vitamin C & D for your skin' },
+    { emoji: '🌺', name: 'Rosenwasser sprühen',   hint: 'Erfrischt & setzt Make-up',                    en: 'Spray rose water',        enHint: 'Refreshes & sets makeup' },
   ],
   morning_makeup: [
-    { emoji: '🖌️', name: 'Augenbrauen zeichnen', hint: 'Form betonen mit Brow-Pen oder Puder' },
-    { emoji: '✨', name: 'Highlighter auftragen', hint: 'Auf Wangenknochen & Nasenspitze' },
-    { emoji: '🌸', name: 'Lipliner benutzen',     hint: 'Lippen definieren & Lippenstift halten' },
-    { emoji: '👁️', name: 'Wimpern curlen',        hint: 'Vor dem Mascara für mehr Öffnung' },
-    { emoji: '🎭', name: 'Contouring',            hint: 'Gesicht formen mit Contour-Puder' },
+    { emoji: '🖌️', name: 'Augenbrauen zeichnen', hint: 'Form betonen mit Brow-Pen oder Puder',         en: 'Fill in eyebrows',        enHint: 'Define shape with brow pen or powder' },
+    { emoji: '✨', name: 'Highlighter auftragen', hint: 'Auf Wangenknochen & Nasenspitze',              en: 'Apply highlighter',       enHint: 'On cheekbones & nose tip' },
+    { emoji: '🌸', name: 'Lipliner benutzen',     hint: 'Lippen definieren & Lippenstift halten',       en: 'Use lip liner',           enHint: 'Define lips & make lipstick last' },
+    { emoji: '👁️', name: 'Wimpern curlen',        hint: 'Vor dem Mascara für mehr Öffnung',             en: 'Curl lashes',             enHint: 'Before mascara for a more open look' },
+    { emoji: '🎭', name: 'Contouring',            hint: 'Gesicht formen mit Contour-Puder',             en: 'Contouring',              enHint: 'Shape face with contour powder' },
   ],
   morning_body: [
-    { emoji: '🧖‍♀️', name: 'Trockenbürsten',     hint: 'Vor dem Duschen für bessere Durchblutung' },
-    { emoji: '🫧', name: 'Körperpeeling',         hint: 'Glatte Haut durch regelmäßiges Peelen' },
-    { emoji: '💧', name: 'Kneipp-Dusche',         hint: 'Warm-kalt wechseln für den Kreislauf' },
-    { emoji: '🌸', name: 'Handcreme auftragen',   hint: 'Hände pflegen – besonders nach dem Waschen' },
-    { emoji: '🦵', name: 'Beine eincremen',       hint: 'Besonders Knie & Ellenbogen nicht vergessen' },
+    { emoji: '🧖‍♀️', name: 'Trockenbürsten',     hint: 'Vor dem Duschen für bessere Durchblutung',     en: 'Dry brushing',            enHint: 'Before showering for better circulation' },
+    { emoji: '🫧', name: 'Körperpeeling',         hint: 'Glatte Haut durch regelmäßiges Peelen',        en: 'Body scrub',              enHint: 'Smooth skin through regular exfoliation' },
+    { emoji: '💧', name: 'Kneipp-Dusche',         hint: 'Warm-kalt wechseln für den Kreislauf',         en: 'Contrast shower',         enHint: 'Alternate warm & cold for circulation' },
+    { emoji: '🌸', name: 'Handcreme auftragen',   hint: 'Hände pflegen – besonders nach dem Waschen',   en: 'Apply hand cream',        enHint: 'Nourish hands – especially after washing' },
+    { emoji: '🦵', name: 'Beine eincremen',       hint: 'Besonders Knie & Ellenbogen nicht vergessen',  en: 'Moisturize legs',         enHint: 'Don\'t forget knees & elbows' },
   ],
   morning_wellness: [
-    { emoji: '☕', name: 'Kaffee/Tee genießen',   hint: 'Morgenritual für den perfekten Start' },
-    { emoji: '📱', name: 'Handy-freie Zeit',       hint: '30 Min ohne Social Media am Morgen' },
-    { emoji: '🌞', name: 'An die frische Luft',   hint: 'Kurzer Spaziergang belebt Körper & Geist' },
-    { emoji: '🎵', name: 'Lieblingsmusik hören',  hint: 'Gute Laune-Playlist für den Morgen' },
-    { emoji: '📝', name: 'To-Do Liste schreiben', hint: 'Den Tag planen & strukturieren' },
+    { emoji: '☕', name: 'Kaffee/Tee genießen',   hint: 'Morgenritual für den perfekten Start',         en: 'Enjoy coffee/tea',        enHint: 'Morning ritual for the perfect start' },
+    { emoji: '📱', name: 'Handy-freie Zeit',       hint: '30 Min ohne Social Media am Morgen',           en: 'Phone-free time',         enHint: '30 min without social media in the morning' },
+    { emoji: '🌞', name: 'An die frische Luft',   hint: 'Kurzer Spaziergang belebt Körper & Geist',     en: 'Get some fresh air',      enHint: 'A short walk revives body & mind' },
+    { emoji: '🎵', name: 'Lieblingsmusik hören',  hint: 'Gute Laune-Playlist für den Morgen',           en: 'Listen to music',         enHint: 'Good mood playlist for the morning' },
+    { emoji: '📝', name: 'To-Do Liste schreiben', hint: 'Den Tag planen & strukturieren',               en: 'Write a to-do list',      enHint: 'Plan & structure your day' },
   ],
   evening_skincare: [
-    { emoji: '🌙', name: 'Schlafmaske auftragen', hint: 'Intensivpflege über Nacht einwirken lassen' },
-    { emoji: '💆‍♀️', name: 'Gesichtsmassage',     hint: 'Lymphdrainage & Entspannung mit Öl' },
-    { emoji: '🌿', name: 'Nachtöl auftragen',     hint: 'Rosen- oder Arganöl für strahlende Haut' },
-    { emoji: '❄️', name: 'Kühlende Augenpads',    hint: 'Abschwellen & Augenringe reduzieren' },
-    { emoji: '💎', name: 'Halspflege',            hint: 'Hals & Dekolleté miteincremen' },
+    { emoji: '🌙', name: 'Schlafmaske auftragen', hint: 'Intensivpflege über Nacht einwirken lassen',   en: 'Apply sleeping mask',     enHint: 'Intensive care working overnight' },
+    { emoji: '💆‍♀️', name: 'Gesichtsmassage',     hint: 'Lymphdrainage & Entspannung mit Öl',           en: 'Face massage',            enHint: 'Lymph drainage & relaxation with oil' },
+    { emoji: '🌿', name: 'Nachtöl auftragen',     hint: 'Rosen- oder Arganöl für strahlende Haut',      en: 'Apply face oil',          enHint: 'Rose or argan oil for radiant skin' },
+    { emoji: '❄️', name: 'Kühlende Augenpads',    hint: 'Abschwellen & Augenringe reduzieren',          en: 'Cooling eye pads',        enHint: 'Depuff & reduce dark circles' },
+    { emoji: '💎', name: 'Halspflege',            hint: 'Hals & Dekolleté miteincremen',                en: 'Neck care',               enHint: 'Moisturize neck & décolleté too' },
   ],
   evening_body: [
-    { emoji: '🛁', name: 'Entspannungsbad',       hint: 'Mit Lavendel oder Badesalz' },
-    { emoji: '🧴', name: 'Fußcreme auftragen',    hint: 'Besonders die Fersen eincremen' },
-    { emoji: '💅', name: 'Nagelhautöl auftragen', hint: 'Täglich für gesunde & schöne Nägel' },
-    { emoji: '🌸', name: 'Schlafanzug wechseln',  hint: 'Saubere PJs für erholsamen Schlaf' },
-    { emoji: '🧼', name: 'Make-up Pinsel reinigen', hint: '1x pro Woche für reine Haut' },
+    { emoji: '🛁', name: 'Entspannungsbad',       hint: 'Mit Lavendel oder Badesalz',                   en: 'Relaxing bath',           enHint: 'With lavender or bath salts' },
+    { emoji: '🧴', name: 'Fußcreme auftragen',    hint: 'Besonders die Fersen eincremen',               en: 'Apply foot cream',        enHint: 'Especially moisturize the heels' },
+    { emoji: '💅', name: 'Nagelhautöl auftragen', hint: 'Täglich für gesunde & schöne Nägel',           en: 'Apply cuticle oil',       enHint: 'Daily for healthy & beautiful nails' },
+    { emoji: '🌸', name: 'Schlafanzug wechseln',  hint: 'Saubere PJs für erholsamen Schlaf',            en: 'Change into PJs',         enHint: 'Fresh PJs for a restful sleep' },
+    { emoji: '🧼', name: 'Make-up Pinsel reinigen', hint: '1x pro Woche für reine Haut',               en: 'Clean makeup brushes',    enHint: 'Once a week for clear skin' },
   ],
   evening_wellness: [
-    { emoji: '🕯️', name: 'Kerze anzünden',        hint: 'Stimmung für die Abendroutine schaffen' },
-    { emoji: '🛌', name: 'Schlafzeit festlegen',   hint: 'Regelmäßige Schlafzeiten sind Beauty-Sleep' },
-    { emoji: '🎧', name: 'Entspannungsmusik',      hint: 'Ruhige Musik oder Meditation' },
-    { emoji: '🙏', name: 'Dankbarkeit aufschreiben', hint: '3 Dinge für die du dankbar bist' },
-    { emoji: '🌬️', name: '4-7-8 Atemtechnik',    hint: '4 ein, 7 halten, 8 ausatmen – perfekt zum Schlafen' },
+    { emoji: '🕯️', name: 'Kerze anzünden',        hint: 'Stimmung für die Abendroutine schaffen',       en: 'Light a candle',          enHint: 'Set the mood for your evening routine' },
+    { emoji: '🛌', name: 'Schlafzeit festlegen',   hint: 'Regelmäßige Schlafzeiten sind Beauty-Sleep',   en: 'Set a sleep schedule',    enHint: 'Regular sleep times are beauty sleep' },
+    { emoji: '🎧', name: 'Entspannungsmusik',      hint: 'Ruhige Musik oder Meditation',                 en: 'Relaxation music',        enHint: 'Calm music or meditation' },
+    { emoji: '🙏', name: 'Dankbarkeit aufschreiben', hint: '3 Dinge für die du dankbar bist',           en: 'Write down gratitude',    enHint: '3 things you are grateful for' },
+    { emoji: '🌬️', name: '4-7-8 Atemtechnik',    hint: '4 ein, 7 halten, 8 ausatmen – perfekt zum Schlafen', en: '4-7-8 breathing', enHint: '4 in, 7 hold, 8 out – perfect for sleep' },
   ],
   weekly_skincare: [
-    { emoji: '💜', name: 'Augenbrauen zupfen',    hint: 'Form pflegen & unerwünschte Haare entfernen' },
-    { emoji: '🌡️', name: 'Dampfbad für Gesicht', hint: 'Poren öffnen vor der Reinigung' },
-    { emoji: '🍯', name: 'Honigmaske',            hint: 'Antibakteriell & super feuchtigkeitsspendend' },
-    { emoji: '🌿', name: 'Gurken-Augenpads',      hint: 'Frische Gurke für ausgeruhte Augen' },
-    { emoji: '💆‍♀️', name: 'Gua-Sha Massage',    hint: 'Lifting-Effekt & Entspannung' },
+    { emoji: '💜', name: 'Augenbrauen zupfen',    hint: 'Form pflegen & unerwünschte Haare entfernen',  en: 'Tweeze eyebrows',         enHint: 'Maintain shape & remove unwanted hairs' },
+    { emoji: '🌡️', name: 'Dampfbad für Gesicht', hint: 'Poren öffnen vor der Reinigung',               en: 'Face steam bath',         enHint: 'Open pores before cleansing' },
+    { emoji: '🍯', name: 'Honigmaske',            hint: 'Antibakteriell & super feuchtigkeitsspendend', en: 'Honey mask',              enHint: 'Antibacterial & super moisturizing' },
+    { emoji: '🌿', name: 'Gurken-Augenpads',      hint: 'Frische Gurke für ausgeruhte Augen',           en: 'Cucumber eye pads',       enHint: 'Fresh cucumber for rested-looking eyes' },
+    { emoji: '💆‍♀️', name: 'Gua-Sha Massage',    hint: 'Lifting-Effekt & Entspannung',                 en: 'Gua-Sha massage',         enHint: 'Lifting effect & relaxation' },
   ],
   weekly_hair: [
-    { emoji: '🚿', name: 'Haare waschen',         hint: 'Mit Shampoo & Spülung für dein Haartyp' },
-    { emoji: '💨', name: 'Diffuser benutzen',     hint: 'Schonendes Trocknen für natürliche Wellen' },
-    { emoji: '🌀', name: 'Locken definieren',     hint: 'Curl-Cream für schöne Locken' },
-    { emoji: '✨', name: 'Glanz-Spray auftragen', hint: 'Für extra Glanz & Finish' },
-    { emoji: '🧴', name: 'Leave-In Conditioner',  hint: 'Ohne ausspülen – für den ganzen Tag Pflege' },
+    { emoji: '🚿', name: 'Haare waschen',         hint: 'Mit Shampoo & Spülung für dein Haartyp',       en: 'Wash hair',               enHint: 'With shampoo & conditioner for your hair type' },
+    { emoji: '💨', name: 'Diffuser benutzen',     hint: 'Schonendes Trocknen für natürliche Wellen',    en: 'Use diffuser',            enHint: 'Gentle drying for natural waves' },
+    { emoji: '🌀', name: 'Locken definieren',     hint: 'Curl-Cream für schöne Locken',                 en: 'Define curls',            enHint: 'Curl cream for beautiful curls' },
+    { emoji: '✨', name: 'Glanz-Spray auftragen', hint: 'Für extra Glanz & Finish',                     en: 'Apply shine spray',       enHint: 'For extra shine & finish' },
+    { emoji: '🧴', name: 'Leave-In Conditioner',  hint: 'Ohne ausspülen – für den ganzen Tag Pflege',   en: 'Leave-in conditioner',    enHint: 'No rinse – nourishment all day long' },
   ],
   weekly_nails: [
-    { emoji: '💅', name: 'Nagellack wechseln',    hint: 'Frische Farbe für frisches Feeling' },
-    { emoji: '🌸', name: 'Nagelöl einmassieren',  hint: 'Täglich für gesunde & feste Nägel' },
-    { emoji: '🪮', name: 'Nagelbürste benutzen',  hint: 'Unter den Nägeln gründlich reinigen' },
-    { emoji: '✨', name: 'Nagelstärker auftragen', hint: 'Für brüchige Nägel als Basis' },
-    { emoji: '🧴', name: 'Handmaske anlegen',     hint: 'Handschuhe + Handcreme über Nacht' },
+    { emoji: '💅', name: 'Nagellack wechseln',    hint: 'Frische Farbe für frisches Feeling',           en: 'Change nail polish',      enHint: 'Fresh color for a fresh feeling' },
+    { emoji: '🌸', name: 'Nagelöl einmassieren',  hint: 'Täglich für gesunde & feste Nägel',            en: 'Massage in nail oil',     enHint: 'Daily for healthy & strong nails' },
+    { emoji: '🪮', name: 'Nagelbürste benutzen',  hint: 'Unter den Nägeln gründlich reinigen',          en: 'Use nail brush',          enHint: 'Thoroughly clean under the nails' },
+    { emoji: '✨', name: 'Nagelstärker auftragen', hint: 'Für brüchige Nägel als Basis',                en: 'Apply nail strengthener', enHint: 'As a base for brittle nails' },
+    { emoji: '🧴', name: 'Handmaske anlegen',     hint: 'Handschuhe + Handcreme über Nacht',            en: 'Hand mask treatment',     enHint: 'Gloves + hand cream overnight' },
   ],
   weekly_body: [
-    { emoji: '🌊', name: 'Schwimmen gehen',       hint: 'Sport & Entspannung für Körper & Geist' },
-    { emoji: '🧘‍♀️', name: 'Yoga-Einheit',        hint: 'Flexibilität & Entspannung fördern' },
-    { emoji: '🌿', name: 'Selbstmassage',         hint: 'Faszienrolle oder Massageball benutzen' },
-    { emoji: '☀️', name: 'Selbstbräuner auftragen', hint: 'Für ein gleichmäßiges, gesundes Strahlen' },
-    { emoji: '🧴', name: 'Körperbutter auftragen', hint: 'Intensive Pflege für sehr trockene Stellen' },
+    { emoji: '🌊', name: 'Schwimmen gehen',       hint: 'Sport & Entspannung für Körper & Geist',       en: 'Go swimming',             enHint: 'Exercise & relaxation for body & mind' },
+    { emoji: '🧘‍♀️', name: 'Yoga-Einheit',        hint: 'Flexibilität & Entspannung fördern',           en: 'Yoga session',            enHint: 'Promote flexibility & relaxation' },
+    { emoji: '🌿', name: 'Selbstmassage',         hint: 'Faszienrolle oder Massageball benutzen',       en: 'Self massage',            enHint: 'Use foam roller or massage ball' },
+    { emoji: '☀️', name: 'Selbstbräuner auftragen', hint: 'Für ein gleichmäßiges, gesundes Strahlen',  en: 'Apply self-tanner',       enHint: 'For an even, healthy glow' },
+    { emoji: '🧴', name: 'Körperbutter auftragen', hint: 'Intensive Pflege für sehr trockene Stellen',  en: 'Apply body butter',       enHint: 'Intensive care for very dry areas' },
   ],
 };
 
@@ -696,14 +696,16 @@ function buildPresets(catKey) {
   chips.className = 'preset-chips';
 
   presets.forEach(p => {
+    const displayName = (currentLang === 'en' && p.en)     ? p.en     : p.name;
+    const displayHint = (currentLang === 'en' && p.enHint) ? p.enHint : p.hint;
     const chip = document.createElement('button');
     chip.type = 'button';
     chip.className = 'preset-chip';
-    chip.textContent = `${p.emoji} ${p.name}`;
+    chip.textContent = `${p.emoji} ${displayName}`;
     chip.addEventListener('click', () => {
       document.getElementById('modalEmoji').value = p.emoji;
-      document.getElementById('modalName').value  = p.name;
-      document.getElementById('modalHint').value  = p.hint;
+      document.getElementById('modalName').value  = displayName;
+      document.getElementById('modalHint').value  = displayHint;
       syncEmojiSelection();
       chips.querySelectorAll('.preset-chip').forEach(c => {
         c.style.background = ''; c.style.color = ''; c.style.borderColor = '';
